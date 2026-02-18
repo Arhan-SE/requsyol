@@ -1,71 +1,102 @@
 import { motion } from "framer-motion";
-import ScrollReveal from "@/components/animations/ScrollReveal";
 import { Factory, Utensils, Building2, Truck, ShoppingBag, Hammer, HeartPulse, Warehouse } from "lucide-react";
 
 const industries = [
-  { icon: Factory, name: "Manufacturing", accent: "from-emerald-500/40 to-emerald-400/10" },
-  { icon: Utensils, name: "Hospitality", accent: "from-amber-500/40 to-amber-400/10" },
-  { icon: Building2, name: "Construction", accent: "from-orange-500/40 to-orange-400/10" },
-  { icon: Truck, name: "Logistics", accent: "from-blue-500/40 to-blue-400/10" },
-  { icon: ShoppingBag, name: "Retail", accent: "from-pink-500/40 to-pink-400/10" },
-  { icon: Hammer, name: "Trades", accent: "from-violet-500/40 to-violet-400/10" },
-  { icon: HeartPulse, name: "Healthcare", accent: "from-rose-500/40 to-rose-400/10" },
-  { icon: Warehouse, name: "Warehousing", accent: "from-indigo-500/40 to-indigo-400/10" },
+  { icon: Factory, name: "Manufacturing" },
+  { icon: Utensils, name: "Hospitality" },
+  { icon: Building2, name: "Construction" },
+  { icon: Truck, name: "Logistics" },
+  { icon: ShoppingBag, name: "Retail" },
+  { icon: Hammer, name: "Trades" },
+  { icon: HeartPulse, name: "Healthcare" },
+  { icon: Warehouse, name: "Warehousing" },
 ];
 
 const doubled = [...industries, ...industries];
 
+const SectionDivider = ({ label }: { label: string }) => (
+  <motion.div
+    className="flex items-center gap-0 w-full px-6 py-8"
+    initial={{ opacity: 0 }}
+    whileInView={{ opacity: 1 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.8 }}
+  >
+    <span className="text-muted-foreground text-sm font-light">+</span>
+    <motion.div
+      className="flex-1 h-px bg-border mx-3"
+      initial={{ scaleX: 0 }}
+      whileInView={{ scaleX: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      style={{ transformOrigin: "center" }}
+    />
+    <span className="text-[10px] tracking-[0.35em] uppercase text-muted-foreground font-sans px-2">{label}</span>
+    <motion.div
+      className="flex-1 h-px bg-border mx-3"
+      initial={{ scaleX: 0 }}
+      whileInView={{ scaleX: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      style={{ transformOrigin: "center" }}
+    />
+    <span className="text-muted-foreground text-sm font-light">+</span>
+  </motion.div>
+);
+
 const IndustryCarousel = () => {
   return (
-    <section className="py-24 overflow-hidden">
-      <div className="container mx-auto px-4">
-        <ScrollReveal>
-          <div className="text-center mb-14">
-            <p className="text-xs font-semibold tracking-[0.25em] uppercase text-primary/70 mb-3">
-              Sector Expertise
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Industries We Serve</h2>
-            <p className="text-muted-foreground">Staffing solutions across a wide range of sectors</p>
-          </div>
-        </ScrollReveal>
+    <section className="bg-background overflow-hidden">
+      <SectionDivider label="Sectors We Cover" />
+
+      {/* Giant section headline */}
+      <div className="container mx-auto px-6 pb-12 text-center">
+        <motion.h2
+          className="font-barlow font-black uppercase text-foreground leading-[0.9]"
+          style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
+          Industries We Serve.
+        </motion.h2>
+        <p className="text-muted-foreground text-xs tracking-[0.2em] uppercase mt-4 font-sans">
+          Staffing solutions across a wide range of sectors
+        </p>
       </div>
 
       {/* Edge-faded scrolling track */}
       <div
-        className="relative"
+        className="relative py-4"
         style={{
           maskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
           WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
         }}
       >
         <motion.div
-          className="flex gap-5 py-4"
+          className="flex gap-0"
           animate={{ x: ["0%", "-50%"] }}
-          transition={{ duration: 36, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
         >
           {doubled.map((industry, i) => (
             <div
               key={i}
-              className="flex-shrink-0 w-52 h-44 relative rounded-xl overflow-hidden border border-border/40 bg-card/40 backdrop-blur-sm flex flex-col items-center justify-center gap-4 group cursor-default hover:border-border/80 transition-all duration-500"
+              className="flex-shrink-0 w-48 h-40 border-r border-border flex flex-col items-center justify-center gap-4 group hover:bg-foreground/[0.04] transition-colors duration-300 cursor-default"
             >
-              {/* Glowing top-border accent */}
-              <div className={`absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r ${industry.accent}`} />
-
-              {/* Shimmer overlay on hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-foreground/0 via-foreground/[0.03] to-foreground/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-              {/* Icon container with glow ring */}
-              <div className="relative flex items-center justify-center w-14 h-14 rounded-full bg-foreground/5 border border-border/30 group-hover:border-border/60 transition-all duration-500">
-                <industry.icon size={26} className="text-foreground/60 group-hover:text-foreground/90 transition-colors duration-300" />
-              </div>
-
-              <span className="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors duration-300 tracking-wide">
+              <industry.icon
+                size={28}
+                className="text-muted-foreground group-hover:text-foreground transition-colors duration-300"
+              />
+              <span className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground group-hover:text-foreground transition-colors duration-300 font-sans">
                 {industry.name}
               </span>
             </div>
           ))}
         </motion.div>
       </div>
+
+      <div className="h-px bg-border" />
     </section>
   );
 };
