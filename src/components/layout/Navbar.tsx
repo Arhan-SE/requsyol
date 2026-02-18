@@ -35,15 +35,15 @@ const Navbar = () => {
     >
       {/* Desktop — 3-column layout */}
       <div className="hidden lg:grid grid-cols-3 items-center px-8 py-4">
-        {/* LEFT — stacked nav links */}
-        <nav className="flex flex-col gap-0.5">
+        {/* LEFT — horizontal nav links */}
+        <nav className="flex flex-row items-center gap-6">
           {navLinks.map((link) => {
             const isActive = location.pathname === link.path;
             return (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`text-xs tracking-[0.18em] uppercase font-medium transition-colors leading-tight py-0.5 ${
+                className={`text-xs tracking-[0.18em] uppercase font-medium transition-colors whitespace-nowrap ${
                   isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground"
                 }`}
               >
