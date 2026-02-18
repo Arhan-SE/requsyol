@@ -59,13 +59,13 @@ const HeroSection = () => {
             {...anim(0.15)}
             className="text-4xl sm:text-5xl md:text-7xl font-bold text-foreground leading-[1.1] tracking-tight mb-6">
 
-            Find the right job or talent
-            <span className="block text-muted-foreground mt-2">— quickly & reliably</span>
+            Talent Meets Opportunity
           </motion.h1>
 
           <motion.p
             {...anim(0.3)}
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">Requsyol.
+            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
+            The shortest path between exceptional talent and the companies that need them most.
 
 
 
