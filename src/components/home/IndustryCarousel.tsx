@@ -85,11 +85,13 @@ const IndustryCarousel = () => {
           {doubled.map((industry, i) => {
             const isHovered = hoveredIndex === i;
             return (
-              <div
+              <motion.div
                 key={i}
                 className="relative flex-shrink-0 w-48 h-40 border-r border-border flex flex-col items-center justify-center gap-4 overflow-hidden cursor-default"
                 onMouseEnter={() => setHoveredIndex(i)}
                 onMouseLeave={() => setHoveredIndex(null)}
+                animate={{ scale: isHovered ? 1.12 : 1, zIndex: isHovered ? 10 : 0 }}
+                transition={{ duration: 0.18, ease: "easeOut" }}
               >
                 {/* Background image */}
                 <motion.img
@@ -98,28 +100,28 @@ const IndustryCarousel = () => {
                   loading="lazy"
                   className="absolute inset-0 w-full h-full object-cover"
                   animate={{ opacity: isHovered ? 1 : 0 }}
-                  transition={{ duration: 0.35 }}
+                  transition={{ duration: 0.15 }}
                 />
                 {/* Dark overlay */}
                 <motion.div
                   className="absolute inset-0 bg-black/55"
                   animate={{ opacity: isHovered ? 1 : 0 }}
-                  transition={{ duration: 0.35 }}
+                  transition={{ duration: 0.15 }}
                 />
                 {/* Icon */}
                 <industry.icon
                   size={28}
-                  className="relative z-10 transition-colors duration-300"
+                  className="relative z-10 transition-colors duration-150"
                   style={{ color: isHovered ? "white" : undefined }}
                 />
                 {/* Label */}
                 <span
-                  className="relative z-10 text-[10px] tracking-[0.25em] uppercase font-sans transition-colors duration-300"
+                  className="relative z-10 text-[10px] tracking-[0.25em] uppercase font-sans transition-colors duration-150"
                   style={{ color: isHovered ? "white" : undefined }}
                 >
                   {industry.name}
                 </span>
-              </div>
+              </motion.div>
             );
           })}
         </motion.div>
