@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import CountUp from "@/components/animations/CountUp";
 import { ShieldCheck, Clock, FileCheck, Wallet, Headphones, Search } from "lucide-react";
+import whyChooseBg from "@/assets/why-choose-bg.jpg";
 
 const avatars = [
   { initials: "SM", bg: "linear-gradient(135deg, hsl(216 60% 45%), hsl(230 70% 35%))" },
@@ -63,7 +64,21 @@ const benefits = [
 
 const ValueProposition = () => {
   return (
-    <section className="py-28 bg-background overflow-hidden">
+    <section className="relative py-28 overflow-hidden">
+      {/* Background image */}
+      <div className="absolute inset-0">
+        <img
+          src={whyChooseBg}
+          alt=""
+          aria-hidden="true"
+          className="w-full h-full object-cover object-center"
+        />
+        {/* Dark overlay so content stays readable */}
+        <div className="absolute inset-0 bg-background/80" />
+        {/* Top and bottom gradient fades to blend with surrounding sections */}
+        <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-background to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
+      </div>
       <div className="container mx-auto px-4 max-w-6xl">
 
         {/* Section Label */}
