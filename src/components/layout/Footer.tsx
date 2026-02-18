@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, Building2 } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -74,16 +74,32 @@ const Footer = () => {
           <div>
             <h4 className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground mb-5 font-sans">Contact</h4>
             <div className="flex flex-col gap-4">
-              {[
-                { icon: Mail, label: "info@requsyol.co.uk" },
-                { icon: Phone, label: "+44 (0) 123 456 7890" },
-                { icon: MapPin, label: "London, United Kingdom" },
-              ].map(({ icon: Icon, label }) => (
-                <div key={label} className="flex items-center gap-3 text-xs text-muted-foreground font-sans">
-                  <Icon size={12} className="flex-shrink-0" />
-                  <span>{label}</span>
+              <div className="flex items-start gap-3 text-xs text-muted-foreground font-sans">
+                <MapPin size={12} className="flex-shrink-0 mt-0.5" />
+                <div>
+                  <p>Suite 23/2nd Floor, Unimix House,</p>
+                  <p>Abbey Road, Park Royal. NW10 7TR.</p>
                 </div>
-              ))}
+              </div>
+              <div className="flex items-center gap-3 text-xs text-muted-foreground font-sans">
+                <Building2 size={12} className="flex-shrink-0" />
+                <span>Company No: 12121221</span>
+              </div>
+              <div className="flex items-start gap-3 text-xs text-muted-foreground font-sans">
+                <Mail size={12} className="flex-shrink-0 mt-0.5" />
+                <div>
+                  <p>marketing@requsyol.co.uk</p>
+                  <p>hr@requsyol.co.uk</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3 text-xs text-muted-foreground font-sans">
+                <Phone size={12} className="flex-shrink-0 mt-0.5" />
+                <div className="flex flex-col gap-1">
+                  <p><span className="text-muted-foreground/60">Business:</span> +44-7432402246</p>
+                  <p><span className="text-muted-foreground/60">Registration:</span> +44-7487583669</p>
+                  <p><span className="text-muted-foreground/60">Finance:</span> +44-7466989804</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
