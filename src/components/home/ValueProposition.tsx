@@ -67,11 +67,14 @@ const ValueProposition = () => {
     <section className="relative py-28 overflow-hidden">
       {/* Background image */}
       <div className="absolute inset-0">
-        <img
+        <motion.img
           src={whyChooseBg}
           alt=""
           aria-hidden="true"
           className="w-full h-full object-cover object-center"
+          initial={{ scale: 1 }}
+          animate={{ scale: 1.12 }}
+          transition={{ duration: 24, ease: "linear", repeat: Infinity, repeatType: "reverse" }}
         />
         {/* Dark overlay so content stays readable */}
         <div className="absolute inset-0 bg-background/80" />
