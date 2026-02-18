@@ -42,6 +42,7 @@ const EmployerInquiry = () => {
   const { toast } = useToast();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     recordPageLoadTime();
   }, []);
 
