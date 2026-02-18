@@ -27,8 +27,8 @@ const Navbar = () => {
   return (
     <motion.header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "border-b border-border" : ""
-      } bg-background/90 backdrop-blur-sm`}
+        scrolled ? "border-b border-border bg-background/90 backdrop-blur-sm" : "bg-transparent"
+      }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
