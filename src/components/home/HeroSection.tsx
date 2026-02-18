@@ -1,7 +1,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
-import heroVisual from "@/assets/hero-visual.jpeg";
+import heroBg from "@/assets/hero-bg.mp4";
 
 const words = ["WE FIND.", "WE MATCH.", "WE DELIVER."];
 
@@ -12,13 +12,16 @@ const HeroSection = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background image with near-black overlay */}
       <div className="absolute inset-0">
-        <img
-          src={heroVisual}
-          alt=""
+        <video
+          src={heroBg}
+          autoPlay
+          loop
+          muted
+          playsInline
           aria-hidden="true"
           className="w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-background/85" />
+        <div className="absolute inset-0 bg-background/75" />
         <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background to-transparent" />
       </div>
 
