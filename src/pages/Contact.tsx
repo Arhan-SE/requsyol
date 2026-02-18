@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -10,23 +10,52 @@ import { Textarea } from "@/components/ui/textarea";
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
+import {
+  safeNameSchema,
+  safeEmailSchema,
+  safeTextSchema,
+  recordPageLoadTime,
+  isSubmissionTooFast,
+  isDuplicateSubmission,
+} from "@/lib/formSecurity";
 
 const formSchema = z.object({
-  name: z.string().min(2, "Name is required"),
-  email: z.string().email("Valid email required"),
-  message: z.string().min(10, "Message must be at least 10 characters"),
+  name: safeNameSchema,
+  email: safeEmailSchema,
+  message: safeTextSchema(10, 2000),
+  honeypot: z.string().max(0),
 });
 
 const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
   const { toast } = useToast();
 
+  useEffect(() => {
+    recordPageLoadTime();
+  }, []);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: { name: "", email: "", message: "" },
+    defaultValues: { name: "", email: "", message: "", honeypot: "" },
   });
 
-  const onSubmit = () => {
+  const onSubmit = async (data: z.infer<typeof formSchema>) => {
+    // Bot trap
+    if (data.honeypot) return;
+
+    // Timing guard
+    if (isSubmissionTooFast()) {
+      toast({ title: "Something went wrong", description: "Please wait a moment and try again.", variant: "destructive" });
+      return;
+    }
+
+    // Duplicate guard
+    const { honeypot: _hp, ...payload } = data;
+    if (await isDuplicateSubmission(payload)) {
+      toast({ title: "Duplicate submission", description: "This message has already been sent.", variant: "destructive" });
+      return;
+    }
+
     toast({ title: "Message Sent!", description: "We'll get back to you soon." });
     setSubmitted(true);
   };
@@ -69,6 +98,11 @@ const Contact = () => {
               ) : (
                 <Form {...form}>
                   <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                    {/* Honeypot — hidden from humans, attractive to bots */}
+                    <div className="hidden" aria-hidden="true">
+                      <Input {...form.register("honeypot")} tabIndex={-1} autoComplete="off" />
+                    </div>
+
                     <FormField control={form.control} name="name" render={({ field }) => (
                       <FormItem><FormLabel>Name</FormLabel><FormControl><Input placeholder="Your name" {...field} /></FormControl><FormMessage /></FormItem>
                     )} />

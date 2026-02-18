@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -11,30 +11,78 @@ import { Textarea } from "@/components/ui/textarea";
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { CheckCircle, Upload, Send } from "lucide-react";
+import { CheckCircle, Upload, Send, AlertCircle } from "lucide-react";
+import {
+  safeNameSchema,
+  safeEmailSchema,
+  safePhoneSchema,
+  safeTextSchema,
+  safeShortTextSchema,
+  recordPageLoadTime,
+  isSubmissionTooFast,
+  isDuplicateSubmission,
+  validateUploadedFile,
+} from "@/lib/formSecurity";
 
 const formSchema = z.object({
-  companyName: z.string().min(2, "Company name is required"),
-  contactPerson: z.string().min(2, "Contact person is required"),
-  email: z.string().email("Valid email required"),
-  phone: z.string().min(10, "Valid phone number required"),
-  roleRequired: z.string().min(2, "Role description is required"),
+  companyName: safeShortTextSchema("Company name"),
+  contactPerson: safeNameSchema,
+  email: safeEmailSchema,
+  phone: safePhoneSchema,
+  roleRequired: safeTextSchema(2, 2000),
   urgency: z.string().min(1, "Please select urgency"),
-  honeypot: z.string().max(0), // spam prevention
+  honeypot: z.string().max(0),
 });
 
 const EmployerInquiry = () => {
   const [submitted, setSubmitted] = useState(false);
   const [jobFile, setJobFile] = useState<File | null>(null);
+  const [fileError, setFileError] = useState<string | null>(null);
+  const [sanitizedFileName, setSanitizedFileName] = useState<string | null>(null);
   const { toast } = useToast();
+
+  useEffect(() => {
+    recordPageLoadTime();
+  }, []);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: { companyName: "", contactPerson: "", email: "", phone: "", roleRequired: "", urgency: "", honeypot: "" },
   });
 
-  const onSubmit = (data: z.infer<typeof formSchema>) => {
-    if (data.honeypot) return; // bot detected
+  const handleFileChange = async (file: File | undefined) => {
+    if (!file) {
+      setJobFile(null);
+      setFileError(null);
+      setSanitizedFileName(null);
+      return;
+    }
+    const result = await validateUploadedFile(file);
+    if (result.ok === false) {
+      setFileError(result.error);
+      setJobFile(null);
+      setSanitizedFileName(null);
+    } else {
+      setFileError(null);
+      setJobFile(file);
+      setSanitizedFileName(result.sanitizedName);
+    }
+  };
+
+  const onSubmit = async (data: z.infer<typeof formSchema>) => {
+    if (data.honeypot) return;
+
+    if (isSubmissionTooFast()) {
+      toast({ title: "Something went wrong", description: "Please wait a moment and try again.", variant: "destructive" });
+      return;
+    }
+
+    const { honeypot: _hp, ...payload } = data;
+    if (await isDuplicateSubmission(payload)) {
+      toast({ title: "Duplicate submission", description: "This inquiry has already been submitted.", variant: "destructive" });
+      return;
+    }
+
     toast({ title: "Inquiry Submitted!", description: "We'll get back to you within 24 hours." });
     setSubmitted(true);
   };
@@ -65,7 +113,9 @@ const EmployerInquiry = () => {
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
               {/* Honeypot */}
-              <div className="hidden"><Input {...form.register("honeypot")} tabIndex={-1} autoComplete="off" /></div>
+              <div className="hidden" aria-hidden="true">
+                <Input {...form.register("honeypot")} tabIndex={-1} autoComplete="off" />
+              </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <FormField control={form.control} name="companyName" render={({ field }) => (
@@ -100,7 +150,7 @@ const EmployerInquiry = () => {
                 <FormMessage /></FormItem>
               )} />
 
-              {/* Optional file upload */}
+              {/* File upload with hardened validation */}
               <div>
                 <label className="text-sm font-medium text-foreground mb-2 block">Job Description (optional)</label>
                 <div
@@ -108,9 +158,22 @@ const EmployerInquiry = () => {
                   onClick={() => document.getElementById("job-upload")?.click()}
                 >
                   <Upload size={24} className="mx-auto text-muted-foreground mb-2" />
-                  <p className="text-sm text-muted-foreground">{jobFile ? jobFile.name : "Upload job description (PDF, DOC)"}</p>
-                  <input id="job-upload" type="file" accept=".pdf,.doc,.docx" className="hidden" onChange={(e) => setJobFile(e.target.files?.[0] || null)} />
+                  <p className="text-sm text-muted-foreground">
+                    {sanitizedFileName ?? "Upload job description (PDF, DOC, DOCX — max 5 MB)"}
+                  </p>
+                  <input
+                    id="job-upload"
+                    type="file"
+                    accept=".pdf,.doc,.docx"
+                    className="hidden"
+                    onChange={(e) => handleFileChange(e.target.files?.[0])}
+                  />
                 </div>
+                {fileError && (
+                  <p className="mt-2 text-sm text-destructive flex items-center gap-1">
+                    <AlertCircle size={14} /> {fileError}
+                  </p>
+                )}
               </div>
 
               <Button type="submit" size="lg" className="w-full gap-2">
