@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -11,18 +11,29 @@ import { Progress } from "@/components/ui/progress";
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { ArrowLeft, ArrowRight, Upload, CheckCircle } from "lucide-react";
+import { ArrowLeft, ArrowRight, Upload, CheckCircle, AlertCircle } from "lucide-react";
+import {
+  safeNameSchema,
+  safeEmailSchema,
+  safePhoneSchema,
+  safeShortTextSchema,
+  recordPageLoadTime,
+  isSubmissionTooFast,
+  isDuplicateSubmission,
+  validateUploadedFile,
+} from "@/lib/formSecurity";
 
 const step1Schema = z.object({
-  firstName: z.string().min(2, "First name is required"),
-  lastName: z.string().min(2, "Last name is required"),
-  phone: z.string().min(10, "Valid phone number required"),
-  email: z.string().email("Valid email required"),
+  firstName: safeNameSchema,
+  lastName: safeNameSchema,
+  phone: safePhoneSchema,
+  email: safeEmailSchema,
+  honeypot: z.string().max(0),
 });
 
 const step2Schema = z.object({
-  address: z.string().min(5, "Address is required"),
-  postcode: z.string().min(3, "Postcode is required"),
+  address: safeShortTextSchema("Address"),
+  postcode: z.string().trim().min(3, "Postcode is required").max(10, "Invalid postcode"),
   birthDate: z.string().min(1, "Birth date is required"),
   referralSource: z.string().min(1, "Please select how you heard about us"),
 });
@@ -33,11 +44,17 @@ const CandidateRegistration = () => {
   const [step, setStep] = useState(0);
   const [submitted, setSubmitted] = useState(false);
   const [resumeFile, setResumeFile] = useState<File | null>(null);
+  const [fileError, setFileError] = useState<string | null>(null);
+  const [sanitizedFileName, setSanitizedFileName] = useState<string | null>(null);
   const { toast } = useToast();
+
+  useEffect(() => {
+    recordPageLoadTime();
+  }, []);
 
   const form1 = useForm<z.infer<typeof step1Schema>>({
     resolver: zodResolver(step1Schema),
-    defaultValues: { firstName: "", lastName: "", phone: "", email: "" },
+    defaultValues: { firstName: "", lastName: "", phone: "", email: "", honeypot: "" },
   });
 
   const form2 = useForm<z.infer<typeof step2Schema>>({
@@ -49,6 +66,8 @@ const CandidateRegistration = () => {
     if (step === 0) {
       const valid = await form1.trigger();
       if (!valid) return;
+      // Honeypot check on step 1
+      if (form1.getValues("honeypot")) return;
     } else if (step === 1) {
       const valid = await form2.trigger();
       if (!valid) return;
@@ -56,7 +75,41 @@ const CandidateRegistration = () => {
     setStep((s) => Math.min(s + 1, 2));
   };
 
-  const handleSubmit = () => {
+  const handleFileChange = async (file: File | undefined) => {
+    if (!file) {
+      setResumeFile(null);
+      setFileError(null);
+      setSanitizedFileName(null);
+      return;
+    }
+    const result = await validateUploadedFile(file);
+    if (result.ok === false) {
+      setFileError(result.error);
+      setResumeFile(null);
+      setSanitizedFileName(null);
+    } else {
+      setFileError(null);
+      setResumeFile(file);
+      setSanitizedFileName(result.sanitizedName);
+    }
+  };
+
+  const handleSubmit = async () => {
+    // Timing guard
+    if (isSubmissionTooFast()) {
+      toast({ title: "Something went wrong", description: "Please wait a moment and try again.", variant: "destructive" });
+      return;
+    }
+
+    // Duplicate guard — merge both steps' data
+    const f1 = form1.getValues();
+    const f2 = form2.getValues();
+    const { honeypot: _hp, ...payload } = { ...f1, ...f2 };
+    if (await isDuplicateSubmission(payload)) {
+      toast({ title: "Duplicate submission", description: "This registration has already been submitted.", variant: "destructive" });
+      return;
+    }
+
     toast({ title: "Registration Submitted!", description: "We'll be in touch shortly." });
     setSubmitted(true);
   };
@@ -109,6 +162,11 @@ const CandidateRegistration = () => {
               {step === 0 && (
                 <Form {...form1}>
                   <form className="space-y-4">
+                    {/* Honeypot */}
+                    <div className="hidden" aria-hidden="true">
+                      <Input {...form1.register("honeypot")} tabIndex={-1} autoComplete="off" />
+                    </div>
+
                     <div className="grid grid-cols-2 gap-4">
                       <FormField control={form1.control} name="firstName" render={({ field }) => (
                         <FormItem><FormLabel>First Name</FormLabel><FormControl><Input placeholder="John" {...field} /></FormControl><FormMessage /></FormItem>
@@ -165,23 +223,27 @@ const CandidateRegistration = () => {
                     onDragOver={(e) => e.preventDefault()}
                     onDrop={(e) => {
                       e.preventDefault();
-                      const file = e.dataTransfer.files?.[0];
-                      if (file) setResumeFile(file);
+                      handleFileChange(e.dataTransfer.files?.[0]);
                     }}
                   >
                     <Upload size={40} className="mx-auto text-muted-foreground mb-4" />
                     <p className="text-foreground font-medium mb-1">
-                      {resumeFile ? resumeFile.name : "Drop your resume here or click to browse"}
+                      {sanitizedFileName ?? "Drop your resume here or click to browse"}
                     </p>
-                    <p className="text-sm text-muted-foreground">PDF, DOC, DOCX (Max 5MB)</p>
+                    <p className="text-sm text-muted-foreground">PDF, DOC, DOCX (Max 5 MB)</p>
                     <input
                       id="resume-upload"
                       type="file"
                       accept=".pdf,.doc,.docx"
                       className="hidden"
-                      onChange={(e) => setResumeFile(e.target.files?.[0] || null)}
+                      onChange={(e) => handleFileChange(e.target.files?.[0])}
                     />
                   </div>
+                  {fileError && (
+                    <p className="text-sm text-destructive flex items-center gap-1">
+                      <AlertCircle size={14} /> {fileError}
+                    </p>
+                  )}
                 </div>
               )}
             </motion.div>
@@ -196,7 +258,7 @@ const CandidateRegistration = () => {
                 Next <ArrowRight size={16} className="ml-2" />
               </Button>
             ) : (
-              <Button onClick={handleSubmit}>Submit Registration</Button>
+              <Button onClick={handleSubmit} disabled={!!fileError}>Submit Registration</Button>
             )}
           </div>
         </div>
