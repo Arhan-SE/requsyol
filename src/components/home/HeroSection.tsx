@@ -7,13 +7,13 @@ import heroVisual from "@/assets/hero-visual.jpeg";
 const HeroSection = () => {
   const prefersReduced = useReducedMotion();
   const anim = (delay: number) =>
-    prefersReduced
-      ? {}
-      : {
-          initial: { opacity: 0, y: 40 },
-          animate: { opacity: 1, y: 0 },
-          transition: { duration: 0.8, delay, ease: [0.25, 0.46, 0.45, 0.94] as const },
-        };
+  prefersReduced ?
+  {} :
+  {
+    initial: { opacity: 0, y: 40 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.8, delay, ease: [0.25, 0.46, 0.45, 0.94] as const }
+  };
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
@@ -23,8 +23,8 @@ const HeroSection = () => {
           src={heroVisual}
           alt=""
           aria-hidden="true"
-          className="w-full h-full object-cover object-center"
-        />
+          className="w-full h-full object-cover object-center" />
+
         {/* Dark overlay for readability */}
         <div className="absolute inset-0 bg-background/75" />
         {/* Gradient fade at bottom */}
@@ -32,20 +32,20 @@ const HeroSection = () => {
       </div>
 
       {/* Animated background shapes on top of image */}
-      {!prefersReduced && (
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {!prefersReduced &&
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
-            className="absolute -top-1/4 -right-1/4 w-[600px] h-[600px] rounded-full bg-primary/5 blur-3xl"
-            animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 0] }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          />
+          className="absolute -top-1/4 -right-1/4 w-[600px] h-[600px] rounded-full bg-primary/5 blur-3xl"
+          animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 0] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }} />
+
           <motion.div
-            className="absolute -bottom-1/4 -left-1/4 w-[500px] h-[500px] rounded-full bg-secondary/10 blur-3xl"
-            animate={{ scale: [1.2, 1, 1.2], rotate: [0, -90, 0] }}
-            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          />
+          className="absolute -bottom-1/4 -left-1/4 w-[500px] h-[500px] rounded-full bg-secondary/10 blur-3xl"
+          animate={{ scale: [1.2, 1, 1.2], rotate: [0, -90, 0] }}
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }} />
+
         </div>
-      )}
+      }
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
@@ -57,18 +57,18 @@ const HeroSection = () => {
 
           <motion.h1
             {...anim(0.15)}
-            className="text-4xl sm:text-5xl md:text-7xl font-bold text-foreground leading-[1.1] tracking-tight mb-6"
-          >
+            className="text-4xl sm:text-5xl md:text-7xl font-bold text-foreground leading-[1.1] tracking-tight mb-6">
+
             Find the right job or talent
             <span className="block text-muted-foreground mt-2">— quickly & reliably</span>
           </motion.h1>
 
           <motion.p
             {...anim(0.3)}
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
-          >
-            Requsyol matches verified candidates with top employers across industries.
-            Fast placements, compliance handled, dedicated support every step.
+            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">Requsyol.
+
+
+
           </motion.p>
 
           <motion.div {...anim(0.45)} className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -91,19 +91,19 @@ const HeroSection = () => {
       </div>
 
       {/* Scroll indicator */}
-      {!prefersReduced && (
-        <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
+      {!prefersReduced &&
+      <motion.div
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 2, repeat: Infinity }}>
+
           <div className="w-6 h-10 border-2 border-muted-foreground/30 rounded-full flex justify-center pt-2">
             <div className="w-1.5 h-1.5 bg-muted-foreground/50 rounded-full" />
           </div>
         </motion.div>
-      )}
-    </section>
-  );
+      }
+    </section>);
+
 };
 
 export default HeroSection;
