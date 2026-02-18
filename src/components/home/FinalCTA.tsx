@@ -1,93 +1,80 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import ScrollReveal from "@/components/animations/ScrollReveal";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Users, Briefcase } from "lucide-react";
+
+const SectionDivider = ({ label }: { label: string }) => (
+  <motion.div
+    className="flex items-center gap-0 w-full px-6 py-8"
+    initial={{ opacity: 0 }}
+    whileInView={{ opacity: 1 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.8 }}
+  >
+    <span className="text-muted-foreground text-sm font-light">+</span>
+    <motion.div
+      className="flex-1 h-px bg-border mx-3"
+      initial={{ scaleX: 0 }}
+      whileInView={{ scaleX: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+      style={{ transformOrigin: "center" }}
+    />
+    <span className="text-[10px] tracking-[0.35em] uppercase text-muted-foreground font-sans px-2">{label}</span>
+    <motion.div
+      className="flex-1 h-px bg-border mx-3"
+      initial={{ scaleX: 0 }}
+      whileInView={{ scaleX: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+      style={{ transformOrigin: "center" }}
+    />
+    <span className="text-muted-foreground text-sm font-light">+</span>
+  </motion.div>
+);
 
 const FinalCTA = () => {
   return (
-    <section className="py-32 relative overflow-hidden">
-      {/* Rich dark gradient background panel */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background: "linear-gradient(135deg, hsl(222 47% 7%) 0%, hsl(216 40% 11%) 50%, hsl(230 45% 8%) 100%)",
-        }}
-      />
+    <section className="bg-background relative overflow-hidden">
+      <SectionDivider label="Get Started" />
 
-      {/* Glowing top border line */}
-      <div
-        className="absolute top-0 left-0 right-0 h-px"
-        style={{
-          background: "linear-gradient(90deg, transparent 0%, hsl(var(--primary) / 0.4) 30%, hsl(var(--primary) / 0.6) 50%, hsl(var(--primary) / 0.4) 70%, transparent 100%)",
-        }}
-      />
-
-      {/* Pulsing background orb */}
-      <div className="absolute inset-0 pointer-events-none">
-        <motion.div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-primary/8 blur-[100px] rounded-full"
-          animate={{ scale: [1, 1.12, 1] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        />
-      </div>
-
-      {/* Decorative watermark quotation marks */}
-      <div
-        className="absolute top-0 left-6 font-serif text-[220px] leading-none text-foreground/[0.03] select-none pointer-events-none"
-        aria-hidden="true"
-      >
-        "
-      </div>
-      <div
-        className="absolute bottom-0 right-6 font-serif text-[220px] leading-none text-foreground/[0.03] select-none pointer-events-none rotate-180"
-        aria-hidden="true"
-      >
-        "
-      </div>
-
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-6 py-20 text-center relative z-10">
+        {/* Massive headline */}
         <ScrollReveal>
-          <div className="max-w-3xl mx-auto text-center">
-            <p className="text-xs font-semibold tracking-[0.25em] uppercase text-primary/70 mb-6">
-              Get In Touch
-            </p>
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
-              Ready to{" "}
-              <em className="font-serif font-bold not-italic" style={{ fontStyle: "italic" }}>
-                Get Started?
-              </em>
-            </h2>
-            <p className="text-lg text-muted-foreground mb-10 max-w-xl mx-auto leading-relaxed">
-              Whether you're looking for your next opportunity or need reliable talent,
-              Requsyol is here to help.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/candidates">
-                <Button
-                  size="lg"
-                  className="gap-2 text-base px-8 py-6 group shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all duration-300"
-                >
-                  <Users size={20} />
-                  Find Work
-                  <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-                </Button>
-              </Link>
-              <Link to="/employers">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="gap-2 text-base px-8 py-6 group border-border/40 hover:border-border/80 hover:bg-foreground/5 transition-all duration-300"
-                >
-                  <Briefcase size={20} />
-                  Hire Talent
-                  <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-                </Button>
-              </Link>
-            </div>
+          <h2
+            className="font-barlow font-black uppercase text-foreground leading-[0.88] mb-10"
+            style={{ fontSize: "clamp(3rem, 10vw, 9rem)" }}
+          >
+            Ready To
+            <br />
+            Get Started.
+          </h2>
+        </ScrollReveal>
+
+        <ScrollReveal delay={0.2}>
+          <p className="text-sm text-muted-foreground tracking-wide max-w-md mx-auto mb-14 font-sans leading-relaxed">
+            Whether you're looking for your next opportunity or need reliable talent, Requsyol is here to help.
+          </p>
+
+          {/* Bracketed CTA links side by side */}
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <Link
+              to="/candidates"
+              className="border border-border px-10 py-4 text-xs tracking-[0.28em] uppercase font-medium text-foreground hover:bg-foreground hover:text-background transition-all duration-300 font-sans"
+            >
+              [ Find Work ]
+            </Link>
+            <Link
+              to="/employers"
+              className="border border-border px-10 py-4 text-xs tracking-[0.28em] uppercase font-medium text-foreground hover:bg-foreground hover:text-background transition-all duration-300 font-sans"
+            >
+              [ Hire Talent ]
+            </Link>
           </div>
         </ScrollReveal>
       </div>
+
+      {/* Bottom border */}
+      <div className="h-px bg-border" />
     </section>
   );
 };

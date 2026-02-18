@@ -2,55 +2,12 @@ import { motion } from "framer-motion";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import CountUp from "@/components/animations/CountUp";
 import { ShieldCheck, Clock, FileCheck, Wallet, Headphones, Search } from "lucide-react";
-import whyChooseBg from "@/assets/why-choose-bg.jpg";
-
-const avatars = [
-  { initials: "SM", bg: "linear-gradient(135deg, hsl(216 60% 45%), hsl(230 70% 35%))" },
-  { initials: "JR", bg: "linear-gradient(135deg, hsl(260 55% 45%), hsl(280 65% 35%))" },
-  { initials: "AL", bg: "linear-gradient(135deg, hsl(170 55% 35%), hsl(190 65% 28%))" },
-];
 
 const stats = [
-  {
-    value: 5000,
-    suffix: "+",
-    label: "Candidates Placed",
-    watermark: "5K",
-    bg: "linear-gradient(135deg, hsl(162 60% 10%), hsl(162 50% 8%))",
-    border: "hsl(162 50% 20%)",
-    glow: "hsl(162 70% 35%)",
-    textColor: "hsl(162 70% 65%)",
-  },
-  {
-    value: 48,
-    suffix: "hrs",
-    label: "Avg. Time to Place",
-    watermark: "48",
-    bg: "linear-gradient(135deg, hsl(262 55% 12%), hsl(262 45% 9%))",
-    border: "hsl(262 45% 22%)",
-    glow: "hsl(262 70% 40%)",
-    textColor: "hsl(262 80% 75%)",
-  },
-  {
-    value: 98,
-    suffix: "%",
-    label: "Client Satisfaction",
-    watermark: "98",
-    bg: "linear-gradient(135deg, hsl(218 60% 10%), hsl(218 50% 8%))",
-    border: "hsl(218 50% 20%)",
-    glow: "hsl(218 80% 45%)",
-    textColor: "hsl(218 90% 70%)",
-  },
-  {
-    value: 15,
-    suffix: "+",
-    label: "Industries Served",
-    watermark: "15",
-    bg: "linear-gradient(135deg, hsl(38 60% 10%), hsl(38 50% 8%))",
-    border: "hsl(38 50% 22%)",
-    glow: "hsl(38 90% 50%)",
-    textColor: "hsl(38 95% 65%)",
-  },
+  { value: 5000, suffix: "+", label: "Candidates Placed" },
+  { value: 48, suffix: "hrs", label: "Avg. Time to Place" },
+  { value: 98, suffix: "%", label: "Client Satisfaction" },
+  { value: 15, suffix: "+", label: "Industries Served" },
 ];
 
 const benefits = [
@@ -62,161 +19,108 @@ const benefits = [
   { icon: Headphones, title: "Dedicated Support", desc: "Personal guidance from registration through placement." },
 ];
 
+const SectionDivider = ({ label }: { label: string }) => (
+  <motion.div
+    className="flex items-center gap-0 w-full px-6 py-8"
+    initial={{ opacity: 0 }}
+    whileInView={{ opacity: 1 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.8 }}
+  >
+    <span className="text-muted-foreground text-sm font-light">+</span>
+    <motion.div
+      className="flex-1 h-px bg-border mx-3"
+      initial={{ scaleX: 0 }}
+      whileInView={{ scaleX: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      style={{ transformOrigin: "center" }}
+    />
+    <span className="text-[10px] tracking-[0.35em] uppercase text-muted-foreground font-sans px-2">{label}</span>
+    <motion.div
+      className="flex-1 h-px bg-border mx-3"
+      initial={{ scaleX: 0 }}
+      whileInView={{ scaleX: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      style={{ transformOrigin: "center" }}
+    />
+    <span className="text-muted-foreground text-sm font-light">+</span>
+  </motion.div>
+);
+
 const ValueProposition = () => {
   return (
-    <section className="relative py-28 overflow-hidden">
-      {/* Background image */}
-      <div className="absolute inset-0">
-        <motion.img
-          src={whyChooseBg}
-          alt=""
-          aria-hidden="true"
-          className="w-full h-full object-cover object-center"
-          initial={{ scale: 1 }}
-          animate={{ scale: 1.12 }}
-          transition={{ duration: 24, ease: "linear", repeat: Infinity, repeatType: "reverse" }}
-        />
-        {/* Dark overlay so content stays readable */}
-        <div className="absolute inset-0 bg-background/80" />
-        {/* Top and bottom gradient fades to blend with surrounding sections */}
-        <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-background to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
-      </div>
-      <div className="container mx-auto px-4 max-w-6xl">
+    <section className="relative bg-background">
+      <SectionDivider label="Why Choose Us" />
 
-        {/* Section Label */}
+      {/* Giant headline */}
+      <div className="container mx-auto px-6 pb-12">
         <ScrollReveal>
-          <p className="text-center text-xs font-semibold tracking-[0.25em] uppercase text-muted-foreground mb-4">
-            Why Choose Requsyol
+          <h2
+            className="font-barlow font-black uppercase text-foreground text-center leading-[0.9] mb-4"
+            style={{ fontSize: "clamp(2.8rem, 8vw, 7rem)" }}
+          >
+            Why Companies
+            <br />
+            Trust Requsyol.
+          </h2>
+          <p className="text-center text-muted-foreground text-sm tracking-wide max-w-lg mx-auto mt-6 font-sans">
+            Connecting verified candidates with top employers across the UK — fast, reliable, compliant.
           </p>
         </ScrollReveal>
+      </div>
 
-        {/* Featured Quote Block */}
-        <ScrollReveal delay={0.1}>
-          <div className="relative rounded-2xl border border-border bg-card/40 backdrop-blur-sm px-8 py-12 md:px-16 md:py-16 text-center mb-6 overflow-hidden">
-            {/* Subtle background glow */}
-            <div
-              className="absolute inset-0 opacity-20 pointer-events-none"
-              style={{
-                background: "radial-gradient(ellipse 60% 50% at 50% 0%, hsl(var(--primary) / 0.4), transparent)",
-              }}
-            />
-
-            {/* Stacked Avatars */}
-            <div className="flex justify-center mb-8">
-              {avatars.map((av, i) => (
-                <motion.div
-                  key={av.initials}
-                  initial={{ scale: 0, opacity: 0 }}
-                  whileInView={{ scale: 1, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.2 + i * 0.1 }}
-                  className="w-12 h-12 rounded-full flex items-center justify-center text-sm font-bold text-white border-2 border-background shadow-lg"
-                  style={{
-                    background: av.bg,
-                    marginLeft: i === 0 ? 0 : "-12px",
-                    zIndex: avatars.length - i,
-                    position: "relative",
-                  }}
-                >
-                  {av.initials}
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Quote */}
-            <blockquote className="font-serif text-2xl md:text-3xl lg:text-4xl italic text-foreground leading-snug max-w-3xl mx-auto mb-6">
-              "Requsyol placed our{" "}
-              <strong className="not-italic font-semibold">entire warehouse team in 48 hours</strong>,
-              helping us hit our deadline and{" "}
-              <strong className="not-italic font-semibold">keep projects on track.</strong>"
-            </blockquote>
-
-            <p className="text-sm text-muted-foreground tracking-wide">
-              — Sarah Mitchell, Operations Director,{" "}
-              <span className="text-foreground/70 font-medium">Swift Logistics</span>
-            </p>
-          </div>
-        </ScrollReveal>
-
-        {/* Jewel-Tone Stat Cards */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+      {/* Stats strip — full-width, separated by thin vertical lines */}
+      <div className="border-t border-b border-border">
+        <div className="grid grid-cols-2 lg:grid-cols-4">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6, delay: 0.1 + i * 0.12, ease: [0.25, 0.46, 0.45, 0.94] }}
-              whileHover={{ scale: 1.03, y: -4 }}
-              className="relative rounded-xl overflow-hidden p-6 md:p-8 cursor-default"
-              style={{
-                background: stat.bg,
-                border: `1px solid ${stat.border}`,
-                boxShadow: `0 0 0 0 ${stat.glow}`,
-              }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+              className={`flex flex-col items-center justify-center py-14 px-8 ${
+                i < stats.length - 1 ? "border-r border-border" : ""
+              } ${i >= 2 ? "border-t lg:border-t-0 border-border" : ""}`}
             >
-              {/* Watermark digit */}
-              <motion.span
-                className="absolute -bottom-4 -right-2 text-[7rem] md:text-[9rem] font-black leading-none select-none pointer-events-none"
-                style={{ color: stat.glow, opacity: 0.12 }}
-                animate={{ rotate: [0, 3, 0, -3, 0] }}
-                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-              >
-                {stat.watermark}
-              </motion.span>
+              <div className="font-barlow font-black text-foreground leading-none mb-3" style={{ fontSize: "clamp(3rem, 7vw, 5.5rem)" }}>
+                <CountUp end={stat.value} suffix={stat.suffix} duration={2.2} />
+              </div>
+              <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground text-center font-sans">
+                {stat.label}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
 
-              {/* Top glow line */}
-              <div
-                className="absolute top-0 left-0 right-0 h-px"
-                style={{ background: `linear-gradient(90deg, transparent, ${stat.glow}, transparent)` }}
-              />
-
-              {/* Content */}
-              <div className="relative z-10">
-                <div
-                  className="text-4xl md:text-5xl font-black tracking-tight mb-1"
-                  style={{ color: stat.textColor }}
-                >
-                  <CountUp end={stat.value} suffix={stat.suffix} duration={2.2} />
-                </div>
-                <p className="text-xs md:text-sm font-medium uppercase tracking-widest mt-4" style={{ color: `${stat.textColor}99` }}>
-                  {stat.label}
-                </p>
+      {/* Benefits list */}
+      <SectionDivider label="What You Get" />
+      <div className="container mx-auto px-6 pb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border border-border">
+          {benefits.map((b, i) => (
+            <motion.div
+              key={b.title}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: "-30px" }}
+              transition={{ duration: 0.5, delay: i * 0.07 }}
+              className={`flex gap-5 p-8 group hover:bg-foreground/[0.03] transition-colors duration-300 ${
+                i % 3 !== 2 ? "border-r border-border" : ""
+              } ${i < 3 ? "border-b border-border" : ""}`}
+            >
+              <div className="shrink-0 mt-0.5">
+                <span className="text-muted-foreground text-sm font-light">+</span>
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold text-foreground mb-1.5 tracking-wide uppercase">{b.title}</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed">{b.desc}</p>
               </div>
             </motion.div>
           ))}
         </div>
-
-        {/* Benefits Grid */}
-        <ScrollReveal delay={0.1}>
-          <div className="border-t border-border pt-16">
-            <p className="text-center text-xs font-semibold tracking-[0.25em] uppercase text-muted-foreground mb-10">
-              What You Get
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {benefits.map((b, i) => (
-                <motion.div
-                  key={b.title}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-40px" }}
-                  transition={{ duration: 0.5, delay: i * 0.08 }}
-                  className="group flex gap-4 p-5 rounded-xl border border-border/50 bg-card/30 hover:border-border hover:bg-card/60 transition-all duration-300"
-                >
-                  <div className="shrink-0 w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                    <b.icon size={18} className="text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-foreground text-sm mb-1">{b.title}</h3>
-                    <p className="text-xs text-muted-foreground leading-relaxed">{b.desc}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </ScrollReveal>
-
       </div>
     </section>
   );
