@@ -50,9 +50,9 @@ const HeroSection = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div {...anim(0)} className="mb-6">
-            <span className="inline-block px-4 py-1.5 text-xs font-medium tracking-wider uppercase text-muted-foreground border border-border rounded-full">
-              Staffing & Recruiting
-            </span>
+            
+
+
           </motion.div>
 
           <motion.h1
