@@ -38,27 +38,36 @@ const Navbar = () => {
       transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
     >
       <div className="container mx-auto flex items-center justify-between py-4 px-4">
-        <Link to="/" className="text-2xl font-bold tracking-tight text-foreground">
-          Requsyol
+        {/* Brand with subtle accent */}
+        <Link to="/" className="text-2xl font-bold tracking-tight text-foreground flex items-center gap-0.5">
+          Requsyo<span className="italic text-primary">l</span>
         </Link>
 
         {/* Desktop nav */}
         <nav className="hidden lg:flex items-center gap-1">
-          {navLinks.map((link) => (
-            <Link
-              key={link.path}
-              to={link.path}
-              className={`px-4 py-2 text-sm font-medium transition-colors hover:text-foreground ${
-                location.pathname === link.path
-                  ? "text-foreground"
-                  : "text-muted-foreground"
-              }`}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = location.pathname === link.path;
+            return (
+              <Link
+                key={link.path}
+                to={link.path}
+                className={`relative px-4 py-2 text-sm font-medium transition-colors hover:text-foreground ${
+                  isActive ? "text-foreground" : "text-muted-foreground"
+                }`}
+              >
+                {link.label}
+                {isActive && (
+                  <motion.div
+                    layoutId="nav-indicator"
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-[2px] rounded-full bg-primary"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
+              </Link>
+            );
+          })}
           <Link to="/candidates">
-            <Button size="sm" className="ml-4">
+            <Button size="sm" className="ml-4 shadow-md shadow-primary/20 hover:shadow-primary/30 transition-shadow">
               Get Started
             </Button>
           </Link>
