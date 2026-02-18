@@ -1,121 +1,77 @@
 
-# Requsyol – Staffing & Recruiting Website
+# Redesign: "Why Choose Requsyol?" Section
 
-A fully animated, cinematic staffing and recruiting website for Requsyol with bold scroll-triggered animations, parallax effects, and polished micro-interactions inspired by 1820productions.com.
+## What's Changing
 
----
+The current `ValueProposition` section uses a two-column card grid with icons. The reference image shows a much bolder, premium layout with:
 
-## Page 1: Homepage (Single Page with Animated Sections)
+1. A large featured testimonial quote at the top with stacked avatar circles
+2. Big, colorful stat cards below with giant numbers and a watermark number in the background
 
-### Hero Section
-- **Dual split hero** with cinematic Framer Motion reveal animations
-- Headline: "Find the right job or talent — quickly & reliably"
-- Subtext about matching verified candidates with top employers
-- **Dual CTA buttons**: "Find Work" → scrolls/navigates to candidate form, "Hire Talent" → scrolls/navigates to employer form
-- Parallax background with subtle morphing shapes/gradients
-
-### Value Proposition Section
-- Two-column layout: **For Employers** and **For Workers**
-- Scroll-triggered staggered reveal animations
-- Icon-driven cards with hover micro-animations
-- Employer benefits: verified professionals, compliance handling, fast placements
-- Worker benefits: thousands of opportunities, competitive pay, dedicated support
-
-### Industry Carousel
-- Smooth auto-scrolling horizontal carousel showcasing industries served
-- Pause on hover, drag to scroll
-- Industry icons/cards with entrance animations
-
-### Stats & Trust Signals
-- Animated number counters (workforce matches, placements, client satisfaction)
-- Count-up animation triggered on scroll into view
-- Trust badges and partner logos
-
-### Testimonials
-- Animated testimonial cards with smooth transitions
-- Auto-rotating carousel with manual navigation
-- Quote marks, names, roles with subtle fade/slide animations
-
-### Final CTA Section
-- Bold call-to-action with parallax background
-- Dual buttons repeating "Find Work" / "Hire Talent"
-- Cinematic fade-in reveal
+We'll adapt this layout to the dark cinematic theme — replacing the pastel colors from the reference with rich, jewel-toned accent panels using our color system.
 
 ---
 
-## Page 2: Candidate Registration
+## New Layout Structure
 
-### Multi-Step Registration Form
-- Clean multi-step form with progress indicator
-- **Step 1**: Personal details (first name, last name, phone, email)
-- **Step 2**: Address & details (full address, postcode, birth date, referral source)
-- **Step 3**: Resume upload with drag-and-drop zone
-- Client-side validation with clear error messages
-- Smooth step transition animations
-- Success confirmation screen with animation
-
----
-
-## Page 3: Employer Inquiry Form
-
-### Employer Lead Form
-- Single-page form with animated field reveals
-- Fields: company name, contact person, email, phone, role required, urgency/timeline
-- Optional job description file upload
-- Honeypot field for basic spam prevention
-- Success confirmation with next-steps messaging
+```text
+┌─────────────────────────────────────────────────────────────┐
+│                     WHY CHOOSE REQUSYOL                     │
+│                                                             │
+│  [ Avatar ] [ Avatar ] [ Avatar ]  ← stacked circles       │
+│                                                             │
+│  "Requsyol placed our entire warehouse team in 48 hours,   │
+│   helping us hit our deadline and keep projects on track."  │
+│                                                             │
+│      — Sarah Mitchell, Operations Director, Swift Logistics  │
+│                                                             │
+├──────────┬──────────┬──────────┬──────────────────────────┤
+│  5,000+  │   48hrs  │   98%    │   15+                    │
+│ Candidates│ Avg. Time│ Satisfac.│ Industries               │
+│  Placed  │ to Place │  Rate    │   Served                 │
+└──────────┴──────────┴──────────┴──────────────────────────┘
+```
 
 ---
 
-## Page 4: About Page
-- Company story, mission, and values
-- Team section with animated card reveals
-- Why Requsyol differentiators
+## Design Details
 
-## Page 5: Contact Page
-- Contact form with validation
-- Office location/details
-- Map placeholder or address block
+### Top Section — Featured Quote
+- Stacked avatar circles (3 overlapping gradient circles with initials) centered at top
+- Large, cinematic quote in serif italic font, with **key phrases bolded**
+- Attribution line below in muted text
+- Scroll-triggered fade-up reveal
 
-## Page 6: FAQ Page
-- Accordion-style FAQ sections for candidates and employers
-- Smooth expand/collapse animations
+### Bottom Section — 4 Stat Cards
+Each card has:
+- **Giant number** in top-left (bold, large, e.g. "5,000+")
+- **Watermark digit** — oversized semi-transparent number in background (like the reference)
+- **Label** at the bottom
+- Each card gets a unique dark jewel-tone background:
+  - Card 1: Deep teal/emerald (`bg-emerald-900/60` with emerald tint)
+  - Card 2: Deep indigo/violet (`bg-violet-900/60`)
+  - Card 3: Deep slate-blue (`bg-blue-900/60`)
+  - Card 4: Deep amber/gold (`bg-amber-900/60`)
+- Rounded corners, hover scale micro-animation
+- Staggered scroll-triggered entrance animation (slide up + fade)
 
-## Page 7: Policies
-- Privacy Policy, GDPR information, Terms & Conditions
-- Clean, readable layout with anchor navigation
-
----
-
-## Global Components
-
-### Navigation
-- Sticky header with transparent-to-solid scroll transition
-- Mobile hamburger menu with slide-in animation
-- Logo + nav links (Home, For Candidates, For Employers, About, Contact, Jobs)
-
-### Footer
-- Multi-column footer with company info, quick links, social media icons
-- Newsletter signup field
-
-### Animation System
-- Scroll-triggered section reveals using Framer Motion
-- Parallax depth layers on hero and CTA sections
-- Button hover animations (scale, glow, color shift)
-- Page transition animations between routes
-- `prefers-reduced-motion` support to disable animations for accessibility
+### Employer / Worker Benefits
+The current 6-benefit card grid will be moved **below** the stat cards as a secondary section, redesigned as a cleaner horizontal strip or compact 3-col grid.
 
 ---
 
-## Design Direction
-- **Dark, cinematic palette** with bold accent colors (deep navy/charcoal base, vibrant accent for CTAs)
-- Modern sans-serif typography with large, impactful headings
-- Generous whitespace and full-width sections
-- Glassmorphism or gradient overlays for depth
-- WCAG 2.1 AA accessible contrast ratios
+## Files to Change
+
+- **`src/components/home/ValueProposition.tsx`** — Full rebuild of the component with the new layout: featured quote block + 4 jewel-tone stat cards + benefits below
 
 ---
 
-## Backend (Added Later if Needed)
-- Form submissions will be stored locally in state for now, with toast confirmations
-- Backend integration with Supabase (database + file storage for resumes) can be connected as a next step after the frontend is complete
+## Animation Plan
+
+- Quote block: `ScrollReveal` fade up with 0.3s delay
+- Avatar circles: staggered pop-in (scale 0 → 1) with spring physics
+- Stat cards: staggered slide-up with `delay={i * 0.12}` per card
+- Hover on stat cards: `whileHover={{ scale: 1.03, y: -4 }}` lift effect
+- Watermark number: subtle slow rotate animation on loop
+
+No new dependencies required — all uses existing Framer Motion.
