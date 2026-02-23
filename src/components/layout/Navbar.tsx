@@ -57,7 +57,7 @@ const Navbar = () => {
 
         {/* CENTER — boxed logo */}
         <Link to="/" className="flex items-center justify-center">
-          <img src={logo} alt="Requsyol" className="h-14 w-auto" />
+          <img src={logo} alt="Requsyol" className="h-20 w-auto" />
         </Link>
 
         {/* RIGHT — outlined CTA buttons */}
@@ -82,7 +82,7 @@ const Navbar = () => {
       {/* Mobile header */}
       <div className="lg:hidden flex items-center justify-between px-5 py-4">
         <Link to="/">
-          <img src={logo} alt="Requsyol" className="h-10 w-auto" />
+          <img src={logo} alt="Requsyol" className="h-14 w-auto" />
         </Link>
         <button
           onClick={() => setMobileOpen(!mobileOpen)}

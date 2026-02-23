@@ -1,3 +1,4 @@
+import { useRef, useEffect } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
@@ -7,17 +8,27 @@ const words = ["WE FIND.", "WE MATCH.", "WE DELIVER."];
 
 const HeroSection = () => {
   const prefersReduced = useReducedMotion();
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = true;
+    video.play().catch(() => {});
+  }, []);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background image with near-black overlay */}
       <div className="absolute inset-0">
         <video
+          ref={videoRef}
           src={heroBg}
           autoPlay
           loop
           muted
           playsInline
+          preload="auto"
           aria-hidden="true"
           className="w-full h-full object-cover object-center"
         />
