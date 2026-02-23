@@ -1,41 +1,50 @@
 
 
-## Careers Page and Footer Link
+## Background Videos and Logo Update
 
 ### What We're Building
-A new **Careers** page that displays available job postings and includes a "Submit CV" button that opens the user's default email client (mailto link). A link to this page will be added to the footer's Quick Links section.
+Adding looping background videos to key page sections and replacing the text-based logo with the uploaded Requsyol logo image across the Navbar and Footer.
 
-### Page Details
+### 1. Logo Replacement
 
-**Careers Page (`/careers`)**
-- Page header with title and brief description
-- Job listings displayed as cards, each showing:
-  - Job title
-  - Location
-  - Employment type (Full-time, Part-time, Temporary)
-  - Brief description
-  - "Apply Now" or "Submit CV" button
-- The "Submit CV" button will open the user's email app via a `mailto:` link (e.g., `mailto:hr@requsyol.co.uk?subject=CV Submission - [Job Title]`)
-- A general "Submit Your CV" CTA at the bottom for open/speculative applications
-- Job data will be hardcoded for now (no backend) -- can be moved to Supabase later
-- Page will use the existing Layout component (Navbar + Footer) and match the site's dark, editorial design
+The uploaded logo (Requsyol_png.png) will replace the current text-only logo in:
 
-**Footer Update**
-- Add "Careers" link to the Quick Links section, between "For Employers" and "About Us"
+- **Navbar (desktop)** -- Replace the boxed "REQUSYOL / Staffing & Recruitment" text with the logo image (approx. 140px wide)
+- **Navbar (mobile)** -- Replace the boxed "REQUSYOL" text with a smaller version of the logo (approx. 100px wide)
+- **Footer** -- Replace the "REQUSYOL / Staffing & Recruitment" text block with the logo image
 
-**Router Update**
-- Register the new `/careers` route in `App.tsx`
+The logo has a white/light background in the PNG -- it will be displayed on the dark site background, so we may need to ensure it renders cleanly (the uploaded image appears to have a transparent or white background).
+
+### 2. Background Videos on Sections
+
+The 3 uploaded videos will be placed as looping, muted background videos behind key sections:
+
+| Video File | Placement |
+|---|---|
+| `5930372-uhd_3840_2160_30fps.mp4` | **Value Proposition** section (Why Companies Trust Requsyol) |
+| `13422071-uhd_3840_2160_30fps.mp4` | **Careers** page hero section |
+| `istockphoto-2211055978-640_adpp_is.mp4` | **About** page header section |
+
+Each video will use the same pattern as the existing Hero section: full-bleed video with a dark overlay (`bg-background/75`) to maintain text readability.
+
+### Files Changed
+
+**New assets (copied to project):**
+- `src/assets/Requsyol_png.png`
+- `src/assets/value-prop-bg.mp4`
+- `src/assets/careers-bg.mp4`
+- `src/assets/about-bg.mp4`
+
+**Modified files:**
+- `src/components/layout/Navbar.tsx` -- Import logo image, replace text logo with `<img>` tag in both desktop and mobile views
+- `src/components/layout/Footer.tsx` -- Import logo image, replace text block with `<img>` tag
+- `src/components/home/ValueProposition.tsx` -- Add background video layer with dark overlay behind the section
+- `src/pages/Careers.tsx` -- Add background video to the hero section
+- `src/pages/About.tsx` -- Add background video to the header section
 
 ### Technical Details
 
-**New file:** `src/pages/Careers.tsx`
-- Uses the existing `Layout`, `ScrollReveal`, and design patterns from other pages
-- Job listings stored as a typed array of objects
-- Each job card has a mailto link: `mailto:hr@requsyol.co.uk?subject=CV Submission - {jobTitle}`
-- Styled consistently with the site's uppercase tracking, border-based cards, and muted color palette
-
-**Modified files:**
-- `src/components/layout/Footer.tsx` -- add `{ label: "Careers", path: "/careers" }` to Quick Links
-- `src/App.tsx` -- add `<Route path="/careers" element={<Careers />} />`
-- `src/components/layout/Navbar.tsx` -- optionally add "Careers" to the nav links
-
+- All videos: `autoPlay`, `loop`, `muted`, `playsInline`, `aria-hidden="true"` (same as existing hero video)
+- Dark overlay: `bg-background/75` with gradient fade at bottom for smooth transition
+- Logo `<img>` tags will have proper `alt="Requsyol"` text and explicit width/height to prevent layout shift
+- Videos positioned with `absolute inset-0` + `object-cover`, sections set to `relative overflow-hidden`
