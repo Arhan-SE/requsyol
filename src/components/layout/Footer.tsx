@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Building2 } from "lucide-react";
+import logo from "@/assets/Requsyol_png.png";
 
 const Footer = () => {
   return (
@@ -17,12 +18,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-border pb-12">
           {/* Brand */}
           <div className="md:col-span-1">
-            <div className="font-barlow font-black text-2xl tracking-[0.2em] uppercase text-foreground mb-1">
-              REQUSYOL
-            </div>
-            <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground mb-5 font-sans">
-              Staffing & Recruitment
-            </p>
+            <img src={logo} alt="Requsyol" className="h-12 w-auto mb-5" />
             <p className="text-xs text-muted-foreground leading-relaxed font-sans">
               Connecting verified candidates with top employers across industries. Fast, reliable staffing solutions.
             </p>

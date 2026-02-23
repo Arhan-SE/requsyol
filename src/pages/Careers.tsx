@@ -1,6 +1,7 @@
 import Layout from "@/components/layout/Layout";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import { MapPin, Clock, Mail, Briefcase } from "lucide-react";
+import careersBg from "@/assets/careers-bg.mp4";
 
 interface Job {
   title: string;
@@ -61,8 +62,18 @@ const Careers = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="pt-32 pb-16 border-b border-border">
-        <div className="container mx-auto px-6">
+      <section className="relative pt-32 pb-16 border-b border-border overflow-hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover"
+          src={careersBg}
+        />
+        <div className="absolute inset-0 bg-background/75" />
+        <div className="container mx-auto px-6 relative z-10">
           <ScrollReveal>
             <p className="text-[10px] tracking-[0.35em] uppercase text-muted-foreground font-sans mb-4">
               Join Our Network
