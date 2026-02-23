@@ -7,6 +7,7 @@ const navLinks = [
   { label: "Work", path: "/candidates" },
   { label: "Employers", path: "/employers" },
   { label: "About", path: "/about" },
+  { label: "Careers", path: "/careers" },
   { label: "Contact", path: "/contact" },
   { label: "FAQ", path: "/faq" },
 ];
