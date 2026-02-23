@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Menu } from "lucide-react";
+import logo from "@/assets/Requsyol_png.png";
 
 const navLinks = [
   { label: "Work", path: "/candidates" },
@@ -55,15 +56,8 @@ const Navbar = () => {
         </nav>
 
         {/* CENTER — boxed logo */}
-        <Link to="/" className="flex flex-col items-center justify-center">
-          <div className="border border-border px-6 py-3 text-center">
-            <div className="font-barlow font-black text-2xl tracking-[0.22em] uppercase text-foreground leading-none">
-              REQUSYOL
-            </div>
-            <div className="text-[9px] tracking-[0.28em] uppercase text-muted-foreground mt-1 font-sans">
-              Staffing & Recruitment
-            </div>
-          </div>
+        <Link to="/" className="flex items-center justify-center">
+          <img src={logo} alt="Requsyol" className="h-14 w-auto" />
         </Link>
 
         {/* RIGHT — outlined CTA buttons */}
@@ -87,10 +81,8 @@ const Navbar = () => {
 
       {/* Mobile header */}
       <div className="lg:hidden flex items-center justify-between px-5 py-4">
-        <Link to="/" className="border border-border px-4 py-2">
-          <span className="font-barlow font-black text-lg tracking-[0.18em] uppercase text-foreground">
-            REQUSYOL
-          </span>
+        <Link to="/">
+          <img src={logo} alt="Requsyol" className="h-10 w-auto" />
         </Link>
         <button
           onClick={() => setMobileOpen(!mobileOpen)}

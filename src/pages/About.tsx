@@ -2,6 +2,7 @@ import Layout from "@/components/layout/Layout";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import { Card, CardContent } from "@/components/ui/card";
 import { Target, Users, Shield, Award } from "lucide-react";
+import aboutBg from "@/assets/about-bg.mp4";
 
 const values = [
   { icon: Target, title: "Mission-Driven", desc: "We exist to connect talent with opportunity — fast, fairly, and with full transparency." },
@@ -13,8 +14,18 @@ const values = [
 const About = () => {
   return (
     <Layout>
-      <div className="pt-28 pb-16">
-        <div className="container mx-auto px-4">
+      <div className="relative pt-28 pb-16 overflow-hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover"
+          src={aboutBg}
+        />
+        <div className="absolute inset-0 bg-background/75" />
+        <div className="container mx-auto px-4 relative z-10">
           <ScrollReveal>
             <div className="max-w-3xl mx-auto text-center mb-16">
               <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-6">About Requsyol</h1>
