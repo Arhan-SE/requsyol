@@ -111,6 +111,16 @@ const Footer = () => {
           </p>
         </div>
       </div>
+
+      {/* Giant brand name */}
+      <div className="relative overflow-hidden pb-4">
+        <div
+          className="font-barlow font-black uppercase text-center text-foreground/[0.06] leading-none select-none pointer-events-none"
+          style={{ fontSize: "clamp(6rem, 20vw, 18rem)" }}
+        >
+          REQUSYOL
+        </div>
+      </div>
     </footer>
   );
 };
