@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import testimonialsBg from "@/assets/testimonials-bg.mp4";
 
 const testimonials = [
   {
@@ -89,7 +90,18 @@ const TestimonialsSection = () => {
   const progressPercent = Math.min((tick / (DURATION / 60)) * 100, 100);
 
   return (
-    <section className="bg-background">
+    <section className="relative bg-background overflow-hidden">
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        aria-hidden="true"
+        className="absolute inset-0 w-full h-full object-cover"
+        src={testimonialsBg}
+      />
+      <div className="absolute inset-0 bg-background/80" />
+      <div className="relative z-10">
       <SectionDivider label="Client Stories" />
 
       <div className="container mx-auto px-6 pb-20">
@@ -153,6 +165,7 @@ const TestimonialsSection = () => {
             ))}
           </div>
         </div>
+      </div>
       </div>
     </section>
   );
