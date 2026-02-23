@@ -18,7 +18,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-border pb-12">
           {/* Brand */}
           <div className="md:col-span-1">
-            <img src={logo} alt="Requsyol" className="h-16 w-auto mb-5" />
+            <img src={logo} alt="Requsyol" className="h-16 w-auto mb-5 rounded-lg shadow-lg opacity-100 border-0 object-fill" />
             <p className="text-xs text-muted-foreground leading-relaxed font-sans">
               Connecting verified candidates with top employers across industries. Fast, reliable staffing solutions.
             </p>
@@ -29,21 +29,21 @@ const Footer = () => {
             <h4 className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground mb-5 font-sans">Quick Links</h4>
             <div className="flex flex-col gap-3">
               {[
-                { label: "Home", path: "/" },
-                { label: "For Candidates", path: "/candidates" },
-                { label: "For Employers", path: "/employers" },
-                { label: "Careers", path: "/careers" },
-                { label: "About Us", path: "/about" },
-                { label: "FAQ", path: "/faq" },
-              ].map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  className="text-xs text-muted-foreground hover:text-foreground transition-colors tracking-wide font-sans uppercase"
-                >
+              { label: "Home", path: "/" },
+              { label: "For Candidates", path: "/candidates" },
+              { label: "For Employers", path: "/employers" },
+              { label: "Careers", path: "/careers" },
+              { label: "About Us", path: "/about" },
+              { label: "FAQ", path: "/faq" }].
+              map((link) =>
+              <Link
+                key={link.path}
+                to={link.path}
+                className="text-xs text-muted-foreground hover:text-foreground transition-colors tracking-wide font-sans uppercase">
+
                   {link.label}
                 </Link>
-              ))}
+              )}
             </div>
           </div>
 
@@ -52,18 +52,18 @@ const Footer = () => {
             <h4 className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground mb-5 font-sans">Legal</h4>
             <div className="flex flex-col gap-3">
               {[
-                { label: "Privacy Policy", path: "/policies#privacy" },
-                { label: "Terms & Conditions", path: "/policies#terms" },
-                { label: "GDPR", path: "/policies#gdpr" },
-              ].map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  className="text-xs text-muted-foreground hover:text-foreground transition-colors tracking-wide font-sans uppercase"
-                >
+              { label: "Privacy Policy", path: "/policies#privacy" },
+              { label: "Terms & Conditions", path: "/policies#terms" },
+              { label: "GDPR", path: "/policies#gdpr" }].
+              map((link) =>
+              <Link
+                key={link.path}
+                to={link.path}
+                className="text-xs text-muted-foreground hover:text-foreground transition-colors tracking-wide font-sans uppercase">
+
                   {link.label}
                 </Link>
-              ))}
+              )}
             </div>
           </div>
 
@@ -116,13 +116,13 @@ const Footer = () => {
       <div className="relative overflow-hidden pb-4">
         <div
           className="font-barlow font-black uppercase text-center text-foreground/[0.06] leading-none select-none pointer-events-none"
-          style={{ fontSize: "clamp(6rem, 20vw, 18rem)" }}
-        >
+          style={{ fontSize: "clamp(6rem, 20vw, 18rem)" }}>
+
           REQUSYOL
         </div>
       </div>
-    </footer>
-  );
+    </footer>);
+
 };
 
 export default Footer;
