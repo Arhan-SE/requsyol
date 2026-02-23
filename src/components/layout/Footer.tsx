@@ -18,7 +18,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-border pb-12">
           {/* Brand */}
           <div className="md:col-span-1">
-            <img src={logo} alt="Requsyol" className="h-12 w-auto mb-5" />
+            <img src={logo} alt="Requsyol" className="h-16 w-auto mb-5" />
             <p className="text-xs text-muted-foreground leading-relaxed font-sans">
               Connecting verified candidates with top employers across industries. Fast, reliable staffing solutions.
             </p>
