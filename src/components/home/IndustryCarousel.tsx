@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Factory, Utensils, Building2, Truck, ShoppingBag, Hammer, HeartPulse, Warehouse } from "lucide-react";
+import industriesBg from "@/assets/industries-bg.mp4";
 
 const industries = [
   { icon: Factory, name: "Manufacturing", image: "https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=400&q=80" },
@@ -49,7 +50,18 @@ const IndustryCarousel = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section className="bg-background overflow-hidden">
+    <section className="relative bg-background overflow-hidden">
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        aria-hidden="true"
+        className="absolute inset-0 w-full h-full object-cover"
+        src={industriesBg}
+      />
+      <div className="absolute inset-0 bg-background/80" />
+      <div className="relative z-10">
       <SectionDivider label="Sectors We Cover" />
 
       {/* Giant section headline */}
@@ -128,6 +140,7 @@ const IndustryCarousel = () => {
       </div>
 
       <div className="h-px bg-border" />
+      </div>
     </section>
   );
 };
