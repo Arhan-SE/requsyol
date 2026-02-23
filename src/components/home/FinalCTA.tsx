@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import ScrollReveal from "@/components/animations/ScrollReveal";
+import finalCtaBg from "@/assets/final-cta-bg.mp4";
 
 const SectionDivider = ({ label }: { label: string }) => (
   <motion.div
@@ -34,7 +35,18 @@ const SectionDivider = ({ label }: { label: string }) => (
 
 const FinalCTA = () => {
   return (
-    <section className="bg-background relative overflow-hidden">
+    <section className="relative bg-background overflow-hidden">
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        aria-hidden="true"
+        className="absolute inset-0 w-full h-full object-cover scale-[1.35]"
+        src={finalCtaBg}
+      />
+      <div className="absolute inset-0 bg-background/80" />
+      <div className="relative z-10">
       <SectionDivider label="Get Started" />
 
       <div className="container mx-auto px-6 py-20 text-center relative z-10">
@@ -75,6 +87,7 @@ const FinalCTA = () => {
 
       {/* Bottom border */}
       <div className="h-px bg-border" />
+      </div>
     </section>
   );
 };
