@@ -1,5 +1,5 @@
-import { useRef, useEffect } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
+import { motion, useReducedMotion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
 import heroBg from "@/assets/hero-bg.mp4";
@@ -9,6 +9,8 @@ const words = ["WE FIND.", "WE MATCH.", "WE DELIVER."];
 const HeroSection = () => {
   const prefersReduced = useReducedMotion();
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoReady, setVideoReady] = useState(false);
+
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
@@ -16,24 +18,52 @@ const HeroSection = () => {
     video.play().catch(() => {});
   }, []);
 
+  // Content appears only after video is ready, with a small extra delay
+  const contentDelay = videoReady ? 0.3 : 100;
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background image with near-black overlay */}
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
+      {/* Background video */}
       <div className="absolute inset-0">
-        <video
-          ref={videoRef}
-          src={heroBg}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          aria-hidden="true"
-          className="w-full h-full object-cover object-center"
-        />
+        <motion.div
+          className="w-full h-full"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: videoReady ? 1 : 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <video
+            ref={videoRef}
+            src={heroBg}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            aria-hidden="true"
+            className="w-full h-full object-cover object-center"
+            onCanPlayThrough={() => setVideoReady(true)}
+          />
+        </motion.div>
         <div className="absolute inset-0 bg-background/75" />
         <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background to-transparent" />
       </div>
+
+      {/* Loading indicator while video loads */}
+      <AnimatePresence>
+        {!videoReady && (
+          <motion.div
+            className="absolute inset-0 z-20 flex items-center justify-center bg-background"
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <motion.div
+              className="w-8 h-8 border-2 border-muted-foreground/30 border-t-foreground rounded-full"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <div className="container mx-auto px-6 relative z-10 text-center pt-32 pb-24">
         {/* Massive stacked headline */}
@@ -44,8 +74,8 @@ const HeroSection = () => {
               className="font-barlow font-black uppercase leading-[0.88] text-foreground"
               style={{ fontSize: "clamp(3.5rem, 11vw, 10rem)" }}
               initial={prefersReduced ? {} : { opacity: 0, y: 80 }}
-              animate={prefersReduced ? {} : { opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1 + i * 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
+              animate={prefersReduced ? {} : videoReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 80 }}
+              transition={{ duration: 0.7, delay: contentDelay + i * 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
               {word}
             </motion.div>
@@ -56,8 +86,8 @@ const HeroSection = () => {
         <motion.p
           className="text-sm tracking-[0.22em] uppercase text-muted-foreground mb-14 font-sans"
           initial={prefersReduced ? {} : { opacity: 0 }}
-          animate={prefersReduced ? {} : { opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.55 }}
+          animate={prefersReduced ? {} : videoReady ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ duration: 0.8, delay: contentDelay + 0.45 }}
         >
           The shortest path between exceptional talent and the companies that need them.
         </motion.p>
@@ -66,8 +96,8 @@ const HeroSection = () => {
         <motion.div
           className="flex flex-col sm:flex-row gap-6 justify-center items-center"
           initial={prefersReduced ? {} : { opacity: 0, y: 20 }}
-          animate={prefersReduced ? {} : { opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.7 }}
+          animate={prefersReduced ? {} : videoReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.7, delay: contentDelay + 0.6 }}
         >
           <Link
             to="/candidates"
@@ -84,19 +114,25 @@ const HeroSection = () => {
         </motion.div>
 
         {/* Thin separator line */}
-        <div className="absolute bottom-20 left-0 right-0 flex items-center justify-center px-8 pointer-events-none">
+        <motion.div
+          className="absolute bottom-20 left-0 right-0 flex items-center justify-center px-8 pointer-events-none"
+          initial={{ opacity: 0 }}
+          animate={videoReady ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ duration: 0.6, delay: contentDelay + 0.7 }}
+        >
           <div className="flex-1 h-px bg-border/30 max-w-xs" />
           <div className="w-1 h-1 rounded-full bg-border/50 mx-4" />
           <div className="flex-1 h-px bg-border/30 max-w-xs" />
-        </div>
+        </motion.div>
       </div>
 
       {/* Animated scroll indicator */}
-      {!prefersReduced && (
+      {!prefersReduced && videoReady && (
         <motion.div
           className="absolute bottom-7 left-1/2 -translate-x-1/2 text-muted-foreground/40"
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, y: [0, 8, 0] }}
+          transition={{ opacity: { duration: 0.5 }, y: { duration: 2, repeat: Infinity, ease: "easeInOut" } }}
         >
           <ChevronDown size={20} />
         </motion.div>
