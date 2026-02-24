@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import DeferredBackgroundVideo from "@/components/media/DeferredBackgroundVideo";
 import testimonialsBg from "@/assets/testimonials-bg.mp4";
 
 const testimonials = [
@@ -91,15 +92,7 @@ const TestimonialsSection = () => {
 
   return (
     <section className="relative bg-background overflow-hidden">
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        aria-hidden="true"
-        className="absolute inset-0 w-full h-full object-cover"
-        src={testimonialsBg}
-      />
+      <DeferredBackgroundVideo src={testimonialsBg} />
       <div className="absolute inset-0 bg-background/80" />
       <div className="relative z-10">
       <SectionDivider label="Client Stories" />

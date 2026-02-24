@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Factory, Utensils, Building2, Truck, ShoppingBag, Hammer, HeartPulse, Warehouse } from "lucide-react";
+import DeferredBackgroundVideo from "@/components/media/DeferredBackgroundVideo";
 import industriesBg from "@/assets/industries-bg.mp4";
 
 const industries = [
@@ -51,15 +52,7 @@ const IndustryCarousel = () => {
 
   return (
     <section className="relative bg-background overflow-hidden">
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        aria-hidden="true"
-        className="absolute inset-0 w-full h-full object-cover"
-        src={industriesBg}
-      />
+      <DeferredBackgroundVideo src={industriesBg} />
       <div className="absolute inset-0 bg-background/80" />
       <div className="relative z-10">
       <SectionDivider label="Sectors We Cover" />

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import ScrollReveal from "@/components/animations/ScrollReveal";
+import DeferredBackgroundVideo from "@/components/media/DeferredBackgroundVideo";
 import finalCtaBg from "@/assets/final-cta-bg.mp4";
 
 const SectionDivider = ({ label }: { label: string }) => (
@@ -36,14 +37,9 @@ const SectionDivider = ({ label }: { label: string }) => (
 const FinalCTA = () => {
   return (
     <section className="relative bg-background overflow-hidden">
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        aria-hidden="true"
-        className="absolute inset-0 w-full h-full object-cover scale-[1.35]"
+      <DeferredBackgroundVideo
         src={finalCtaBg}
+        className="w-full h-full object-cover scale-[1.35]"
       />
       <div className="absolute inset-0 bg-background/80" />
       <div className="relative z-10">
