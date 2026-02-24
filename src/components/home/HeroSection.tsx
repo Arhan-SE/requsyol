@@ -1,14 +1,16 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
 import heroBg from "@/assets/hero-bg.mp4";
+import heroPoster from "@/assets/hero-visual.jpeg";
 
 const words = ["WE FIND.", "WE MATCH.", "WE DELIVER."];
 
 const HeroSection = () => {
   const prefersReduced = useReducedMotion();
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoReady, setVideoReady] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -21,6 +23,12 @@ const HeroSection = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background image with near-black overlay */}
       <div className="absolute inset-0">
+        <img
+          src={heroPoster}
+          alt=""
+          aria-hidden="true"
+          className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 ${videoReady ? "opacity-0" : "opacity-100"}`}
+        />
         <video
           ref={videoRef}
           src={heroBg}
@@ -29,8 +37,10 @@ const HeroSection = () => {
           muted
           playsInline
           preload="auto"
+          poster={heroPoster}
+          onCanPlayThrough={() => setVideoReady(true)}
           aria-hidden="true"
-          className="w-full h-full object-cover object-center"
+          className={`w-full h-full object-cover object-center transition-opacity duration-700 ${videoReady ? "opacity-100" : "opacity-0"}`}
         />
         <div className="absolute inset-0 bg-background/75" />
         <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background to-transparent" />
