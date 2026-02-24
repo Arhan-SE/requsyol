@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import CountUp from "@/components/animations/CountUp";
 import { ShieldCheck, Clock, FileCheck, Wallet, Headphones, Search } from "lucide-react";
+import DeferredBackgroundVideo from "@/components/media/DeferredBackgroundVideo";
 import valuePropBg from "@/assets/value-prop-bg.mp4";
 
 const stats = [
@@ -53,15 +54,7 @@ const SectionDivider = ({ label }: { label: string }) => (
 const ValueProposition = () => {
   return (
     <section className="relative bg-background overflow-hidden">
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        aria-hidden="true"
-        className="absolute inset-0 w-full h-full object-cover"
-        src={valuePropBg}
-      />
+      <DeferredBackgroundVideo src={valuePropBg} />
       <div className="absolute inset-0 bg-background/80" />
       <div className="relative z-10">
       <SectionDivider label="Why Choose Us" />
