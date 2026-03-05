@@ -16,6 +16,7 @@ import Index from "./pages/Index";
 import CandidateRegistration from "./pages/CandidateRegistration";
 import EmployerInquiry from "./pages/EmployerInquiry";
 import About from "./pages/About";
+import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import FAQ from "./pages/FAQ";
 import Policies from "./pages/Policies";
@@ -36,6 +37,7 @@ const App = () => (
           <Route path="/candidates" element={<CandidateRegistration />} />
           <Route path="/employers" element={<EmployerInquiry />} />
           <Route path="/about" element={<About />} />
+          <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/policies" element={<Policies />} />
