@@ -43,7 +43,7 @@ const FinalCTA = () => {
         src={finalCtaBg}
         className="w-full h-full object-cover scale-[1.35]"
       />
-      <div className="absolute inset-0 bg-background/80" />
+      <div className="absolute inset-0 bg-background" />
       <div className="relative z-10">
 
       <div className="container mx-auto px-6 py-20 text-center relative z-10">

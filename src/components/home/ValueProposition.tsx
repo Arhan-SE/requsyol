@@ -55,9 +55,9 @@ const ValueProposition = () => {
   return (
     <section className="bg-background">
       <SectionDivider label="Why Choose Us" />
-      <div className="relative overflow-hidden">
+      <div className="relative overflow-hidden pt-8 md:pt-12">
       <DeferredBackgroundVideo src={valuePropBg} />
-      <div className="absolute inset-0 bg-background/80" />
+      <div className="absolute inset-0 bg-background" />
       <div className="relative z-10">
 
       {/* Giant headline */}
