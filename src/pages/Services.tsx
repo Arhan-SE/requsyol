@@ -179,12 +179,12 @@ const Services = () => {
               {[...clientLogos, ...clientLogos, ...clientLogos].map((logo, i) => (
                 <div
                   key={`${logo.alt}-${i}`}
-                  className="mx-6 flex h-20 w-36 flex-shrink-0 items-center justify-center rounded-sm bg-foreground/5 p-4 md:mx-10 md:h-24 md:w-44"
+                  className="mx-6 flex h-20 w-36 flex-shrink-0 items-center justify-center md:mx-10 md:h-24 md:w-44"
                 >
                   <img
                     src={logo.src}
                     alt={logo.alt}
-                    className="max-h-full max-w-full object-contain grayscale brightness-200 opacity-70"
+                    className="max-h-full max-w-full object-contain"
                     loading="lazy"
                   />
                 </div>
