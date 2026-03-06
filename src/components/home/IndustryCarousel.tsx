@@ -54,7 +54,7 @@ const IndustryCarousel = () => {
       <SectionDivider label="Sectors We Cover" />
       <div className="relative overflow-hidden pt-8 md:pt-12">
       <DeferredBackgroundVideo src={industriesBg} />
-      <div className="absolute inset-0 bg-background" />
+      <div className="absolute inset-0 bg-background/80" />
       <div className="relative z-10">
 
       {/* Giant section headline */}
