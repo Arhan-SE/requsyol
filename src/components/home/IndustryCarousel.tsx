@@ -19,7 +19,7 @@ const doubled = [...industries, ...industries];
 
 const SectionDivider = ({ label }: { label: string }) => (
   <motion.div
-    className="flex items-center gap-0 w-full px-6 py-8"
+    className="flex items-center gap-0 w-full px-10 py-16"
     initial={{ opacity: 0 }}
     whileInView={{ opacity: 1 }}
     viewport={{ once: true }}
