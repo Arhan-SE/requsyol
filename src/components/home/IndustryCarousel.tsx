@@ -9,7 +9,7 @@ const industries = [
   { icon: Utensils, name: "Hospitality", image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=400&q=80" },
   { icon: Truck, name: "Logistics", image: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=400&q=80" },
   { icon: ShoppingBag, name: "Retail", image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=400&q=80" },
-  { icon: SprayCan, name: "Maintenance & Facility Solutions", image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=400&q=80" },
+  { icon: SprayCan, name: "Maintenance\n&\nFacility Solutions", image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=400&q=80" },
   { icon: HeartPulse, name: "Healthcare", image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=400&q=80" },
   { icon: Warehouse, name: "Warehousing", image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=400&q=80" },
 ];
@@ -121,7 +121,7 @@ const IndustryCarousel = () => {
                 />
                 {/* Label */}
                 <span
-                  className="relative z-10 text-[10px] tracking-[0.25em] uppercase font-sans transition-colors duration-150"
+                  className="relative z-10 text-[10px] tracking-[0.25em] uppercase font-sans transition-colors duration-150 text-center whitespace-pre-line leading-relaxed px-2"
                   style={{ color: isHovered ? "white" : undefined }}
                 >
                   {industry.name}
