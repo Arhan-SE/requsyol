@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Building2 } from "lucide-react";
-import logo from "@/assets/Requsyol_png.png";
+import certifications from "@/assets/footer-certifications.jpg";
 import SocialLinks from "@/components/layout/SocialLinks";
 
 const Footer = () => {
@@ -15,9 +15,9 @@ const Footer = () => {
       </div>
 
       <div className="container mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 gap-12 border-b border-border pb-12 md:grid-cols-4">
+        <div className="grid grid-cols-1 gap-12 border-b border-border pb-12 md:grid-cols-[2fr_1fr_1fr_1fr]">
           <div className="md:col-span-1">
-            <img src={logo} alt="Requsyol" className="mb-5 h-20 w-auto rounded-lg border-0 object-fill shadow-lg opacity-100" />
+            <img src={certifications} alt="Certifications — ALP Member, GDPR, GLAA, ICO, Croner" className="mb-6 w-full max-w-md rounded-sm object-contain" />
             <p className="mb-6 text-xs font-sans leading-relaxed text-muted-foreground">
               Connecting verified candidates with top employers across industries. Fast, reliable staffing solutions.
             </p>
