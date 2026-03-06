@@ -67,7 +67,7 @@ const Contact = () => {
 
   return (
     <Layout>
-      <div className="pt-28 pb-16">
+      <div className="pt-40 pb-16">
         <div className="container mx-auto px-4">
           <ScrollReveal>
             <h1 className="text-3xl md:text-4xl font-bold text-foreground text-center mb-12">Contact Us</h1>
