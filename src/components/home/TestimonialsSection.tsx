@@ -95,7 +95,7 @@ const TestimonialsSection = () => {
       <SectionDivider label="Client Stories" />
       <div className="relative overflow-hidden">
       <DeferredBackgroundVideo src={testimonialsBg} />
-      <div className="absolute inset-0 bg-background" />
+      <div className="absolute inset-0 bg-background/80" />
       <div className="relative z-10">
 
       <div className="container mx-auto px-6 pb-20">
