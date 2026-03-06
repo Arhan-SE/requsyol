@@ -102,22 +102,40 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="lg:hidden flex items-center justify-between px-5 py-4">
-          <Link to="/">
-            <img src={logo} alt="Requsyol" className="h-20 w-auto" />
-          </Link>
-          <div className="flex items-center gap-2">
-            <SocialLinks linkClassName="h-9 w-9" iconClassName="h-3.5 w-3.5" />
-            <button
-              onClick={() => setMobileOpen((open) => !open)}
-              className="border border-border p-2 text-foreground"
-              aria-label="Toggle menu"
-              aria-expanded={mobileOpen}
-              aria-controls="site-navigation-panel"
-            >
-              {mobileOpen ? <X size={18} /> : <Menu size={18} />}
-            </button>
+        <div className="lg:hidden flex flex-col px-5 py-3">
+          <div className="flex items-center justify-between">
+            <Link to="/">
+              <img src={logo} alt="Requsyol" className="h-16 w-auto" />
+            </Link>
+            <div className="flex items-center gap-2">
+              <SocialLinks linkClassName="h-8 w-8" iconClassName="h-3 w-3" />
+              <button
+                onClick={() => setMobileOpen((open) => !open)}
+                className="border border-border p-2 text-foreground"
+                aria-label="Toggle menu"
+                aria-expanded={mobileOpen}
+                aria-controls="site-navigation-panel"
+              >
+                {mobileOpen ? <X size={18} /> : <Menu size={18} />}
+              </button>
+            </div>
           </div>
+          <nav className="flex items-center gap-4 mt-2 overflow-x-auto">
+            {desktopLinks.map((link) => {
+              const isActive = location.pathname === link.path;
+              return (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className={`text-[10px] tracking-[0.15em] uppercase font-medium transition-colors whitespace-nowrap ${
+                    isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+          </nav>
         </div>
       </motion.header>
 
