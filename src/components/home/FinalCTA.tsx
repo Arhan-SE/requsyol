@@ -78,6 +78,12 @@ const FinalCTA = () => {
             >
               [ Hire Talent ]
             </Link>
+            <Link
+              to="/contact"
+              className="border border-border px-10 py-4 text-xs tracking-[0.28em] uppercase font-medium text-foreground hover:bg-foreground hover:text-background transition-all duration-300 font-sans"
+            >
+              [ Contact Us ]
+            </Link>
           </div>
         </ScrollReveal>
       </div>

@@ -56,7 +56,12 @@ const Contact = () => {
       return;
     }
 
-    toast({ title: "Message Sent!", description: "We'll get back to you soon." });
+    // Build mailto link and open it
+    const subject = encodeURIComponent(`Contact Form: ${data.name}`);
+    const body = encodeURIComponent(`Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`);
+    window.location.href = `mailto:hr@requsyol.co.uk?subject=${subject}&body=${body}`;
+
+    toast({ title: "Message Sent!", description: "Your email client should open shortly." });
     setSubmitted(true);
   };
 
