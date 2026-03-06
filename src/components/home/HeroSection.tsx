@@ -107,7 +107,7 @@ const HeroSection = () => {
           </Link>
           <Link
             to="/employers"
-            className="group inline-flex items-center gap-3 text-xs tracking-[0.28em] uppercase font-medium text-muted-foreground hover:text-foreground transition-colors duration-300"
+            className="group inline-flex items-center gap-3 text-xs tracking-[0.28em] uppercase font-medium text-foreground border border-border px-8 py-4 hover:bg-foreground hover:text-background transition-all duration-300"
           >
             [ Hire Talent ]
           </Link>
