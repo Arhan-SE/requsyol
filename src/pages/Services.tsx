@@ -109,37 +109,52 @@ const Services = () => {
           {/* Section divider */}
           <SectionDivider label="SERVICES" />
 
-          {/* Service blocks */}
-          <section>
+          {/* Service blocks - sticky stacking cards */}
+          <section className="relative">
             {services.map((service, index) => (
-              <ScrollReveal key={service.number} delay={index * 0.05}>
-                <article className="border-b border-border py-10 md:py-14">
-                  {/* Number + Title row */}
-                  <div className="grid gap-4 md:grid-cols-[auto_1fr] md:items-start md:gap-8">
-                    <span className="font-barlow font-black text-5xl text-muted-foreground/30 md:text-7xl lg:text-8xl">
-                      {service.number}
-                    </span>
-                    <h2 className="font-barlow font-black uppercase text-4xl leading-[0.95] tracking-tight text-foreground whitespace-pre-line sm:text-5xl md:text-6xl lg:text-7xl">
-                      {service.title}
-                    </h2>
-                  </div>
+              <div
+                key={service.number}
+                className="sticky"
+                style={{ top: `${112 + index * 40}px`, zIndex: index + 1 }}
+              >
+                <ScrollReveal delay={index * 0.05}>
+                  <article
+                    className="border-b border-border bg-background py-10 md:py-14 min-h-[60vh] md:min-h-[70vh] flex flex-col justify-between"
+                    style={{
+                      boxShadow: '0 -20px 40px -10px hsl(0 0% 0% / 0.5)',
+                    }}
+                  >
+                    {/* Number + Title row */}
+                    <div>
+                      <div className="grid gap-4 md:grid-cols-[auto_1fr] md:items-start md:gap-8">
+                        <span className="font-barlow font-black text-5xl text-muted-foreground/30 md:text-7xl lg:text-8xl">
+                          {service.number}
+                        </span>
+                        <h2 className="font-barlow font-black uppercase text-4xl leading-[0.95] tracking-tight text-foreground whitespace-pre-line sm:text-5xl md:text-6xl lg:text-7xl">
+                          {service.title}
+                        </h2>
+                      </div>
+                    </div>
 
-                  {/* Description + bullets */}
-                  <div className="mt-8 grid gap-6 md:grid-cols-2">
-                    <p className="text-sm leading-relaxed text-muted-foreground md:text-base md:col-start-2">
-                      {service.description}
-                    </p>
-                    <ul className="space-y-4 md:col-start-2">
-                      {service.bullets.map((bullet) => (
-                        <li key={bullet.label} className="text-sm leading-relaxed text-muted-foreground">
-                          <span className="font-semibold text-foreground">{bullet.label}:</span>{" "}
-                          {bullet.text}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </article>
-              </ScrollReveal>
+                    {/* Description + bullets */}
+                    <div className="mt-8 grid gap-6 md:grid-cols-2">
+                      <div className="md:col-start-2">
+                        <p className="text-sm leading-relaxed text-muted-foreground md:text-base mb-6">
+                          {service.description}
+                        </p>
+                        <ul className="space-y-4">
+                          {service.bullets.map((bullet) => (
+                            <li key={bullet.label} className="text-sm leading-relaxed text-muted-foreground">
+                              <span className="font-semibold text-foreground">{bullet.label}:</span>{" "}
+                              {bullet.text}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </article>
+                </ScrollReveal>
+              </div>
             ))}
           </section>
 
