@@ -77,34 +77,9 @@ const ValueProposition = () => {
         </ScrollReveal>
       </div>
 
-      {/* Stats strip — full-width, separated by thin vertical lines */}
-      <div className="border-t border-b border-border">
-        <div className="grid grid-cols-2 lg:grid-cols-4">
-          {stats.map((stat, i) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              className={`flex flex-col items-center justify-center py-14 px-8 ${
-                i < stats.length - 1 ? "border-r border-border" : ""
-              } ${i >= 2 ? "border-t lg:border-t-0 border-border" : ""}`}
-            >
-              <div className="font-barlow font-black text-foreground leading-none mb-3" style={{ fontSize: "clamp(3rem, 7vw, 5.5rem)" }}>
-                <CountUp end={stat.value} suffix={stat.suffix} duration={2.2} />
-              </div>
-              <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground text-center font-sans">
-                {stat.label}
-              </p>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-
       {/* Benefits list */}
       <SectionDivider label="What You Get" />
-      <div className="container mx-auto px-6 pb-20">
+      <div className="container mx-auto px-6 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border border-border">
           {benefits.map((b, i) => (
             <motion.div
@@ -124,6 +99,31 @@ const ValueProposition = () => {
                 <h3 className="text-sm font-semibold text-foreground mb-1.5 tracking-wide uppercase">{b.title}</h3>
                 <p className="text-xs text-muted-foreground leading-relaxed">{b.desc}</p>
               </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+      {/* Stats strip */}
+      <div className="border-t border-b border-border">
+        <div className="grid grid-cols-2 lg:grid-cols-4">
+          {stats.map((stat, i) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+              className={`flex flex-col items-center justify-center py-14 px-8 ${
+                i < stats.length - 1 ? "border-r border-border" : ""
+              } ${i >= 2 ? "border-t lg:border-t-0 border-border" : ""}`}
+            >
+              <div className="font-barlow font-black text-foreground leading-none mb-3" style={{ fontSize: "clamp(3rem, 7vw, 5.5rem)" }}>
+                <CountUp end={stat.value} suffix={stat.suffix} duration={2.2} />
+              </div>
+              <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground text-center font-sans">
+                {stat.label}
+              </p>
             </motion.div>
           ))}
         </div>
