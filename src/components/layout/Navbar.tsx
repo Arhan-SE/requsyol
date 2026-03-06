@@ -59,15 +59,15 @@ const Navbar = () => {
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
       >
-        <div className="hidden lg:grid grid-cols-[1fr_auto_1fr] items-center gap-6 px-8 py-4">
-          <nav className="flex flex-row items-center gap-6">
+        <div className="hidden lg:grid grid-cols-[1fr_auto_1fr] items-start gap-6 px-8 py-5">
+          <nav className="flex flex-col gap-0.5 pt-1">
             {desktopLinks.map((link) => {
               const isActive = location.pathname === link.path;
               return (
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`text-xs tracking-[0.18em] uppercase font-medium transition-colors whitespace-nowrap ${
+                  className={`text-[11px] tracking-[0.15em] uppercase font-bold transition-colors whitespace-nowrap leading-snug ${
                     isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
@@ -77,25 +77,24 @@ const Navbar = () => {
             })}
           </nav>
 
-          <Link to="/" className="flex items-center justify-center">
-            <img src={logo} alt="Requsyol" className="h-28 w-auto" />
+          <Link to="/" className="flex items-center justify-center self-center">
+            <img src={logo} alt="Requsyol" className="h-20 w-auto" />
           </Link>
 
-          <div className="flex items-center justify-end gap-3">
+          <div className="flex items-start justify-end gap-2 pt-1">
             <Link
               to="/contact"
-              className="border border-border px-5 py-2.5 text-xs tracking-[0.18em] uppercase font-medium text-foreground hover:bg-foreground hover:text-background transition-all duration-200"
+              className="border border-border px-5 py-2 text-[11px] tracking-[0.15em] uppercase font-bold text-foreground hover:bg-foreground hover:text-background transition-all duration-200"
             >
               Let's Talk
             </Link>
             <button
               onClick={() => setMobileOpen((open) => !open)}
-              className="border border-border px-5 py-2.5 text-xs tracking-[0.18em] uppercase font-medium text-foreground hover:bg-foreground hover:text-background transition-all duration-200 flex items-center gap-2"
+              className="border border-border px-5 py-2 text-[11px] tracking-[0.15em] uppercase font-bold text-foreground hover:bg-foreground hover:text-background transition-all duration-200"
               aria-label="Toggle menu"
               aria-expanded={mobileOpen}
               aria-controls="site-navigation-panel"
             >
-              {mobileOpen ? <X size={13} /> : <Menu size={13} />}
               Menu
             </button>
           </div>
