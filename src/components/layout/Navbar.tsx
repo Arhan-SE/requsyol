@@ -100,36 +100,32 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="lg:hidden flex flex-col px-5 py-3">
-          <div className="flex items-center justify-between">
-            <nav className="flex items-center gap-4">
-              {desktopLinks.map((link) => {
-                const isActive = location.pathname === link.path;
-                return (
-                  <Link
-                    key={link.path}
-                    to={link.path}
-                    className={`text-[10px] tracking-[0.15em] uppercase font-medium transition-colors whitespace-nowrap ${
-                      isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground"
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                );
-              })}
-            </nav>
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() => setMobileOpen((open) => !open)}
-                className="border border-border p-2 text-foreground"
-                aria-label="Toggle menu"
-                aria-expanded={mobileOpen}
-                aria-controls="site-navigation-panel"
-              >
-                {mobileOpen ? <X size={18} /> : <Menu size={18} />}
-              </button>
-            </div>
-          </div>
+        <div className="lg:hidden flex items-center justify-between px-5 py-4">
+          <nav className="flex items-center gap-6">
+            {desktopLinks.map((link) => {
+              const isActive = location.pathname === link.path;
+              return (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className={`text-[11px] tracking-[0.15em] uppercase font-bold transition-colors whitespace-nowrap ${
+                    isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+          </nav>
+          <button
+            onClick={() => setMobileOpen((open) => !open)}
+            className="border border-border p-2.5 text-foreground hover:bg-foreground hover:text-background transition-all duration-200"
+            aria-label="Toggle menu"
+            aria-expanded={mobileOpen}
+            aria-controls="site-navigation-panel"
+          >
+            {mobileOpen ? <X size={18} /> : <Menu size={18} />}
+          </button>
         </div>
       </motion.header>
 
