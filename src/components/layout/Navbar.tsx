@@ -100,15 +100,15 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="lg:hidden flex items-center justify-between px-5 py-4">
-          <nav className="flex items-center gap-6">
+        <div className="lg:hidden flex items-start justify-between px-5 py-4">
+          <nav className="flex flex-col gap-0.5 pt-1">
             {desktopLinks.map((link) => {
               const isActive = location.pathname === link.path;
               return (
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`text-[11px] tracking-[0.15em] uppercase font-bold transition-colors whitespace-nowrap ${
+                  className={`text-[11px] tracking-[0.15em] uppercase font-bold transition-colors whitespace-nowrap leading-snug ${
                     isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
