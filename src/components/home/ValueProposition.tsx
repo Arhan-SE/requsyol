@@ -53,11 +53,12 @@ const SectionDivider = ({ label }: { label: string }) => (
 
 const ValueProposition = () => {
   return (
-    <section className="relative bg-background overflow-hidden">
+    <section className="bg-background">
+      <SectionDivider label="Why Choose Us" />
+      <div className="relative overflow-hidden">
       <DeferredBackgroundVideo src={valuePropBg} />
       <div className="absolute inset-0 bg-background/80" />
       <div className="relative z-10">
-      <SectionDivider label="Why Choose Us" />
 
       {/* Giant headline */}
       <div className="container mx-auto px-6 pb-12">
@@ -126,6 +127,7 @@ const ValueProposition = () => {
             </motion.div>
           ))}
         </div>
+      </div>
       </div>
       </div>
     </section>
