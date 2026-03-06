@@ -2,28 +2,25 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Progress } from "@/components/ui/progress";
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { ArrowLeft, ArrowRight, Upload, CheckCircle, AlertCircle } from "lucide-react";
+import { Upload, CheckCircle, AlertCircle, Send } from "lucide-react";
 import {
   safeNameSchema,
   safeEmailSchema,
   safePhoneSchema,
-  safeShortTextSchema,
   recordPageLoadTime,
   isSubmissionTooFast,
   isDuplicateSubmission,
   validateUploadedFile,
 } from "@/lib/formSecurity";
 
-const step1Schema = z.object({
+const formSchema = z.object({
   firstName: safeNameSchema,
   lastName: safeNameSchema,
   phone: safePhoneSchema,
@@ -31,17 +28,7 @@ const step1Schema = z.object({
   honeypot: z.string().max(0),
 });
 
-const step2Schema = z.object({
-  address: safeShortTextSchema("Address"),
-  postcode: z.string().trim().min(3, "Postcode is required").max(10, "Invalid postcode"),
-  birthDate: z.string().min(1, "Birth date is required"),
-  referralSource: z.string().min(1, "Please select how you heard about us"),
-});
-
-const steps = ["Personal Details", "Address & Details", "Upload Resume"];
-
 const CandidateRegistration = () => {
-  const [step, setStep] = useState(0);
   const [submitted, setSubmitted] = useState(false);
   const [resumeFile, setResumeFile] = useState<File | null>(null);
   const [fileError, setFileError] = useState<string | null>(null);
@@ -53,28 +40,10 @@ const CandidateRegistration = () => {
     recordPageLoadTime();
   }, []);
 
-  const form1 = useForm<z.infer<typeof step1Schema>>({
-    resolver: zodResolver(step1Schema),
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
     defaultValues: { firstName: "", lastName: "", phone: "", email: "", honeypot: "" },
   });
-
-  const form2 = useForm<z.infer<typeof step2Schema>>({
-    resolver: zodResolver(step2Schema),
-    defaultValues: { address: "", postcode: "", birthDate: "", referralSource: "" },
-  });
-
-  const nextStep = async () => {
-    if (step === 0) {
-      const valid = await form1.trigger();
-      if (!valid) return;
-      // Honeypot check on step 1
-      if (form1.getValues("honeypot")) return;
-    } else if (step === 1) {
-      const valid = await form2.trigger();
-      if (!valid) return;
-    }
-    setStep((s) => Math.min(s + 1, 2));
-  };
 
   const handleFileChange = async (file: File | undefined) => {
     if (!file) {
@@ -95,38 +64,38 @@ const CandidateRegistration = () => {
     }
   };
 
-  const handleSubmit = async () => {
-    // Timing guard
+  const onSubmit = async (data: z.infer<typeof formSchema>) => {
+    if (data.honeypot) return;
+
     if (isSubmissionTooFast()) {
       toast({ title: "Something went wrong", description: "Please wait a moment and try again.", variant: "destructive" });
       return;
     }
 
-    // Duplicate guard — merge both steps' data
-    const f1 = form1.getValues();
-    const f2 = form2.getValues();
-    const { honeypot: _hp, ...payload } = { ...f1, ...f2 };
+    const { honeypot: _hp, ...payload } = data;
     if (await isDuplicateSubmission(payload)) {
       toast({ title: "Duplicate submission", description: "This registration has already been submitted.", variant: "destructive" });
       return;
     }
 
-    toast({ title: "Registration Submitted!", description: "We'll be in touch shortly." });
+    const subject = encodeURIComponent(`Candidate Registration: ${data.firstName} ${data.lastName}`);
+    const body = encodeURIComponent(
+      `Name: ${data.firstName} ${data.lastName}\nEmail: ${data.email}\nPhone: ${data.phone}\n\nResume: ${sanitizedFileName ? `${sanitizedFileName} (attached separately)` : "Not uploaded"}`
+    );
+    window.location.href = `mailto:hr@requsyol.co.uk?subject=${subject}&body=${body}`;
+
+    toast({ title: "Registration Submitted!", description: "Your email client should open shortly. Please attach your resume to the email." });
     setSubmitted(true);
   };
 
   if (submitted) {
     return (
       <Layout>
-        <div className="min-h-screen flex items-center justify-center pt-20">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="text-center max-w-md mx-auto px-4"
-          >
+        <div className="min-h-screen flex items-center justify-center pt-40">
+          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-center max-w-md mx-auto px-4">
             <CheckCircle size={64} className="text-primary mx-auto mb-6" />
             <h1 className="text-3xl font-bold text-foreground mb-4">Thank You!</h1>
-            <p className="text-muted-foreground">Your registration has been submitted. Our team will review your details and be in touch shortly.</p>
+            <p className="text-muted-foreground">Your email client should have opened. Please attach your resume and send the email. Our team will review your details and be in touch shortly.</p>
           </motion.div>
         </div>
       </Layout>
@@ -135,133 +104,72 @@ const CandidateRegistration = () => {
 
   return (
     <Layout>
-      <div className="min-h-screen pt-28 pb-16">
+      <div className="min-h-screen pt-40 pb-16">
         <div className="container mx-auto px-4 max-w-2xl">
           <ScrollReveal>
             <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2 text-center">Candidate Registration</h1>
             <p className="text-muted-foreground text-center mb-8">Join our talent pool and find your next opportunity</p>
           </ScrollReveal>
 
-          {/* Progress */}
-          <div className="mb-8">
-            <div className="flex justify-between text-sm text-muted-foreground mb-2">
-              {steps.map((s, i) => (
-                <span key={s} className={i <= step ? "text-foreground font-medium" : ""}>{s}</span>
-              ))}
-            </div>
-            <Progress value={((step + 1) / steps.length) * 100} className="h-1" />
-          </div>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+              {/* Honeypot */}
+              <div className="hidden" aria-hidden="true">
+                <Input {...form.register("honeypot")} tabIndex={-1} autoComplete="off" />
+              </div>
 
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={step}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.3 }}
-            >
-              {step === 0 && (
-                <Form {...form1}>
-                  <form className="space-y-4">
-                    {/* Honeypot */}
-                    <div className="hidden" aria-hidden="true">
-                      <Input {...form1.register("honeypot")} tabIndex={-1} autoComplete="off" />
-                    </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <FormField control={form.control} name="firstName" render={({ field }) => (
+                  <FormItem><FormLabel>First Name</FormLabel><FormControl><Input placeholder="John" {...field} /></FormControl><FormMessage /></FormItem>
+                )} />
+                <FormField control={form.control} name="lastName" render={({ field }) => (
+                  <FormItem><FormLabel>Last Name</FormLabel><FormControl><Input placeholder="Doe" {...field} /></FormControl><FormMessage /></FormItem>
+                )} />
+              </div>
+              <FormField control={form.control} name="phone" render={({ field }) => (
+                <FormItem><FormLabel>Phone</FormLabel><FormControl><Input placeholder="+44 7000 000000" {...field} /></FormControl><FormMessage /></FormItem>
+              )} />
+              <FormField control={form.control} name="email" render={({ field }) => (
+                <FormItem><FormLabel>Email</FormLabel><FormControl><Input type="email" placeholder="john@example.com" {...field} /></FormControl><FormMessage /></FormItem>
+              )} />
 
-                    <div className="grid grid-cols-2 gap-4">
-                      <FormField control={form1.control} name="firstName" render={({ field }) => (
-                        <FormItem><FormLabel>First Name</FormLabel><FormControl><Input placeholder="John" {...field} /></FormControl><FormMessage /></FormItem>
-                      )} />
-                      <FormField control={form1.control} name="lastName" render={({ field }) => (
-                        <FormItem><FormLabel>Last Name</FormLabel><FormControl><Input placeholder="Doe" {...field} /></FormControl><FormMessage /></FormItem>
-                      )} />
-                    </div>
-                    <FormField control={form1.control} name="phone" render={({ field }) => (
-                      <FormItem><FormLabel>Phone</FormLabel><FormControl><Input placeholder="+44 7000 000000" {...field} /></FormControl><FormMessage /></FormItem>
-                    )} />
-                    <FormField control={form1.control} name="email" render={({ field }) => (
-                      <FormItem><FormLabel>Email</FormLabel><FormControl><Input type="email" placeholder="john@example.com" {...field} /></FormControl><FormMessage /></FormItem>
-                    )} />
-                  </form>
-                </Form>
-              )}
-
-              {step === 1 && (
-                <Form {...form2}>
-                  <form className="space-y-4">
-                    <FormField control={form2.control} name="address" render={({ field }) => (
-                      <FormItem><FormLabel>Full Address</FormLabel><FormControl><Input placeholder="123 Main St, London" {...field} /></FormControl><FormMessage /></FormItem>
-                    )} />
-                    <FormField control={form2.control} name="postcode" render={({ field }) => (
-                      <FormItem><FormLabel>Postcode</FormLabel><FormControl><Input placeholder="SW1A 1AA" {...field} /></FormControl><FormMessage /></FormItem>
-                    )} />
-                    <FormField control={form2.control} name="birthDate" render={({ field }) => (
-                      <FormItem><FormLabel>Date of Birth</FormLabel><FormControl><Input type="date" {...field} /></FormControl><FormMessage /></FormItem>
-                    )} />
-                    <FormField control={form2.control} name="referralSource" render={({ field }) => (
-                      <FormItem><FormLabel>How did you hear about us?</FormLabel>
-                        <Select onValueChange={field.onChange} defaultValue={field.value}>
-                          <FormControl><SelectTrigger><SelectValue placeholder="Select..." /></SelectTrigger></FormControl>
-                          <SelectContent>
-                            <SelectItem value="google">Google Search</SelectItem>
-                            <SelectItem value="social">Social Media</SelectItem>
-                            <SelectItem value="referral">Friend/Colleague</SelectItem>
-                            <SelectItem value="jobsite">Job Board</SelectItem>
-                            <SelectItem value="other">Other</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      <FormMessage /></FormItem>
-                    )} />
-                  </form>
-                </Form>
-              )}
-
-              {step === 2 && (
-                <div className="space-y-4">
-                  <div
-                    className="border-2 border-dashed border-border rounded-lg p-12 text-center cursor-pointer hover:border-primary/50 transition-colors"
-                    onClick={() => document.getElementById("resume-upload")?.click()}
-                    onDragOver={(e) => e.preventDefault()}
-                    onDrop={(e) => {
-                      e.preventDefault();
-                      handleFileChange(e.dataTransfer.files?.[0]);
-                    }}
-                  >
-                    <Upload size={40} className="mx-auto text-muted-foreground mb-4" />
-                    <p className="text-foreground font-medium mb-1">
-                      {sanitizedFileName ?? "Drop your resume here or click to browse"}
-                    </p>
-                    <p className="text-sm text-muted-foreground">PDF, DOC, DOCX (Max 5 MB)</p>
-                    <input
-                      id="resume-upload"
-                      type="file"
-                      accept=".pdf,.doc,.docx"
-                      className="hidden"
-                      onChange={(e) => handleFileChange(e.target.files?.[0])}
-                    />
-                  </div>
-                  {fileError && (
-                    <p className="text-sm text-destructive flex items-center gap-1">
-                      <AlertCircle size={14} /> {fileError}
-                    </p>
-                  )}
+              {/* Resume Upload */}
+              <div>
+                <label className="text-sm font-medium text-foreground mb-2 block">Upload Resume</label>
+                <div
+                  className="border-2 border-dashed border-border p-8 text-center cursor-pointer hover:border-primary/50 transition-colors"
+                  onClick={() => document.getElementById("resume-upload")?.click()}
+                  onDragOver={(e) => e.preventDefault()}
+                  onDrop={(e) => {
+                    e.preventDefault();
+                    handleFileChange(e.dataTransfer.files?.[0]);
+                  }}
+                >
+                  <Upload size={32} className="mx-auto text-muted-foreground mb-3" />
+                  <p className="text-foreground font-medium mb-1">
+                    {sanitizedFileName ?? "Drop your resume here or click to browse"}
+                  </p>
+                  <p className="text-sm text-muted-foreground">PDF, DOC, DOCX (Max 5 MB)</p>
+                  <input
+                    id="resume-upload"
+                    type="file"
+                    accept=".pdf,.doc,.docx"
+                    className="hidden"
+                    onChange={(e) => handleFileChange(e.target.files?.[0])}
+                  />
                 </div>
-              )}
-            </motion.div>
-          </AnimatePresence>
+                {fileError && (
+                  <p className="mt-2 text-sm text-destructive flex items-center gap-1">
+                    <AlertCircle size={14} /> {fileError}
+                  </p>
+                )}
+              </div>
 
-          <div className="flex justify-between mt-8">
-            <Button variant="outline" onClick={() => setStep((s) => Math.max(s - 1, 0))} disabled={step === 0}>
-              <ArrowLeft size={16} className="mr-2" /> Back
-            </Button>
-            {step < 2 ? (
-              <Button onClick={nextStep}>
-                Next <ArrowRight size={16} className="ml-2" />
+              <Button type="submit" size="lg" className="w-full gap-2" disabled={!!fileError}>
+                <Send size={18} /> Submit Registration
               </Button>
-            ) : (
-              <Button onClick={handleSubmit} disabled={!!fileError}>Submit Registration</Button>
-            )}
-          </div>
+            </form>
+          </Form>
         </div>
       </div>
     </Layout>

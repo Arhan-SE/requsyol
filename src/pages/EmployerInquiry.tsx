@@ -104,7 +104,7 @@ const EmployerInquiry = () => {
 
   return (
     <Layout>
-      <div className="min-h-screen pt-28 pb-16">
+      <div className="min-h-screen pt-40 pb-16">
         <div className="container mx-auto px-4 max-w-2xl">
           <ScrollReveal>
             <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2 text-center">Hire Talent</h1>
