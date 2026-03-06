@@ -36,14 +36,15 @@ const SectionDivider = ({ label }: { label: string }) => (
 
 const FinalCTA = () => {
   return (
-    <section className="relative bg-background overflow-hidden">
+    <section className="bg-background">
+      <SectionDivider label="Get Started" />
+      <div className="relative overflow-hidden">
       <DeferredBackgroundVideo
         src={finalCtaBg}
         className="w-full h-full object-cover scale-[1.35]"
       />
       <div className="absolute inset-0 bg-background/80" />
       <div className="relative z-10">
-      <SectionDivider label="Get Started" />
 
       <div className="container mx-auto px-6 py-20 text-center relative z-10">
         {/* Massive headline */}
@@ -83,6 +84,7 @@ const FinalCTA = () => {
 
       {/* Bottom border */}
       <div className="h-px bg-border" />
+      </div>
       </div>
     </section>
   );

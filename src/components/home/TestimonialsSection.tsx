@@ -91,11 +91,12 @@ const TestimonialsSection = () => {
   const progressPercent = Math.min((tick / (DURATION / 60)) * 100, 100);
 
   return (
-    <section className="relative bg-background overflow-hidden">
+    <section className="bg-background">
+      <SectionDivider label="Client Stories" />
+      <div className="relative overflow-hidden">
       <DeferredBackgroundVideo src={testimonialsBg} />
       <div className="absolute inset-0 bg-background/80" />
       <div className="relative z-10">
-      <SectionDivider label="Client Stories" />
 
       <div className="container mx-auto px-6 pb-20">
         {/* Giant editorial quote */}
@@ -158,6 +159,7 @@ const TestimonialsSection = () => {
             ))}
           </div>
         </div>
+      </div>
       </div>
       </div>
     </section>

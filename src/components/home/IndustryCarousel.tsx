@@ -51,11 +51,12 @@ const IndustryCarousel = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section className="relative bg-background overflow-hidden">
+    <section className="bg-background">
+      <SectionDivider label="Sectors We Cover" />
+      <div className="relative overflow-hidden">
       <DeferredBackgroundVideo src={industriesBg} />
       <div className="absolute inset-0 bg-background/80" />
       <div className="relative z-10">
-      <SectionDivider label="Sectors We Cover" />
 
       {/* Giant section headline */}
       <div className="container mx-auto px-6 pb-12 text-center">
@@ -133,6 +134,7 @@ const IndustryCarousel = () => {
       </div>
 
       <div className="h-px bg-border" />
+      </div>
       </div>
     </section>
   );
