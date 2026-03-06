@@ -24,7 +24,7 @@ const About = () => {
           className="absolute inset-0 w-full h-full object-cover"
           src={aboutBg}
         />
-        <div className="absolute inset-0 bg-background/75" />
+        <div className="absolute inset-0 bg-background" />
         <div className="container mx-auto px-4 relative z-10">
           <ScrollReveal>
             <div className="max-w-3xl mx-auto text-center mb-16">

@@ -82,7 +82,6 @@ const Navbar = () => {
           </Link>
 
           <div className="flex items-center justify-end gap-3">
-            <SocialLinks className="mr-2" linkClassName="h-10 w-10" />
             <Link
               to="/contact"
               className="border border-border px-5 py-2.5 text-xs tracking-[0.18em] uppercase font-medium text-foreground hover:bg-foreground hover:text-background transition-all duration-200"
@@ -104,11 +103,23 @@ const Navbar = () => {
 
         <div className="lg:hidden flex flex-col px-5 py-3">
           <div className="flex items-center justify-between">
-            <Link to="/">
-              <img src={logo} alt="Requsyol" className="h-16 w-auto" />
-            </Link>
+            <nav className="flex items-center gap-4">
+              {desktopLinks.map((link) => {
+                const isActive = location.pathname === link.path;
+                return (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    className={`text-[10px] tracking-[0.15em] uppercase font-medium transition-colors whitespace-nowrap ${
+                      isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
+            </nav>
             <div className="flex items-center gap-2">
-              <SocialLinks linkClassName="h-8 w-8" iconClassName="h-3 w-3" />
               <button
                 onClick={() => setMobileOpen((open) => !open)}
                 className="border border-border p-2 text-foreground"
@@ -120,22 +131,6 @@ const Navbar = () => {
               </button>
             </div>
           </div>
-          <nav className="flex items-center gap-4 mt-2 overflow-x-auto">
-            {desktopLinks.map((link) => {
-              const isActive = location.pathname === link.path;
-              return (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  className={`text-[10px] tracking-[0.15em] uppercase font-medium transition-colors whitespace-nowrap ${
-                    isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              );
-            })}
-          </nav>
         </div>
       </motion.header>
 
