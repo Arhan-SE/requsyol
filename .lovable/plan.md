@@ -1,78 +1,77 @@
 
-Goal
 
-Refine the header/menu to match the reference more closely:
-- make the logo noticeably bigger and more visible
-- make the slide-out menu more compact, bold, and condensed like the reference
-- remove the divider lines between menu items
-- add social icons in the top-right area and footer
-- keep the hero video behavior, but stop the header from feeling visually weak over it
+## Plan: Redesign Services Page with 1820-style Layout + Client Logos
 
-What I’ll update
+### Overview
 
-1. Navbar/logo visibility
-- Increase the logo size in both desktop and mobile navbar
-- Slightly rebalance header spacing so the larger logo still fits cleanly
-- Make the header a bit more readable over the hero by strengthening its filled/scrolled state and open-menu state
+Replace the current Services page with a completely new design inspired by the 1820productions.com reference screenshots. The page will feature:
 
-2. Slide-out menu redesign
-- Keep the right-side drawer, but restyle it to feel closer to the screenshot:
-  - use the condensed display font already in the project (`font-barlow`)
-  - tighter leading and reduced tracking
-  - larger stacked text
-  - more compact vertical spacing
-- Remove the borders/lines between menu items
-- Remove the small line element beside each menu item and rely on typography/motion instead
-- Keep hover motion, but make it cleaner:
-  - subtle x-shift
-  - opacity/brightness change
-  - active item gets stronger contrast
+1. A hero section with massive Barlow Condensed typography
+2. A "SERVICES" section divider (reusing the existing pattern)
+3. Five numbered service blocks (`01` through `05`) with large titles and right-aligned body text/bullet points, separated by horizontal rules
+4. A "Requsyol Promise" closing statement
+5. A client logos section with an infinite horizontal scroll animation
+6. A final CTA linking to contact
 
-3. Social icons
-- Add Instagram, LinkedIn, Facebook, and X/Twitter icons in:
-  - the top-right navbar area
-  - the footer
-- Use placeholder links for now so the structure is ready for real URLs later
-- Keep the icons visually minimal and consistent with the site’s monochrome style
-
-4. Footer polish
-- Add a social-links row without disturbing the existing editorial layout
-- Keep the large background “REQUSYOL” branding
-- If needed, align footer link styling more closely with the new navigation tone
-
-Files to update
-- `src/components/layout/Navbar.tsx`
-- `src/components/layout/Footer.tsx`
-- `src/components/home/HeroSection.tsx` (only if a minor header/hero contrast adjustment is needed)
-- possibly `src/index.css` only if a tiny typography utility tweak is needed, though the needed font is already available
-
-Design approach
+### Design Pattern (from screenshots)
 
 ```text
-Desktop header
-[ Home | About | Our Services ]   [ larger logo ]   [ social icons | Let's Talk | Menu ]
-
-Open menu
-------------------------------------------------
-| dimmed page | compact black panel            |
-|             | HOME                           |
-|             | ABOUT                          |
-|             | OUR SERVICES                   |
-|             | POLICIES                       |
-|             | CONTACT US                     |
-|             | social icons                   |
-------------------------------------------------
+┌─────────────────────────────────────────────┐
+│  OUR SERVICES.   (massive Barlow headline)  │
+│  subtitle paragraph                         │
+├─────── + ─── SERVICES ─── + ────────────────┤
+│ 01        SECTOR-SPECIFIC STAFFING          │
+│                                              │
+│                    body text right-aligned    │
+│                    • bullet points            │
+├──────────────────────────────────────────────┤
+│ 02        RIGOROUS VETTING PROCESS          │
+│                    ...                       │
+├──────────────────────────────────────────────┤
+│ 03        CUSTOM INDUCTION & TRAINING       │
+│ 04        WORKFORCE MANAGEMENT              │
+│ 05        TECHNOLOGY-DRIVEN TRANSPARENCY    │
+├──────────────────────────────────────────────┤
+│  THE REQUSYOL PROMISE                       │
+├─────── + ─── OUR CLIENTS ─── + ─────────────┤
+│  ← logo  logo  logo  logo  logo  logo →     │
+│     (infinite marquee scroll)                │
+├──────────────────────────────────────────────┤
+│  CTA: Contact Us                            │
+└─────────────────────────────────────────────┘
 ```
 
-Key implementation notes
-- Reuse existing `framer-motion` structure rather than rebuilding the menu from scratch
-- Keep route-close behavior and body scroll lock
-- Use placeholder href values or a small social-links config object so URLs can be swapped in later
-- Preserve responsive behavior while making desktop and mobile menus feel visually consistent
+### Files to change
 
-Expected result
-- Bigger, clearer logo
-- Cleaner menu without divider lines
-- Menu typography that feels much closer to your reference image
-- Social icons ready in both header and footer
-- A stronger overall first impression without changing the core site structure
+**1. Copy client logo images to `src/assets/clients/`**
+- `user-uploads://image-7.png` → `src/assets/clients/club-cultured.png`
+- `user-uploads://image-8.png` → `src/assets/clients/cbk-freight.png`
+- `user-uploads://image-9.png` → `src/assets/clients/urban-legend.png`
+- `user-uploads://image-10.png` → `src/assets/clients/bakery-client.png`
+- `user-uploads://image-11.png` → `src/assets/clients/ding-dong.png`
+
+**2. Rewrite `src/pages/Services.tsx`**
+- Hero: massive Barlow Condensed "OUR SERVICES." headline with the intro paragraph below
+- SectionDivider with "SERVICES" label
+- Five service blocks, each with:
+  - Number (`01`-`05`) in large Barlow font on the left
+  - Service title in massive uppercase Barlow on the right
+  - Body description + bullet points right-aligned in a grid below, matching the reference layout
+  - Horizontal rule separator between blocks
+- "The Requsyol Promise" section
+- SectionDivider with "OUR CLIENTS" label
+- Client logos marquee with CSS animation (infinite horizontal scroll, duplicated logos for seamless loop)
+- Final CTA to `/contact`
+
+**3. Add marquee keyframes to `src/index.css`**
+- A `@keyframes marquee` for the infinite scroll animation
+
+### Key styling details
+
+- Service numbers: `font-barlow font-black text-6xl md:text-8xl`
+- Service titles: `font-barlow font-black uppercase text-5xl md:text-7xl lg:text-8xl`
+- Body text: right-aligned on desktop in `max-w-md`, using DM Sans
+- Bullet items styled with bold label + description format
+- Client logos: grayscale filter, white background circular/card container, marquee animation
+- All scroll reveal animations using existing `ScrollReveal` component
+
