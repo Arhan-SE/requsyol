@@ -78,7 +78,7 @@ const Navbar = () => {
           </nav>
 
           <Link to="/" className="flex items-center justify-center self-center">
-            <img src={logo} alt="Requsyol" className="h-20 w-auto" />
+            <img src={logo} alt="Requsyol" className="h-28 w-auto" />
           </Link>
 
           <div className="flex items-start justify-end gap-2 pt-1">
@@ -100,7 +100,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="lg:hidden flex items-start justify-between px-5 py-4">
+        <div className="grid lg:hidden grid-cols-[1fr_auto_1fr] items-start gap-4 px-5 py-4">
           <nav className="flex flex-col gap-0.5 pt-1">
             {desktopLinks.map((link) => {
               const isActive = location.pathname === link.path;
@@ -117,15 +117,22 @@ const Navbar = () => {
               );
             })}
           </nav>
-          <button
-            onClick={() => setMobileOpen((open) => !open)}
-            className="border border-border p-2.5 text-foreground hover:bg-foreground hover:text-background transition-all duration-200"
-            aria-label="Toggle menu"
-            aria-expanded={mobileOpen}
-            aria-controls="site-navigation-panel"
-          >
-            {mobileOpen ? <X size={18} /> : <Menu size={18} />}
-          </button>
+
+          <Link to="/" className="flex items-center justify-center self-center">
+            <img src={logo} alt="Requsyol" className="h-20 w-auto" />
+          </Link>
+
+          <div className="flex items-start justify-end">
+            <button
+              onClick={() => setMobileOpen((open) => !open)}
+              className="border border-border p-2.5 text-foreground hover:bg-foreground hover:text-background transition-all duration-200"
+              aria-label="Toggle menu"
+              aria-expanded={mobileOpen}
+              aria-controls="site-navigation-panel"
+            >
+              {mobileOpen ? <X size={18} /> : <Menu size={18} />}
+            </button>
+          </div>
         </div>
       </motion.header>
 
