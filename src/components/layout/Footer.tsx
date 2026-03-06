@@ -18,9 +18,6 @@ const Footer = () => {
         <div className="grid grid-cols-1 gap-12 border-b border-border pb-12 md:grid-cols-[2fr_1fr_1fr_1fr]">
           <div className="md:col-span-1">
             <img src={certifications} alt="Certifications — ALP Member, GDPR, GLAA, ICO, Croner" className="mb-6 w-full max-w-md rounded-sm object-contain" />
-            <p className="mb-6 text-xs font-sans leading-relaxed text-muted-foreground">
-              Connecting verified candidates with top employers across industries. Fast, reliable staffing solutions.
-            </p>
             <SocialLinks />
           </div>
 
