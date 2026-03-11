@@ -48,6 +48,7 @@ const DeferredBackgroundVideo = ({
           playsInline
           preload={priority ? "auto" : "none"}
           className={className}
+          style={{ filter: "none" }}
         />
       ) : null}
     </div>

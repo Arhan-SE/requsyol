@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import Layout from "@/components/layout/Layout";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import { Link } from "react-router-dom";
@@ -175,20 +176,30 @@ const Services = () => {
           <SectionDivider label="OUR CLIENTS" />
 
           <section className="py-10 md:py-14 overflow-hidden">
-            <div className="marquee-track">
-              {[...clientLogos, ...clientLogos, ...clientLogos].map((logo, i) => (
-                <div
-                  key={`${logo.alt}-${i}`}
-                  className="mx-6 flex h-20 w-36 flex-shrink-0 items-center justify-center md:mx-10 md:h-24 md:w-44"
-                >
-                  <img
-                    src={logo.src}
-                    alt={logo.alt}
-                    className="max-h-full max-w-full object-contain"
-                    loading="lazy"
-                  />
-                </div>
-              ))}
+            <div className="marquee-shell">
+              <div className="marquee-track marquee-track-logos">
+                {[...clientLogos, ...clientLogos, ...clientLogos].map((logo, i) => (
+                  <Fragment key={`${logo.alt}-${i}`}>
+                    <div className="marquee-bracket" aria-hidden>
+                      [
+                    </div>
+                    <div className="marquee-item">
+                      <img
+                        src={logo.src}
+                        alt={logo.alt}
+                        className="marquee-logo"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="marquee-bracket" aria-hidden>
+                      ]
+                    </div>
+                  </Fragment>
+                ))}
+              </div>
+
+              <div className="marquee-fade marquee-fade-left" aria-hidden />
+              <div className="marquee-fade marquee-fade-right" aria-hidden />
             </div>
           </section>
 

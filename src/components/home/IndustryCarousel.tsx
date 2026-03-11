@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Factory, Utensils, Truck, ShoppingBag, SprayCan, HeartPulse, Warehouse } from "lucide-react";
+import { Factory, Utensils, Truck, ShoppingBag, SprayCan, HeartPulse, Warehouse, Plane } from "lucide-react";
 import DeferredBackgroundVideo from "@/components/media/DeferredBackgroundVideo";
 import industriesBg from "@/assets/industries-bg.mp4";
 
@@ -12,6 +12,7 @@ const industries = [
   { icon: SprayCan, name: "Maintenance\n&\nFacility Solutions", image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=400&q=80" },
   { icon: HeartPulse, name: "Healthcare", image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=400&q=80" },
   { icon: Warehouse, name: "Warehousing", image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=400&q=80" },
+  { icon: Plane, name: "Aviation", image: "https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=600&q=80" },
 ];
 
 const doubled = [...industries, ...industries];
