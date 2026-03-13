@@ -72,7 +72,7 @@ const Careers = () => {
           className="absolute inset-0 w-full h-full object-cover"
           src={careersBg}
         />
-        <div className="absolute inset-0 bg-background/75" />
+        <div className="absolute inset-0 bg-background/0" />
         <div className="container mx-auto px-6 relative z-10">
           <ScrollReveal>
             <p className="text-[10px] tracking-[0.35em] uppercase text-muted-foreground font-sans mb-4">

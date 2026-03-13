@@ -5,19 +5,19 @@ import testimonialsBg from "@/assets/testimonials-bg.mp4";
 
 const testimonials = [
   {
-    quote: "Hello, I'm very pleased to work with Requsyol. Queency is amazing in her role! Flexible, quickly reacts to requests and always with a smile on her face. I'm impressed how fast the agency is sourcing candidates and arranging interviews. They are also dealing with all staff's enquiries which makes my life easier. Definitely recommend Requsyol!",
+    quote: "Requsyol react quickly, always answer questions with a smile and handle candidate sourcing, interviews, and staff queries so I can focus on operations. Their response time and professionalism make them easy to recommend.",
     name: "D B",
     role: "Pharmaceutical Operations Manager",
     company: "",
   },
   {
-    quote: "I have worked with Requsyol for several years. They are very efficient and provide an exceptional personalised service being able to understand the needs of our organization and what we are looking for in terms of candidates and future employees. I found a detailed understanding of the market from their part providing our managers with advice every step of the way throughout the recruitment process. Requsyol is a proactive and tireless contributor who would make a great addition to any team and to anyone.",
+    quote: "We have partnered with Requsyol for years because they truly understand our needs. They guide us through the market outlook, advise our hiring managers, and deliver well‑screened talent without missing a beat. Their hands‑on support ensures we never waste time.",
     name: "Casmiro Sequeira",
     role: "Managing Director",
     company: "CBK Freight Limited",
   },
   {
-    quote: "I am very happy to have Requsyol to cover the personnel needs in our business. Knowing that they are aligned with our expectations gives us the peace of mind and confidence that we have the right personnel to meet our objectives. The direct, effective and personalized treatment they provide us is their added value compared to other recruitment agencies. Finally, the way they manage their internal processes saves us management time, since we have accurate and real-time information.",
+    quote: "Requsyol keeps us confident that the right staff are in place by aligning with our objectives. Their personal touch and clear communication save us management time, while their internal reporting keeps everything transparent.",
     name: "Sebastian Portugal",
     role: "HR Officer Operations",
     company: "Katkin",
@@ -29,7 +29,7 @@ const testimonials = [
     company: "London",
   },
   {
-    quote: "We have worked with Requsyol from the beginning of our start up journey – they have helped us with interim resource and on recruitment for our operations. They have been an excellent partner – flexible, hard working and deliver good quality people recommendations filtered for a quick hire/start-up process. We definitely plan to have Requsyol as our partner for the next stage of our growth.",
+    quote: "From the earliest days of our start‑up journey, Requsyol have delivered interim and permanent hires with flexibility, energy, and straight‑talk. Their recommendations are always tailored for a quick, confident hire, so they remain our partner for the next growth phase.",
     name: "Andrew Dougal",
     role: "Co-Founder / Operations",
     company: "",
@@ -48,7 +48,7 @@ const SectionDivider = ({ label }: { label: string }) => (
   >
     <span className="text-muted-foreground text-sm font-light">+</span>
     <motion.div
-      className="flex-1 h-px bg-border mx-3"
+      className="flex-1 h-px bg-logo-cyan/60 mx-3"
       initial={{ scaleX: 0 }}
       whileInView={{ scaleX: 1 }}
       viewport={{ once: true }}
@@ -57,7 +57,7 @@ const SectionDivider = ({ label }: { label: string }) => (
     />
     <span className="text-[10px] tracking-[0.35em] uppercase text-muted-foreground font-sans px-2">{label}</span>
     <motion.div
-      className="flex-1 h-px bg-border mx-3"
+      className="flex-1 h-px bg-logo-cyan/60 mx-3"
       initial={{ scaleX: 0 }}
       whileInView={{ scaleX: 1 }}
       viewport={{ once: true }}
@@ -95,7 +95,7 @@ const TestimonialsSection = () => {
       <SectionDivider label="Client Stories" />
       <div className="relative overflow-hidden">
       <DeferredBackgroundVideo src={testimonialsBg} />
-      <div className="absolute inset-0 bg-background/80" />
+      <div className="absolute inset-0 bg-background/0" />
       <div className="relative z-10">
 
       <div className="container mx-auto px-6 pb-20">

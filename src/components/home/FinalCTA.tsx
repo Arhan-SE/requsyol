@@ -13,23 +13,23 @@ const SectionDivider = ({ label }: { label: string }) => (
     transition={{ duration: 0.8 }}
   >
     <span className="text-muted-foreground text-sm font-light">+</span>
-    <motion.div
-      className="flex-1 h-px bg-border mx-3"
-      initial={{ scaleX: 0 }}
-      whileInView={{ scaleX: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8 }}
-      style={{ transformOrigin: "center" }}
-    />
+  <motion.div
+    className="flex-1 h-px mx-3 divider-line"
+    initial={{ scaleX: 0 }}
+    whileInView={{ scaleX: 1 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.8 }}
+    style={{ transformOrigin: "center" }}
+  />
     <span className="text-[10px] tracking-[0.35em] uppercase text-muted-foreground font-sans px-2">{label}</span>
-    <motion.div
-      className="flex-1 h-px bg-border mx-3"
-      initial={{ scaleX: 0 }}
-      whileInView={{ scaleX: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8 }}
-      style={{ transformOrigin: "center" }}
-    />
+  <motion.div
+    className="flex-1 h-px mx-3 divider-line"
+    initial={{ scaleX: 0 }}
+    whileInView={{ scaleX: 1 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.8 }}
+    style={{ transformOrigin: "center" }}
+  />
     <span className="text-muted-foreground text-sm font-light">+</span>
   </motion.div>
 );
@@ -43,7 +43,7 @@ const FinalCTA = () => {
         src={finalCtaBg}
         className="w-full h-full object-cover scale-[1.35]"
       />
-      <div className="absolute inset-0 bg-background/80" />
+      <div className="absolute inset-0 bg-background/0" />
       <div className="relative z-10">
 
       <div className="container mx-auto px-6 py-20 text-center relative z-10">
@@ -51,7 +51,7 @@ const FinalCTA = () => {
         <ScrollReveal>
           <h2
             className="font-barlow font-black uppercase text-foreground leading-[0.88] mb-10"
-            style={{ fontSize: "clamp(3rem, 10vw, 9rem)" }}
+            style={{ fontSize: "clamp(2rem, 6vw, 5rem)" }}
           >
             Ready To
             <br />
@@ -89,7 +89,7 @@ const FinalCTA = () => {
       </div>
 
       {/* Bottom border */}
-      <div className="h-px bg-border" />
+      <div className="h-px divider-line-soft" />
       </div>
       </div>
     </section>

@@ -6,13 +6,15 @@ import SocialLinks from "@/components/layout/SocialLinks";
 const Footer = () => {
   return (
     <footer className="bg-background border-t border-border">
-      <div className="flex items-center px-6 py-6">
-        <span className="text-muted-foreground text-sm font-light">+</span>
-        <div className="flex-1 h-px bg-border mx-3" />
-        <span className="text-[10px] tracking-[0.35em] uppercase text-muted-foreground font-sans px-2">Requsyol</span>
-        <div className="flex-1 h-px bg-border mx-3" />
-        <span className="text-muted-foreground text-sm font-light">+</span>
-      </div>
+       <div className="flex items-center px-6 py-6">
+         <span className="text-[11px] font-black tracking-[0.12em] text-[hsl(var(--logo-orange))]">+</span>
+         <div className="flex-1 h-px mx-3 bg-gradient-to-r from-[#56A8D6] via-[hsl(var(--logo-orange))] to-[#2F7FB2]" />
+         <span className="text-[10px] tracking-[0.35em] uppercase font-sans px-2 text-transparent bg-clip-text bg-gradient-to-r from-[#56A8D6] to-[#2F7FB2]">
+           Requsyol
+         </span>
+         <div className="flex-1 h-px mx-3 bg-gradient-to-r from-[#56A8D6] via-[hsl(var(--logo-orange))] to-[#2F7FB2]" />
+         <span className="text-[11px] font-black tracking-[0.12em] text-[hsl(var(--logo-orange))]">+</span>
+       </div>
 
       <div className="container mx-auto px-6 py-12">
         <div className="grid grid-cols-1 gap-12 border-b border-border pb-12 md:grid-cols-[2fr_1fr_1fr_1fr]">
@@ -22,7 +24,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="mb-5 font-sans text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Quick Links</h4>
+              <h4 className="mb-5 font-sans text-[10px] uppercase tracking-[0.3em] text-logo-cyan">Quick Links</h4>
             <div className="flex flex-col gap-3">
               {[
                 { label: "Home", path: "/" },
@@ -44,7 +46,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="mb-5 font-sans text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Legal</h4>
+              <h4 className="mb-5 font-sans text-[10px] uppercase tracking-[0.3em] text-logo-cyan">Legal</h4>
             <div className="flex flex-col gap-3">
               {[
                 { label: "Privacy Policy", path: "/policies#privacy" },
@@ -63,7 +65,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="mb-5 font-sans text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Contact</h4>
+              <h4 className="mb-5 font-sans text-[10px] uppercase tracking-[0.3em] text-logo-cyan">Contact</h4>
             <div className="flex flex-col gap-4">
               <div className="flex items-start gap-3 text-xs font-sans text-muted-foreground">
                 <MapPin size={12} className="mt-0.5 flex-shrink-0" />
@@ -96,22 +98,24 @@ const Footer = () => {
         </div>
 
         <div className="flex flex-col items-center justify-between gap-4 pt-8 sm:flex-row">
-          <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-            © {new Date().getFullYear()} Requsyol. All Rights Reserved.
-          </p>
-          <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-            UK Staffing & Recruitment
-          </p>
+           <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--logo-orange))]">
+             © {new Date().getFullYear()} Requsyol. All Rights Reserved.
+           </p>
+           <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-transparent bg-clip-text bg-gradient-to-r from-[#56A8D6] to-[#2F7FB2]">
+             UK Staffing & Recruitment
+           </p>
         </div>
       </div>
 
       <div className="relative overflow-hidden pb-4">
-        <div
-          className="pointer-events-none select-none text-center font-barlow text-foreground/[0.06] leading-none uppercase font-black"
-          style={{ fontSize: "clamp(6rem, 20vw, 18rem)" }}
-        >
-          REQUSYOL
-        </div>
+         <div
+           className="pointer-events-none select-none text-center font-barlow leading-none uppercase font-black text-transparent bg-clip-text bg-gradient-to-r from-[#56A8D6] to-[#2F7FB2]"
+           style={{
+             fontSize: "clamp(6rem, 20vw, 18rem)",
+           }}
+         >
+           REQUSYOL
+         </div>
       </div>
     </footer>
   );

@@ -13,13 +13,15 @@ export default {
   		}
   	},
   	extend: {
-  		colors: {
-  			border: 'hsl(var(--border))',
-  			input: 'hsl(var(--input))',
-  			ring: 'hsl(var(--ring))',
-  			background: 'hsl(var(--background))',
-  			foreground: 'hsl(var(--foreground))',
-  			primary: {
+		colors: {
+			border: 'hsl(var(--border))',
+			input: 'hsl(var(--input))',
+			ring: 'hsl(var(--ring))',
+			background: 'hsl(var(--background))',
+			foreground: 'hsl(var(--foreground))',
+			"logo-cyan": 'hsl(var(--logo-cyan))',
+			"logo-cyan-dark": 'hsl(var(--logo-cyan-dark))',
+			primary: {
   				DEFAULT: 'hsl(var(--primary))',
   				foreground: 'hsl(var(--primary-foreground))'
   			},
@@ -116,6 +118,13 @@ export default {
             'Times New Roman',
             'Times',
             'serif'
+          ],
+          display: [
+            'Bebas Neue',
+            'Barlow Condensed',
+            'ui-sans-serif',
+            'system-ui',
+            'sans-serif'
           ],
           barlow: [
             'Barlow Condensed',

@@ -44,8 +44,8 @@ const HeroSection = () => {
             onCanPlayThrough={() => setVideoReady(true)}
           />
         </motion.div>
-        <div className="absolute inset-0 bg-background/70" />
-        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background to-transparent" />
+        <div className="absolute inset-0 bg-background/0" />
+        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background/0 to-transparent" />
       </div>
 
       {/* Loading indicator while video loads */}
@@ -71,8 +71,8 @@ const HeroSection = () => {
           {words.map((word, i) => (
             <motion.div
               key={word}
-              className="font-barlow font-black uppercase leading-[0.88] text-foreground"
-              style={{ fontSize: "clamp(3.5rem, 11vw, 10rem)" }}
+              className="font-display font-black uppercase leading-[0.88] text-foreground"
+              style={{ fontSize: "clamp(3rem, 10vw, 8rem)" }}
               initial={prefersReduced ? {} : { opacity: 0, y: 80 }}
               animate={prefersReduced ? {} : videoReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 80 }}
               transition={{ duration: 0.7, delay: contentDelay + i * 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -81,16 +81,6 @@ const HeroSection = () => {
             </motion.div>
           ))}
         </div>
-
-        {/* Subtitle */}
-        <motion.p
-          className="text-sm tracking-[0.22em] uppercase text-muted-foreground mb-14 font-sans"
-          initial={prefersReduced ? {} : { opacity: 0 }}
-          animate={prefersReduced ? {} : videoReady ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 0.8, delay: contentDelay + 0.45 }}
-        >
-          The shortest path between exceptional talent and the companies that need them.
-        </motion.p>
 
         {/* Bracketed CTA links */}
         <motion.div
@@ -120,9 +110,9 @@ const HeroSection = () => {
           animate={videoReady ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.6, delay: contentDelay + 0.7 }}
         >
-          <div className="flex-1 h-px bg-border/30 max-w-xs" />
-          <div className="w-1 h-1 rounded-full bg-border/50 mx-4" />
-          <div className="flex-1 h-px bg-border/30 max-w-xs" />
+          <div className="flex-1 h-px divider-line max-w-xs" />
+          <div className="w-1 h-1 rounded-full bg-logo-cyan-dark/60 mx-4" />
+          <div className="flex-1 h-px divider-line max-w-xs" />
         </motion.div>
       </div>
 

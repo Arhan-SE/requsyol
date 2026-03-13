@@ -1,70 +1,58 @@
 import Layout from "@/components/layout/Layout";
 import ScrollReveal from "@/components/animations/ScrollReveal";
-import { Card, CardContent } from "@/components/ui/card";
-import { Target, Users, Shield, Award } from "lucide-react";
 import aboutBg from "@/assets/about-bg.mp4";
+const mission = {
+  quote: "MAKE CREATIVE SIMPLE",
+  title: "Our mission",
+  body: `Requsyol’s mission is to provide top-tier services to businesses of all sizes. We believe that companies should have the opportunity to spend less time managing employee relations and worrying about HR compliance and regulations and spend more time on initiatives that improve their bottom line.
+Our ultimate goal is to deliver the best human resource services to all companies we work with while adhering to our high professionalism, quality, and standards. This entails keeping up with changing norms, rules, and job markets. Our careful balancing of internal HR standards and the retention of expert personnel contribute to the organization’s success.`,
+};
 
-const values = [
-  { icon: Target, title: "Mission-Driven", desc: "We exist to connect talent with opportunity — fast, fairly, and with full transparency." },
-  { icon: Users, title: "People First", desc: "Every candidate and client is treated with respect. We build lasting relationships, not just placements." },
-  { icon: Shield, title: "Compliance & Trust", desc: "Full GDPR compliance, rigorous document checks, and right-to-work verification on every placement." },
-  { icon: Award, title: "Quality Assured", desc: "Pre-screened, verified professionals matched to your exact requirements." },
+const stories = [
+  {
+    title: "Integrity",
+    quote: "Integrity",
+    copy: "Our standards are built on compliance, proactive HR oversight, and a commitment to doing right by people and partners.",
+  },
+  {
+    title: "Partnership",
+    quote: "Partnership",
+    copy: "We align with your culture, manage the people you need, and stay flexible so your business can move ahead without friction.",
+  },
+  {
+    title: "Innovation",
+    quote: "Innovation",
+    copy: "Staying future-ready means tracking regulation, leveraging talent data, and delivering rapid, confident hires when you need them.",
+  },
 ];
 
 const About = () => {
   return (
     <Layout>
-      <div className="relative pt-28 pb-16 overflow-hidden">
+      <section className="relative h-screen overflow-hidden">
         <video
           autoPlay
           loop
           muted
           playsInline
-          aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover"
           src={aboutBg}
         />
-        <div className="absolute inset-0 bg-background/80" />
-        <div className="container mx-auto px-4 relative z-10">
-          <ScrollReveal>
-            <div className="max-w-3xl mx-auto text-center mb-16">
-              <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-6">About Requsyol</h1>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                Requsyol is a staffing and recruiting agency dedicated to bridging the gap between 
-                skilled professionals and the businesses that need them. With deep industry expertise 
-                and a commitment to compliance, we deliver fast, reliable workforce solutions across 
-                the UK.
-              </p>
-            </div>
-          </ScrollReveal>
-
-          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-16">
-            {values.map((v, i) => (
-              <ScrollReveal key={v.title} delay={i * 0.1}>
-                <Card className="bg-card/50 h-full">
-                  <CardContent className="p-6">
-                    <v.icon size={28} className="text-primary mb-4" />
-                    <h3 className="text-lg font-semibold text-foreground mb-2">{v.title}</h3>
-                    <p className="text-sm text-muted-foreground">{v.desc}</p>
-                  </CardContent>
-                </Card>
-              </ScrollReveal>
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center text-white">
+          <p className="text-[11px] uppercase tracking-[0.4em] text-muted-foreground mb-4">About Requsyol</p>
+          <h1 className="text-4xl md:text-6xl font-black tracking-tight">{mission.quote}</h1>
+          <p className="mt-6 max-w-3xl leading-[1.8] text-lg text-white/80">
+            {mission.body.split("\n").map((paragraph, idx) => (
+              <span key={idx} className="block">
+                {paragraph}
+              </span>
             ))}
-          </div>
-
-          <ScrollReveal>
-            <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-2xl font-bold text-foreground mb-4">Why Requsyol?</h2>
-              <p className="text-muted-foreground leading-relaxed">
-                Unlike traditional agencies, we combine speed with quality. Our pre-screening process
-                means employers get verified candidates ready to hit the ground running, while our
-                candidates benefit from thousands of opportunities across manufacturing, logistics,
-                hospitality, construction, and more.
-              </p>
-            </div>
-          </ScrollReveal>
+          </p>
         </div>
-      </div>
+      </section>
+
+      {/* Section removed per request */}
     </Layout>
   );
 };

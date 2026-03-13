@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Factory, Utensils, Truck, ShoppingBag, SprayCan, HeartPulse, Warehouse, Plane } from "lucide-react";
 import DeferredBackgroundVideo from "@/components/media/DeferredBackgroundVideo";
 import industriesBg from "@/assets/industries-bg.mp4";
+import aviationImage from "@/assets/aviation.jpg";
 
 const industries = [
   { icon: Factory, name: "Manufacturing", image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80" },
@@ -12,7 +13,7 @@ const industries = [
   { icon: SprayCan, name: "Maintenance\n&\nFacility Solutions", image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=400&q=80" },
   { icon: HeartPulse, name: "Healthcare", image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=400&q=80" },
   { icon: Warehouse, name: "Warehousing", image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=400&q=80" },
-  { icon: Plane, name: "Aviation", image: "https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=600&q=80" },
+  { icon: Plane, name: "Aviation", image: aviationImage },
 ];
 
 const doubled = [...industries, ...industries];
@@ -27,7 +28,7 @@ const SectionDivider = ({ label }: { label: string }) => (
   >
     <span className="text-muted-foreground text-sm font-light">+</span>
     <motion.div
-      className="flex-1 h-px bg-border mx-3"
+      className="flex-1 h-px bg-logo-cyan/60 mx-3"
       initial={{ scaleX: 0 }}
       whileInView={{ scaleX: 1 }}
       viewport={{ once: true }}
@@ -36,7 +37,7 @@ const SectionDivider = ({ label }: { label: string }) => (
     />
     <span className="text-[10px] tracking-[0.35em] uppercase text-muted-foreground font-sans px-2">{label}</span>
     <motion.div
-      className="flex-1 h-px bg-border mx-3"
+      className="flex-1 h-px bg-logo-cyan/60 mx-3"
       initial={{ scaleX: 0 }}
       whileInView={{ scaleX: 1 }}
       viewport={{ once: true }}
@@ -55,7 +56,7 @@ const IndustryCarousel = () => {
       <SectionDivider label="Sectors We Cover" />
       <div className="relative overflow-hidden pt-8 md:pt-12">
       <DeferredBackgroundVideo src={industriesBg} />
-      <div className="absolute inset-0 bg-background/80" />
+      <div className="absolute inset-0 bg-background/0" />
       <div className="relative z-10">
 
       {/* Giant section headline */}
@@ -133,7 +134,7 @@ const IndustryCarousel = () => {
         </motion.div>
       </div>
 
-      <div className="h-px bg-border" />
+        <div className="h-px bg-logo-cyan/40" />
       </div>
       </div>
     </section>

@@ -72,14 +72,8 @@ const legalSections = [
 ];
 
 const SectionDivider = ({ label }: { label: string }) => (
-  <div className="flex items-center py-10">
-    <span className="text-muted-foreground text-sm font-light">+</span>
-    <div className="flex-1 h-px bg-border mx-3" />
-    <span className="text-[10px] tracking-[0.35em] uppercase text-muted-foreground font-sans px-2">
-      {label}
-    </span>
-    <div className="flex-1 h-px bg-border mx-3" />
-    <span className="text-muted-foreground text-sm font-light">+</span>
+  <div className="py-10 text-center text-[10px] uppercase tracking-[0.35em] text-muted-foreground font-sans">
+    + {label} +
   </div>
 );
 
@@ -117,43 +111,43 @@ const Policies = () => {
           </div>
         </ScrollReveal>
 
-        <div className="space-y-0">
-          {conductSections.map((section, index) => {
-            const Icon = section.icon;
-            return (
-              <ScrollReveal key={section.title} delay={index * 0.04}>
-                <article className="group border-b border-border py-10 md:py-14">
-                  <div className="grid gap-6 md:grid-cols-[auto_1fr] md:gap-10">
-                    {/* Number + Icon */}
-                    <div className="flex items-start gap-4">
-                      <span className="font-barlow font-black text-4xl text-muted-foreground/20 md:text-6xl">
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-                      <div className="mt-1 flex h-10 w-10 items-center justify-center rounded-full border border-border bg-muted/30 md:mt-2 md:h-12 md:w-12">
-                        <Icon size={18} className="text-foreground" />
+          <div className="space-y-0">
+            {conductSections.map((section, index) => {
+              const Icon = section.icon;
+              return (
+                <ScrollReveal key={section.title} delay={index * 0.04}>
+                  <article className="group py-10 md:py-14">
+                    <div className="grid gap-6 md:grid-cols-[auto_1fr] md:gap-10">
+                      {/* Number + Icon */}
+                      <div className="flex items-start gap-4">
+                        <span className="font-barlow font-black text-4xl text-muted-foreground/20 md:text-6xl">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+                        <div className="mt-1 flex h-10 w-10 items-center justify-center rounded-full border border-border bg-muted/30 md:mt-2 md:h-12 md:w-12">
+                          <Icon size={18} className="text-foreground" />
+                        </div>
+                      </div>
+
+                      {/* Content */}
+                      <div>
+                        <h3 className="font-barlow font-black uppercase text-2xl leading-[0.95] tracking-tight text-foreground sm:text-3xl md:text-4xl mb-5">
+                          {section.title}
+                        </h3>
+                        {section.body.split("\n\n").map((paragraph, pIdx) => (
+                          <p
+                            key={pIdx}
+                            className="text-sm leading-[1.8] text-muted-foreground md:text-[0.9375rem] mb-4 last:mb-0"
+                          >
+                            {paragraph}
+                          </p>
+                        ))}
                       </div>
                     </div>
-
-                    {/* Content */}
-                    <div>
-                      <h3 className="font-barlow font-black uppercase text-2xl leading-[0.95] tracking-tight text-foreground sm:text-3xl md:text-4xl mb-5">
-                        {section.title}
-                      </h3>
-                      {section.body.split("\n\n").map((paragraph, pIdx) => (
-                        <p
-                          key={pIdx}
-                          className="text-sm leading-[1.8] text-muted-foreground md:text-[0.9375rem] mb-4 last:mb-0"
-                        >
-                          {paragraph}
-                        </p>
-                      ))}
-                    </div>
-                  </div>
-                </article>
-              </ScrollReveal>
-            );
-          })}
-        </div>
+                  </article>
+                </ScrollReveal>
+              );
+            })}
+          </div>
 
         {/* ── Legal Policies ── */}
         <SectionDivider label="LEGAL" />
@@ -161,7 +155,7 @@ const Policies = () => {
         <div className="space-y-0">
           {legalSections.map((section, index) => (
             <ScrollReveal key={section.id} delay={index * 0.04}>
-              <section id={section.id} className="border-b border-border py-10 md:py-14">
+            <section id={section.id} className="py-10 md:py-14">
                 <div className="grid gap-6 md:grid-cols-[auto_1fr] md:gap-10">
                   <span className="font-barlow font-black text-4xl text-muted-foreground/20 md:text-6xl">
                     {String(index + 1).padStart(2, "0")}

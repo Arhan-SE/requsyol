@@ -4,6 +4,7 @@ import ValueProposition from "@/components/home/ValueProposition";
 import IndustryCarousel from "@/components/home/IndustryCarousel";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 import FinalCTA from "@/components/home/FinalCTA";
+import SectionDividerBand from "@/components/home/SectionDividerBand";
 
 const Index = () => {
   return (
@@ -12,6 +13,7 @@ const Index = () => {
         <HeroSection />
       </div>
       <div className="relative z-[2]">
+        <SectionDividerBand label="Why Choose Us" />
         <ValueProposition />
         <IndustryCarousel />
         <TestimonialsSection />

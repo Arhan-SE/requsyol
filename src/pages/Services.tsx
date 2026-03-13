@@ -63,7 +63,9 @@ const services = [
     description:
       "Our digital tools give you real-time oversight of your workforce.",
     bullets: [
-      { label: "Client Portal", text: "Secure access to all holiday data, time-off information, and digital records (including RTW and passport data)." },
+      { label: "Client Portal", text: "Secure access to holiday data, time-off information, and stored RTW/passport documents." },
+      { label: "Performance Signals", text: "Live staffing pulse reports highlight utilisation, shift gaps, and compliance flags." },
+      { label: "Predictive Capacity", text: "We forecast demand so you can pre-emptively adjust rosters and avoid shortages." },
     ],
   },
 ];
@@ -76,16 +78,6 @@ const clientLogos = [
   { src: dingDong, alt: "Ding Dong" },
 ];
 
-const SectionDivider = ({ label }: { label: string }) => (
-  <div className="flex items-center gap-4 py-6">
-    <div className="h-px flex-1 bg-border" />
-    <span className="text-[10px] uppercase tracking-[0.35em] text-muted-foreground">
-      + &nbsp;&nbsp; {label} &nbsp;&nbsp; +
-    </span>
-    <div className="h-px flex-1 bg-border" />
-  </div>
-);
-
 const Services = () => {
   return (
     <Layout>
@@ -93,7 +85,7 @@ const Services = () => {
         <div className="container mx-auto px-4">
           {/* Hero */}
           <ScrollReveal>
-            <section className="border-b border-border pb-12 md:pb-16">
+            <section className="pt-20 pb-12 md:pb-16">
               <h1 className="font-barlow font-black uppercase text-6xl leading-[0.9] tracking-tight text-foreground sm:text-8xl md:text-9xl lg:text-[10rem]">
                 OUR
                 <br />
@@ -107,55 +99,41 @@ const Services = () => {
             </section>
           </ScrollReveal>
 
-          {/* Section divider */}
-          <SectionDivider label="SERVICES" />
-
-          {/* Service blocks - sticky stacking cards */}
-          <section className="relative">
+          {/* Services overview */}
+          <section className="space-y-16">
             {services.map((service, index) => (
-              <div
-                key={service.number}
-                className="sticky"
-                style={{ top: `${112 + index * 40}px`, zIndex: index + 1 }}
-              >
-                <ScrollReveal delay={index * 0.05}>
-                  <article
-                    className="border-b border-border bg-background py-10 md:py-14 min-h-[60vh] md:min-h-[70vh] flex flex-col justify-between"
-                    style={{
-                      boxShadow: '0 -20px 40px -10px hsl(0 0% 0% / 0.5)',
-                    }}
-                  >
-                    {/* Number + Title row */}
-                    <div>
-                      <div className="grid gap-4 md:grid-cols-[auto_1fr] md:items-start md:gap-8">
-                        <span className="font-barlow font-black text-5xl text-muted-foreground/30 md:text-7xl lg:text-8xl">
-                          {service.number}
-                        </span>
-                        <h2 className="font-barlow font-black uppercase text-4xl leading-[0.95] tracking-tight text-foreground whitespace-pre-line sm:text-5xl md:text-6xl lg:text-7xl">
+              <ScrollReveal key={service.number} delay={index * 0.05}>
+                <article className="p-8 md:p-12 text-center">
+                  <div className="space-y-8">
+                    <div className="flex flex-col items-center gap-6">
+                      <span className="font-barlow text-4xl font-black text-muted-foreground/50 md:text-6xl">
+                        {service.number}
+                      </span>
+                      <div>
+                        <h2 className="font-barlow font-black uppercase text-2xl leading-[1.1] tracking-tight text-foreground sm:text-3xl md:text-4xl">
                           {service.title}
                         </h2>
+                        <p className="mt-4 max-w-3xl text-xs leading-relaxed text-muted-foreground md:text-sm mx-auto">
+                          {service.description}
+                        </p>
                       </div>
                     </div>
 
-                    {/* Description + bullets */}
-                    <div className="mt-8 grid gap-6 md:grid-cols-2">
-                      <div className="md:col-start-2">
-                        <p className="text-sm leading-relaxed text-muted-foreground md:text-base mb-6">
-                          {service.description}
-                        </p>
-                        <ul className="space-y-4">
-                          {service.bullets.map((bullet) => (
-                            <li key={bullet.label} className="text-sm leading-relaxed text-muted-foreground">
-                              <span className="font-semibold text-foreground">{bullet.label}:</span>{" "}
-                              {bullet.text}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                    <div className="grid gap-4 md:grid-cols-2">
+                      {service.bullets.map((bullet) => (
+                        <div key={bullet.label} className="text-left">
+                          <p className="text-[9px] uppercase tracking-[0.35em] text-muted-foreground">
+                            {bullet.label}
+                          </p>
+                          <p className="mt-2 text-[13px] leading-relaxed text-foreground/90">
+                            {bullet.text}
+                          </p>
+                        </div>
+                      ))}
                     </div>
-                  </article>
-                </ScrollReveal>
-              </div>
+                  </div>
+                </article>
+              </ScrollReveal>
             ))}
           </section>
 
@@ -173,7 +151,13 @@ const Services = () => {
           </ScrollReveal>
 
           {/* Our Clients */}
-          <SectionDivider label="OUR CLIENTS" />
+          <div className="flex items-center justify-center gap-4 py-6">
+            <div className="h-px flex-1 divider-line" />
+            <span className="text-[10px] uppercase tracking-[0.35em] text-muted-foreground">
+              + &nbsp;&nbsp; OUR CLIENTS &nbsp;&nbsp; +
+            </span>
+            <div className="h-px flex-1 divider-line" />
+          </div>
 
           <section className="py-10 md:py-14 overflow-hidden">
             <div className="marquee-shell">

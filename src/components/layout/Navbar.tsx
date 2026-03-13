@@ -31,7 +31,7 @@ const Navbar = () => {
                   key={link.path}
                   to={link.path}
                   className={`text-[11px] tracking-[0.15em] uppercase font-bold transition-colors whitespace-nowrap leading-snug ${
-                    isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                    isActive ? "text-muted-foreground" : "text-foreground"
                   }`}
                 >
                   {link.label}
@@ -63,7 +63,7 @@ const Navbar = () => {
                   key={link.path}
                   to={link.path}
                   className={`transition-colors whitespace-nowrap leading-snug ${
-                    isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                    isActive ? "text-muted-foreground" : "text-foreground"
                   }`}
                 >
                   {link.label}
