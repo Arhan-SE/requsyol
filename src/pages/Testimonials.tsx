@@ -1,0 +1,167 @@
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Layout from "@/components/layout/Layout";
+import ScrollReveal from "@/components/animations/ScrollReveal";
+
+const testimonials = [
+  {
+    quote: "Requsyol react quickly, always answer questions with a smile and handle candidate sourcing, interviews, and staff queries so I can focus on operations. Their response time and professionalism make them easy to recommend.",
+    name: "D B",
+    role: "Pharmaceutical Operations Manager",
+    company: "",
+  },
+  {
+    quote: "We have partnered with Requsyol for years because they truly understand our needs. They guide us through the market outlook, advise our hiring managers, and deliver well‑screened talent without missing a beat. Their hands‑on support ensures we never waste time.",
+    name: "Casmiro Sequeira",
+    role: "Managing Director",
+    company: "CBK Freight Limited",
+  },
+  {
+    quote: "Requsyol keeps us confident that the right staff are in place by aligning with our objectives. Their personal touch and clear communication save us management time, while their internal reporting keeps everything transparent.",
+    name: "Sebastian Portugal",
+    role: "HR Officer Operations",
+    company: "Katkin",
+  },
+  {
+    quote: "Requsyol have been superb, finding great people that fit the brief to join our growing team. Queency took the time and trouble to get to know us and our business needs, and the extra mile she puts in is really evident in the support we have received!",
+    name: "J H",
+    role: "",
+    company: "London",
+  },
+  {
+    quote: "From the earliest days of our start‑up journey, Requsyol have delivered interim and permanent hires with flexibility, energy, and straight‑talk. Their recommendations are always tailored for a quick, confident hire, so they remain our partner for the next growth phase.",
+    name: "Andrew Dougal",
+    role: "Co-Founder / Operations",
+    company: "",
+  },
+];
+
+const DURATION = 7000;
+
+const Testimonials = () => {
+  const [current, setCurrent] = useState(0);
+  const [tick, setTick] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((c) => (c + 1) % testimonials.length);
+      setTick(0);
+    }, DURATION);
+
+    const progress = setInterval(() => {
+      setTick((t) => t + 1);
+    }, 60);
+
+    return () => {
+      clearInterval(timer);
+      clearInterval(progress);
+    };
+  }, [current]);
+
+  const progressPercent = Math.min((tick / (DURATION / 60)) * 100, 100);
+
+  const prev = () => { setCurrent((c) => (c - 1 + testimonials.length) % testimonials.length); setTick(0); };
+  const next = () => { setCurrent((c) => (c + 1) % testimonials.length); setTick(0); };
+
+  return (
+    <Layout>
+      <div className="pt-24 sm:pt-28 pb-16">
+        <div className="container mx-auto px-4">
+          <ScrollReveal>
+            <section className="pt-20 pb-12 md:pb-16">
+              <h1 className="font-barlow font-light uppercase text-4xl leading-[1] tracking-wide text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
+                Client
+                <br />
+                Stories.
+              </h1>
+              <p className="mt-8 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
+                Real results from the businesses and people we've helped. Here's what our clients
+                have to say about working with Requsyol.
+              </p>
+            </section>
+          </ScrollReveal>
+
+          <section className="py-12 md:py-20">
+            <div className="max-w-4xl mx-auto text-center">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={current}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <div
+                    className="font-serif text-foreground/[0.08] leading-none select-none mb-4"
+                    style={{ fontSize: "clamp(6rem, 15vw, 12rem)" }}
+                    aria-hidden="true"
+                  >
+                    "
+                  </div>
+
+                  <blockquote
+                    className="font-serif italic text-foreground leading-snug mb-8 -mt-8"
+                    style={{ fontSize: "clamp(1.4rem, 3.5vw, 2.5rem)" }}
+                  >
+                    {testimonials[current].quote}
+                  </blockquote>
+
+                  <div className="flex flex-col items-center gap-1">
+                    <p className="text-xs tracking-[0.3em] uppercase text-foreground font-sans font-medium">
+                      {testimonials[current].name}
+                    </p>
+                    <p className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-sans">
+                      {[testimonials[current].role, testimonials[current].company].filter(Boolean).join(" — ")}
+                    </p>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+
+              <div className="flex gap-6 items-center justify-center mt-12">
+                <button
+                  onClick={prev}
+                  aria-label="Previous testimonial"
+                  className="text-muted-foreground hover:text-foreground transition-colors duration-200 text-lg tracking-widest"
+                >
+                  ←
+                </button>
+
+                <div className="flex gap-2 items-center">
+                  {testimonials.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => { setCurrent(i); setTick(0); }}
+                      aria-label={`Go to testimonial ${i + 1}`}
+                      className="relative h-[2px] bg-border/30 overflow-hidden transition-all duration-300"
+                      style={{ width: i === current ? 80 : 28 }}
+                    >
+                      {i === current && (
+                        <motion.div
+                          className="absolute inset-y-0 left-0 bg-foreground"
+                          style={{ width: `${progressPercent}%` }}
+                        />
+                      )}
+                      {i !== current && (
+                        <div className="absolute inset-0 bg-muted-foreground/20" />
+                      )}
+                    </button>
+                  ))}
+                </div>
+
+                <button
+                  onClick={next}
+                  aria-label="Next testimonial"
+                  className="text-muted-foreground hover:text-foreground transition-colors duration-200 text-lg tracking-widest"
+                >
+                  →
+                </button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </Layout>
+  );
+};
+
+export default Testimonials;

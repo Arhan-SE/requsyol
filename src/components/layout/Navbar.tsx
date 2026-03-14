@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
 import logo from "@/assets/Requsyol_png.png";
 
 const navLinks = [
@@ -12,7 +14,10 @@ const navLinks = [
 
 const Navbar = () => {
   const location = useLocation();
+  const [menuOpen, setMenuOpen] = useState(false);
   const headerStateClassName = "bg-transparent border-transparent shadow-none";
+
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <>
@@ -22,6 +27,7 @@ const Navbar = () => {
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
       >
+        {/* Desktop nav */}
         <div className="hidden lg:grid grid-cols-[1fr_auto_1fr] items-start gap-6 px-8 py-5">
           <nav className="flex flex-col gap-0.5 pt-1">
             {navLinks.map((link) => {
@@ -54,37 +60,59 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="grid lg:hidden grid-cols-[auto_auto_1fr] items-center gap-4 px-5 py-4">
-          <nav className="flex flex-col items-start gap-1 text-[11px] tracking-[0.12em] uppercase font-bold">
-            {navLinks.map((link) => {
-              const isActive = location.pathname === link.path;
-              return (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  className={`transition-colors whitespace-nowrap leading-snug ${
-                    isActive ? "text-muted-foreground" : "text-foreground"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              );
-            })}
-          </nav>
-
-          <Link to="/" className="flex items-center justify-center">
-            <img src={logo} alt="Requsyol" className="h-16 w-auto" />
+        {/* Mobile nav bar */}
+        <div className="lg:hidden flex items-center justify-between px-4 sm:px-6 py-3">
+          <Link to="/" className="flex items-center" onClick={closeMenu}>
+            <img src={logo} alt="Requsyol" className="h-28 sm:h-32 w-auto" />
           </Link>
 
-          <div className="flex items-center justify-end">
-            <Link
-              to="/contact"
-              className="border border-border px-3 py-2 text-[11px] tracking-[0.15em] uppercase font-bold text-foreground hover:bg-foreground hover:text-background transition-all duration-200 whitespace-nowrap"
-            >
-              Let's Talk
-            </Link>
-          </div>
+          <button
+            onClick={() => setMenuOpen((o) => !o)}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            className="flex items-center justify-center w-10 h-10 border border-border text-foreground hover:bg-foreground hover:text-background transition-all duration-200"
+          >
+            {menuOpen ? <X size={18} /> : <Menu size={18} />}
+          </button>
         </div>
+
+        {/* Mobile dropdown menu */}
+        <AnimatePresence>
+          {menuOpen && (
+            <motion.div
+              key="mobile-menu"
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="lg:hidden bg-background/95 backdrop-blur-sm border-t border-border"
+            >
+              <nav className="flex flex-col px-4 sm:px-6 py-4 gap-1">
+                {navLinks.map((link) => {
+                  const isActive = location.pathname === link.path;
+                  return (
+                    <Link
+                      key={link.path}
+                      to={link.path}
+                      onClick={closeMenu}
+                      className={`text-[11px] tracking-[0.18em] uppercase font-bold py-3 border-b border-border/40 last:border-0 transition-colors ${
+                        isActive ? "text-muted-foreground" : "text-foreground"
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  );
+                })}
+                <Link
+                  to="/contact"
+                  onClick={closeMenu}
+                  className="mt-4 border border-border px-5 py-3 text-[11px] tracking-[0.15em] uppercase font-bold text-foreground hover:bg-foreground hover:text-background transition-all duration-200 text-center"
+                >
+                  Let's Talk
+                </Link>
+              </nav>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.header>
     </>
   );

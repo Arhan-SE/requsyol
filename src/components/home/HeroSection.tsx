@@ -84,20 +84,20 @@ const HeroSection = () => {
 
         {/* Bracketed CTA links */}
         <motion.div
-          className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+          className="flex flex-col sm:flex-row gap-3 sm:gap-6 justify-center items-center"
           initial={prefersReduced ? {} : { opacity: 0, y: 20 }}
           animate={prefersReduced ? {} : videoReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.7, delay: contentDelay + 0.6 }}
         >
           <Link
             to="/candidates"
-            className="group inline-flex items-center gap-3 text-xs tracking-[0.28em] uppercase font-medium text-foreground border border-border px-8 py-4 hover:bg-foreground hover:text-background transition-all duration-300"
+            className="group inline-flex items-center gap-3 text-xs tracking-[0.28em] uppercase font-medium text-foreground border border-border px-6 sm:px-8 py-3 sm:py-4 hover:bg-foreground hover:text-background transition-all duration-300"
           >
             [ Find Work ]
           </Link>
           <Link
             to="/employers"
-            className="group inline-flex items-center gap-3 text-xs tracking-[0.28em] uppercase font-medium text-foreground border border-border px-8 py-4 hover:bg-foreground hover:text-background transition-all duration-300"
+            className="group inline-flex items-center gap-3 text-xs tracking-[0.28em] uppercase font-medium text-foreground border border-border px-6 sm:px-8 py-3 sm:py-4 hover:bg-foreground hover:text-background transition-all duration-300"
           >
             [ Hire Talent ]
           </Link>

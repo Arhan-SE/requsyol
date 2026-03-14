@@ -81,12 +81,12 @@ const clientLogos = [
 const Services = () => {
   return (
     <Layout>
-      <div className="pt-28 pb-16">
+      <div className="pt-20 sm:pt-28 pb-16">
         <div className="container mx-auto px-4">
           {/* Hero */}
           <ScrollReveal>
             <section className="pt-20 pb-12 md:pb-16">
-              <h1 className="font-barlow font-black uppercase text-6xl leading-[0.9] tracking-tight text-foreground sm:text-8xl md:text-9xl lg:text-[10rem]">
+              <h1 className="font-barlow font-black uppercase text-5xl leading-[0.9] tracking-tight text-foreground sm:text-7xl md:text-9xl lg:text-[10rem]">
                 OUR
                 <br />
                 SERVICES.
@@ -139,7 +139,7 @@ const Services = () => {
 
           {/* Requsyol Promise */}
           <ScrollReveal>
-            <section className="border-b border-border py-12 md:py-16">
+            <section className="py-12 md:py-16">
               <h2 className="font-barlow font-black uppercase text-3xl leading-tight tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-6xl">
                 THE REQUSYOL PROMISE
               </h2>
@@ -189,7 +189,7 @@ const Services = () => {
 
           {/* Final CTA */}
           <ScrollReveal>
-            <section className="flex flex-col gap-6 border-t border-border py-12 md:flex-row md:items-center md:justify-between md:py-16">
+            <section className="flex flex-col gap-6 py-12 md:flex-row md:items-center md:justify-between md:py-16">
               <div>
                 <p className="mb-3 text-xs uppercase tracking-[0.35em] text-muted-foreground">
                   Start a conversation

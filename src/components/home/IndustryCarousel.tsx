@@ -20,7 +20,7 @@ const doubled = [...industries, ...industries];
 
 const SectionDivider = ({ label }: { label: string }) => (
   <motion.div
-    className="flex items-center gap-0 w-full px-10 py-16"
+    className="flex items-center gap-0 w-full px-4 sm:px-10 py-8 sm:py-16"
     initial={{ opacity: 0 }}
     whileInView={{ opacity: 1 }}
     viewport={{ once: true }}
@@ -52,12 +52,12 @@ const IndustryCarousel = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section className="bg-background">
-      <SectionDivider label="Sectors We Cover" />
-      <div className="relative overflow-hidden pt-8 md:pt-12">
+    <section>
+      <div className="relative overflow-hidden">
       <DeferredBackgroundVideo src={industriesBg} />
       <div className="absolute inset-0 bg-background/0" />
       <div className="relative z-10">
+        <SectionDivider label="Sectors We Cover" />
 
       {/* Giant section headline */}
       <div className="container mx-auto px-6 pb-12 text-center">
@@ -94,7 +94,7 @@ const IndustryCarousel = () => {
             return (
               <motion.div
                 key={i}
-                className="relative flex-shrink-0 w-48 h-40 border-r border-border flex flex-col items-center justify-center gap-4 overflow-hidden cursor-default"
+                className="relative flex-shrink-0 w-36 sm:w-48 h-32 sm:h-40 border-r border-border flex flex-col items-center justify-center gap-3 sm:gap-4 overflow-hidden cursor-default"
                 onMouseEnter={() => setHoveredIndex(i)}
                 onMouseLeave={() => setHoveredIndex(null)}
                 animate={{ scale: isHovered ? 1.12 : 1, zIndex: isHovered ? 10 : 0 }}

@@ -81,7 +81,7 @@ const Policies = () => {
   return (
     <Layout>
       {/* Hero */}
-      <div className="pt-36 pb-16 md:pt-44 md:pb-24 px-6">
+      <div className="pt-28 sm:pt-36 pb-12 md:pt-44 md:pb-24 px-6">
         <div className="container mx-auto max-w-5xl">
           <ScrollReveal>
             <h1 className="font-barlow font-black uppercase text-[clamp(3rem,10vw,7rem)] leading-[0.88] tracking-tight text-foreground">

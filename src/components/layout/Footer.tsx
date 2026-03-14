@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Building2 } from "lucide-react";
-import certifications from "@/assets/footer-certifications.jpg";
 import SocialLinks from "@/components/layout/SocialLinks";
 
 const Footer = () => {
   return (
-    <footer className="bg-background border-t border-border">
+    <footer className="bg-background">
        <div className="flex items-center px-6 py-6">
          <span className="text-[11px] font-black tracking-[0.12em] text-[hsl(var(--logo-orange))]">+</span>
          <div className="flex-1 h-px mx-3 bg-gradient-to-r from-[#56A8D6] via-[hsl(var(--logo-orange))] to-[#2F7FB2]" />
@@ -17,9 +16,8 @@ const Footer = () => {
        </div>
 
       <div className="container mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 gap-12 border-b border-border pb-12 md:grid-cols-[2fr_1fr_1fr_1fr]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-10 border-b border-border pb-12 md:grid-cols-[2fr_1fr_1fr_1fr] md:gap-12">
           <div className="md:col-span-1">
-            <img src={certifications} alt="Certifications — ALP Member, GDPR, GLAA, ICO, Croner" className="mb-6 w-full max-w-md rounded-sm object-contain" />
             <SocialLinks />
           </div>
 

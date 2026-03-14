@@ -5,16 +5,23 @@ import IndustryCarousel from "@/components/home/IndustryCarousel";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 import FinalCTA from "@/components/home/FinalCTA";
 import SectionDividerBand from "@/components/home/SectionDividerBand";
+import useSmoothScroll from "@/hooks/useSmoothScroll";
 
 const Index = () => {
+  useSmoothScroll();
+
   return (
     <Layout>
       <div className="sticky top-0 z-[1]">
         <HeroSection />
       </div>
       <div className="relative z-[2]">
-        <SectionDividerBand label="Why Choose Us" />
-        <ValueProposition />
+        <div className="min-h-screen flex flex-col">
+          <SectionDividerBand label="Why Choose Us" />
+          <div className="flex-1 flex flex-col">
+            <ValueProposition />
+          </div>
+        </div>
         <IndustryCarousel />
         <TestimonialsSection />
         <FinalCTA />

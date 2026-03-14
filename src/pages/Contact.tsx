@@ -67,13 +67,13 @@ const Contact = () => {
 
   return (
     <Layout>
-      <div className="pt-40 pb-16">
+      <div className="pt-28 md:pt-40 pb-16">
         <div className="container mx-auto px-4">
           <ScrollReveal>
             <h1 className="text-3xl md:text-4xl font-bold text-foreground text-center mb-12">Contact Us</h1>
           </ScrollReveal>
 
-          <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
             <ScrollReveal direction="left">
               <div className="space-y-8">
                 <div>

@@ -6,7 +6,7 @@ import finalCtaBg from "@/assets/final-cta-bg.mp4";
 
 const SectionDivider = ({ label }: { label: string }) => (
   <motion.div
-    className="flex items-center gap-0 w-full px-10 py-16"
+    className="flex items-center gap-0 w-full px-4 sm:px-10 py-8 sm:py-16"
     initial={{ opacity: 0 }}
     whileInView={{ opacity: 1 }}
     viewport={{ once: true }}
@@ -65,22 +65,22 @@ const FinalCTA = () => {
           </p>
 
           {/* Bracketed CTA links side by side */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 justify-center items-center">
             <Link
               to="/candidates"
-              className="border border-border px-10 py-4 text-xs tracking-[0.28em] uppercase font-medium text-foreground hover:bg-foreground hover:text-background transition-all duration-300 font-sans"
+              className="border border-border px-6 sm:px-10 py-3 sm:py-4 text-xs tracking-[0.28em] uppercase font-medium text-foreground hover:bg-foreground hover:text-background transition-all duration-300 font-sans"
             >
               [ Find Work ]
             </Link>
             <Link
               to="/employers"
-              className="border border-border px-10 py-4 text-xs tracking-[0.28em] uppercase font-medium text-foreground hover:bg-foreground hover:text-background transition-all duration-300 font-sans"
+              className="border border-border px-6 sm:px-10 py-3 sm:py-4 text-xs tracking-[0.28em] uppercase font-medium text-foreground hover:bg-foreground hover:text-background transition-all duration-300 font-sans"
             >
               [ Hire Talent ]
             </Link>
             <Link
               to="/contact"
-              className="border border-border px-10 py-4 text-xs tracking-[0.28em] uppercase font-medium text-foreground hover:bg-foreground hover:text-background transition-all duration-300 font-sans"
+              className="border border-border px-6 sm:px-10 py-3 sm:py-4 text-xs tracking-[0.28em] uppercase font-medium text-foreground hover:bg-foreground hover:text-background transition-all duration-300 font-sans"
             >
               [ Contact Us ]
             </Link>

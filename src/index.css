@@ -170,6 +170,15 @@ All colors MUST be HSL.
   }
 }
 
+/* Hide scrollbar utility */
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
 /* Marquee animation for client logos */
 @keyframes marquee {
   0% {
@@ -223,6 +232,23 @@ All colors MUST be HSL.
   max-height: 70%;
   max-width: 80%;
   object-fit: contain;
+}
+
+.marquee-shell--certs .marquee-item {
+  height: 120px;
+  width: 200px;
+}
+
+@media (min-width: 768px) {
+  .marquee-shell--certs .marquee-item {
+    height: 140px;
+    width: 240px;
+  }
+}
+
+.marquee-shell--certs .marquee-logo {
+  max-height: 85%;
+  max-width: 90%;
 }
 
 .marquee-bracket {

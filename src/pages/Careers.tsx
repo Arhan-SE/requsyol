@@ -62,7 +62,7 @@ const Careers = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative pt-32 pb-16 border-b border-border overflow-hidden">
+      <section className="relative pt-24 sm:pt-32 pb-16 border-b border-border overflow-hidden">
         <video
           autoPlay
           loop
