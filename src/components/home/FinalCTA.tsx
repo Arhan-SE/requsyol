@@ -60,10 +60,6 @@ const FinalCTA = () => {
         </ScrollReveal>
 
         <ScrollReveal delay={0.2}>
-          <p className="text-sm text-muted-foreground tracking-wide max-w-md mx-auto mb-14 font-sans leading-relaxed">
-            Whether you're looking for your next opportunity or need reliable talent, Requsyol is here to help.
-          </p>
-
           {/* Bracketed CTA links side by side */}
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 justify-center items-center">
             <Link

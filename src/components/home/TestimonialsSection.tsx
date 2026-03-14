@@ -55,17 +55,6 @@ const TestimonialsSection = () => {
                 Trusted by the<br />businesses we serve.
               </motion.h2>
 
-              <motion.p
-                className="mt-6 text-muted-foreground text-sm leading-relaxed max-w-xl mx-auto font-light"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: 0.15 }}
-              >
-                From logistics firms to healthcare providers, our clients trust Requsyol to deliver
-                the right people, every time.
-              </motion.p>
-
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
