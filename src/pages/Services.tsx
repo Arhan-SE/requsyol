@@ -160,14 +160,14 @@ const Services = () => {
           </div>
 
           <section className="py-10 md:py-14 overflow-hidden">
-            <div className="marquee-shell">
+            <div className="marquee-shell marquee-shell--clients">
               <div className="marquee-track marquee-track-logos">
                 {[...clientLogos, ...clientLogos, ...clientLogos].map((logo, i) => (
                   <Fragment key={`${logo.alt}-${i}`}>
                     <div className="marquee-bracket" aria-hidden>
                       [
                     </div>
-                    <div className="marquee-item">
+                    <div className="marquee-item" style={{ background: "white", borderRadius: "6px", padding: "12px" }}>
                       <img
                         src={logo.src}
                         alt={logo.alt}

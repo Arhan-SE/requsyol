@@ -251,6 +251,23 @@ All colors MUST be HSL.
   max-width: 90%;
 }
 
+.marquee-shell--clients .marquee-item {
+  height: 110px;
+  width: 180px;
+}
+
+@media (min-width: 768px) {
+  .marquee-shell--clients .marquee-item {
+    height: 130px;
+    width: 210px;
+  }
+}
+
+.marquee-shell--clients .marquee-logo {
+  max-height: 85%;
+  max-width: 90%;
+}
+
 .marquee-bracket {
   color: hsl(var(--border));
   font-size: 28px;

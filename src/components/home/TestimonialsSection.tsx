@@ -64,7 +64,7 @@ const TestimonialsSection = () => {
               >
                 <Link
                   to="/testimonials"
-                  className="text-[11px] tracking-[0.3em] uppercase text-foreground font-sans hover:text-muted-foreground transition-colors duration-200"
+                  className="inline-block border-2 border-white px-8 py-3 text-[11px] tracking-[0.3em] uppercase text-white font-sans hover:bg-white hover:text-black transition-all duration-300"
                 >
                   [ Read Client Stories ]
                 </Link>

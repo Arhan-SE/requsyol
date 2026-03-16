@@ -9,9 +9,9 @@ import croner from "@/assets/certificates/croner-logo.png";
 import gla from "@/assets/certificates/gla logo.png";
 
 const certLogos = [
-  { src: gdpr, alt: "GDPR", whiteBg: false, large: false },
-  { src: sedex, alt: "Sedex", whiteBg: false, large: false },
-  { src: alp, alt: "ALP Member", whiteBg: false, large: false },
+  { src: gdpr, alt: "GDPR", whiteBg: true, large: false },
+  { src: sedex, alt: "Sedex", whiteBg: true, large: false },
+  { src: alp, alt: "ALP Member", whiteBg: true, large: false },
   { src: croner, alt: "Croner", whiteBg: true, large: false },
   { src: gla, alt: "GLA", whiteBg: true, large: true },
 ];

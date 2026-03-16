@@ -64,19 +64,19 @@ const FinalCTA = () => {
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 justify-center items-center">
             <Link
               to="/candidates"
-              className="border border-border px-6 sm:px-10 py-3 sm:py-4 text-xs tracking-[0.28em] uppercase font-medium text-foreground hover:bg-foreground hover:text-background transition-all duration-300 font-sans"
+              className="border-2 border-white px-6 sm:px-10 py-3 sm:py-4 text-xs tracking-[0.28em] uppercase font-medium text-white hover:bg-white hover:text-black transition-all duration-300 font-sans"
             >
               [ Find Work ]
             </Link>
             <Link
               to="/employers"
-              className="border border-border px-6 sm:px-10 py-3 sm:py-4 text-xs tracking-[0.28em] uppercase font-medium text-foreground hover:bg-foreground hover:text-background transition-all duration-300 font-sans"
+              className="border-2 border-white px-6 sm:px-10 py-3 sm:py-4 text-xs tracking-[0.28em] uppercase font-medium text-white hover:bg-white hover:text-black transition-all duration-300 font-sans"
             >
               [ Hire Talent ]
             </Link>
             <Link
               to="/contact"
-              className="border border-border px-6 sm:px-10 py-3 sm:py-4 text-xs tracking-[0.28em] uppercase font-medium text-foreground hover:bg-foreground hover:text-background transition-all duration-300 font-sans"
+              className="border-2 border-white px-6 sm:px-10 py-3 sm:py-4 text-xs tracking-[0.28em] uppercase font-medium text-white hover:bg-white hover:text-black transition-all duration-300 font-sans"
             >
               [ Contact Us ]
             </Link>

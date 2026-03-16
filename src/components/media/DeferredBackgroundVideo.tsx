@@ -51,6 +51,7 @@ const DeferredBackgroundVideo = ({
           style={{ filter: "none" }}
         />
       ) : null}
+      <div className="absolute inset-0 bg-black/50" />
     </div>
   );
 };

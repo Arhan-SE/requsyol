@@ -107,7 +107,7 @@ const Footer = () => {
 
       <div className="relative overflow-hidden pb-4">
          <div
-           className="pointer-events-none select-none text-center font-barlow leading-none uppercase font-black text-transparent bg-clip-text bg-gradient-to-r from-[#56A8D6] to-[#2F7FB2]"
+           className="pointer-events-none select-none text-center font-barlow leading-none uppercase font-black text-transparent bg-clip-text bg-gradient-to-b from-[#8CC8E8] via-[#5BAAD6] to-[#2F7FB2]"
            style={{
              fontSize: "clamp(6rem, 20vw, 18rem)",
            }}

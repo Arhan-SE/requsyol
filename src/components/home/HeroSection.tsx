@@ -44,7 +44,7 @@ const HeroSection = () => {
             onCanPlayThrough={() => setVideoReady(true)}
           />
         </motion.div>
-        <div className="absolute inset-0 bg-background/0" />
+        <div className="absolute inset-0 bg-black/50" />
         <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background/0 to-transparent" />
       </div>
 
@@ -91,13 +91,13 @@ const HeroSection = () => {
         >
           <Link
             to="/candidates"
-            className="group inline-flex items-center gap-3 text-xs tracking-[0.28em] uppercase font-medium text-foreground border border-border px-6 sm:px-8 py-3 sm:py-4 hover:bg-foreground hover:text-background transition-all duration-300"
+            className="group inline-flex items-center gap-3 text-xs tracking-[0.28em] uppercase font-medium text-white border-2 border-white px-6 sm:px-8 py-3 sm:py-4 hover:bg-white hover:text-black transition-all duration-300"
           >
             [ Find Work ]
           </Link>
           <Link
             to="/employers"
-            className="group inline-flex items-center gap-3 text-xs tracking-[0.28em] uppercase font-medium text-foreground border border-border px-6 sm:px-8 py-3 sm:py-4 hover:bg-foreground hover:text-background transition-all duration-300"
+            className="group inline-flex items-center gap-3 text-xs tracking-[0.28em] uppercase font-medium text-white border-2 border-white px-6 sm:px-8 py-3 sm:py-4 hover:bg-white hover:text-black transition-all duration-300"
           >
             [ Hire Talent ]
           </Link>
