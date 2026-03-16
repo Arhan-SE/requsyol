@@ -28,7 +28,7 @@ const SectionDivider = ({ label }: { label: string }) => (
   >
     <span className="text-muted-foreground text-sm font-light">+</span>
     <motion.div
-      className="flex-1 h-px bg-logo-cyan/60 mx-3"
+      className="flex-1 h-px mx-3 divider-line"
       initial={{ scaleX: 0 }}
       whileInView={{ scaleX: 1 }}
       viewport={{ once: true }}
@@ -37,7 +37,7 @@ const SectionDivider = ({ label }: { label: string }) => (
     />
     <span className="text-[10px] tracking-[0.35em] uppercase text-muted-foreground font-sans px-2">{label}</span>
     <motion.div
-      className="flex-1 h-px bg-logo-cyan/60 mx-3"
+      className="flex-1 h-px mx-3 divider-line"
       initial={{ scaleX: 0 }}
       whileInView={{ scaleX: 1 }}
       viewport={{ once: true }}
@@ -52,15 +52,16 @@ const IndustryCarousel = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section>
-      <div className="relative overflow-hidden">
-      <DeferredBackgroundVideo src={industriesBg} />
+    <section className="min-h-screen flex flex-col">
+      <div className="relative overflow-hidden flex-1 flex flex-col">
+      <DeferredBackgroundVideo src={industriesBg} className="w-full h-full object-cover" />
       <div className="absolute inset-0 bg-background/0" />
-      <div className="relative z-10">
+      <div className="relative z-10 flex flex-col flex-1">
         <SectionDivider label="Sectors We Cover" />
 
+        <div className="flex-1 flex flex-col justify-center pb-32">
       {/* Giant section headline */}
-      <div className="container mx-auto px-6 pb-12 text-center">
+      <div className="container mx-auto px-6 pb-8 text-center">
         <motion.h2
           className="font-barlow font-black uppercase text-foreground leading-[0.9]"
           style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}
@@ -133,8 +134,9 @@ const IndustryCarousel = () => {
           })}
         </motion.div>
       </div>
+        </div>
 
-        <div className="h-px bg-logo-cyan/40" />
+        <div className="h-px divider-line" />
       </div>
       </div>
     </section>

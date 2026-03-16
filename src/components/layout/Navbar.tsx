@@ -47,7 +47,7 @@ const Navbar = () => {
           </nav>
 
           <Link to="/" className="flex items-center justify-center self-center">
-            <img src={logo} alt="Requsyol" className="h-32 w-auto" />
+            <img src={logo} alt="Requsyol" className="h-40 w-auto" />
           </Link>
 
           <div className="flex items-start justify-end gap-2 pt-1">
@@ -63,7 +63,7 @@ const Navbar = () => {
         {/* Mobile nav bar */}
         <div className="lg:hidden flex items-center justify-between px-4 sm:px-6 py-3">
           <Link to="/" className="flex items-center" onClick={closeMenu}>
-            <img src={logo} alt="Requsyol" className="h-28 sm:h-32 w-auto" />
+            <img src={logo} alt="Requsyol" className="h-32 sm:h-40 w-auto" />
           </Link>
 
           <button

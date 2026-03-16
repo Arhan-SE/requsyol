@@ -13,7 +13,7 @@ const SectionDivider = ({ label }: { label: string }) => (
   >
     <span className="text-muted-foreground text-sm font-light">+</span>
     <motion.div
-      className="flex-1 h-px bg-logo-cyan/60 mx-3"
+      className="flex-1 h-px mx-3 divider-line"
       initial={{ scaleX: 0 }}
       whileInView={{ scaleX: 1 }}
       viewport={{ once: true }}
@@ -22,7 +22,7 @@ const SectionDivider = ({ label }: { label: string }) => (
     />
     <span className="text-[10px] tracking-[0.35em] uppercase text-muted-foreground font-sans px-2">{label}</span>
     <motion.div
-      className="flex-1 h-px bg-logo-cyan/60 mx-3"
+      className="flex-1 h-px mx-3 divider-line"
       initial={{ scaleX: 0 }}
       whileInView={{ scaleX: 1 }}
       viewport={{ once: true }}

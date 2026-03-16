@@ -19,7 +19,7 @@ const SectionDividerBand = ({ label = "Work" }: SectionDividerBandProps) => {
       <div className="container mx-auto px-6 py-10 flex items-center justify-center gap-6">
         <div className="flex-1 max-w-4xl flex items-center gap-6">
           <motion.div
-            className="h-px w-full bg-logo-cyan/70 origin-center"
+            className="h-px w-full origin-center divider-line"
             variants={lineVariants}
             initial="initial"
             whileInView="animate"
@@ -29,7 +29,7 @@ const SectionDividerBand = ({ label = "Work" }: SectionDividerBandProps) => {
             {label}
           </span>
           <motion.div
-            className="h-px w-full bg-logo-cyan/70 origin-center"
+            className="h-px w-full origin-center divider-line"
             variants={lineVariants}
             initial="initial"
             whileInView="animate"

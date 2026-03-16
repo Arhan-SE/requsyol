@@ -4,7 +4,6 @@ import ValueProposition from "@/components/home/ValueProposition";
 import IndustryCarousel from "@/components/home/IndustryCarousel";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 import FinalCTA from "@/components/home/FinalCTA";
-import SectionDividerBand from "@/components/home/SectionDividerBand";
 import useSmoothScroll from "@/hooks/useSmoothScroll";
 
 const Index = () => {
@@ -17,10 +16,7 @@ const Index = () => {
       </div>
       <div className="relative z-[2]">
         <div className="min-h-screen flex flex-col">
-          <SectionDividerBand label="Why Choose Us" />
-          <div className="flex-1 flex flex-col">
-            <ValueProposition />
-          </div>
+          <ValueProposition />
         </div>
         <IndustryCarousel />
         <TestimonialsSection />

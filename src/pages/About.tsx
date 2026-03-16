@@ -37,8 +37,11 @@ const About = () => {
         />
         <div className="absolute inset-0 bg-black/60" />
         <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-4 py-24 text-center text-white">
-          <p className="text-[11px] uppercase tracking-[0.4em] text-muted-foreground mb-4">About Requsyol</p>
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-black tracking-tight">{mission.quote}</h1>
+          <div className="flex items-center gap-4 w-full max-w-3xl mb-4">
+            <div className="h-px flex-1 divider-line" />
+            <p className="text-[11px] uppercase tracking-[0.4em] text-muted-foreground whitespace-nowrap">About Requsyol</p>
+            <div className="h-px flex-1 divider-line" />
+          </div>
           <p className="mt-6 max-w-3xl leading-[1.8] text-sm sm:text-base md:text-lg text-white/80">
             {mission.body.split("\n").map((paragraph, idx) => (
               <span key={idx} className="block">
@@ -63,7 +66,7 @@ const About = () => {
                   <div className="marquee-bracket" aria-hidden>[</div>
                   <div
                     className="marquee-item"
-                    style={logo.whiteBg ? { background: "white", borderRadius: "6px", padding: "12px" } : {}}
+                    style={{}}
                   >
                     <img
                       src={logo.src}

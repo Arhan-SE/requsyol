@@ -72,8 +72,12 @@ const legalSections = [
 ];
 
 const SectionDivider = ({ label }: { label: string }) => (
-  <div className="py-10 text-center text-[10px] uppercase tracking-[0.35em] text-muted-foreground font-sans">
-    + {label} +
+  <div className="relative -mx-6 flex items-center justify-center gap-4 py-10 px-6">
+    <div className="h-px flex-1 divider-line" />
+    <span className="text-[10px] uppercase tracking-[0.35em] text-muted-foreground font-sans whitespace-nowrap">
+      + {label} +
+    </span>
+    <div className="h-px flex-1 divider-line" />
   </div>
 );
 
@@ -98,18 +102,8 @@ const Policies = () => {
 
       <div className="container mx-auto max-w-5xl px-6">
         {/* ── Business Code of Conduct ── */}
-        <SectionDivider label="CODE OF CONDUCT & ETHICS" />
+        <SectionDivider label="BUSINESS CODE OF CONDUCT & ETHICS" />
 
-        <ScrollReveal>
-          <div className="mb-10">
-            <div className="flex items-center gap-3 mb-4">
-              <Scale size={20} className="text-primary" />
-              <h2 className="font-barlow font-black uppercase text-3xl tracking-tight text-foreground sm:text-4xl md:text-5xl">
-                Business Code of Conduct & Ethics
-              </h2>
-            </div>
-          </div>
-        </ScrollReveal>
 
           <div className="space-y-0">
             {conductSections.map((section, index) => {

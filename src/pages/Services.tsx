@@ -167,7 +167,7 @@ const Services = () => {
                     <div className="marquee-bracket" aria-hidden>
                       [
                     </div>
-                    <div className="marquee-item" style={{ background: "white", borderRadius: "6px", padding: "12px" }}>
+                    <div className="marquee-item">
                       <img
                         src={logo.src}
                         alt={logo.alt}
