@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/Requsyol_png.png";
 
@@ -16,6 +16,9 @@ const Navbar = () => {
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
   const headerStateClassName = "bg-transparent border-transparent shadow-none";
+
+  const { scrollY } = useScroll();
+  const logoOpacity = useTransform(scrollY, [0, 150], [1, 0]);
 
   const closeMenu = () => setMenuOpen(false);
 
@@ -46,9 +49,11 @@ const Navbar = () => {
             })}
           </nav>
 
-          <Link to="/" className="flex items-center justify-center self-center">
-            <img src={logo} alt="Requsyol" className="h-40 w-auto" />
-          </Link>
+          <motion.div style={{ opacity: logoOpacity }} className="flex items-center justify-center self-center">
+            <Link to="/">
+              <img src={logo} alt="Requsyol" className="h-40 w-auto" />
+            </Link>
+          </motion.div>
 
           <div className="flex items-start justify-end gap-2 pt-1">
             <Link
@@ -62,9 +67,11 @@ const Navbar = () => {
 
         {/* Mobile nav bar */}
         <div className="lg:hidden flex items-center justify-between px-4 sm:px-6 py-3">
-          <Link to="/" className="flex items-center" onClick={closeMenu}>
-            <img src={logo} alt="Requsyol" className="h-32 sm:h-40 w-auto" />
-          </Link>
+          <motion.div style={{ opacity: logoOpacity }}>
+            <Link to="/" onClick={closeMenu}>
+              <img src={logo} alt="Requsyol" className="h-32 sm:h-40 w-auto" />
+            </Link>
+          </motion.div>
 
           <button
             onClick={() => setMenuOpen((o) => !o)}
