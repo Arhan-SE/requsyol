@@ -35,7 +35,15 @@ const SectionDivider = ({ label }: { label: string }) => (
       transition={{ duration: 0.8, ease: "easeOut" }}
       style={{ transformOrigin: "center" }}
     />
-    <span className="text-[10px] tracking-[0.35em] uppercase text-muted-foreground font-sans px-2">{label}</span>
+    <span
+      className="text-[13px] tracking-[0.35em] uppercase font-sans px-2"
+      style={{
+        background: "linear-gradient(90deg, #56A8D6 0%, hsl(var(--logo-orange)) 55%, #2F7FB2 100%)",
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+        backgroundClip: "text",
+      }}
+    >{label}</span>
     <motion.div
       className="flex-1 h-px mx-3 divider-line"
       initial={{ scaleX: 0 }}

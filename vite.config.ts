@@ -11,7 +11,7 @@ export default defineConfig(({ mode }) => ({
     hmr: {
       overlay: false,
     },
-    allowedHosts: ["af89-103-89-232-58.ngrok-free.app"],
+    allowedHosts: ["9a6d-103-89-232-58.ngrok-free.app"],
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {
