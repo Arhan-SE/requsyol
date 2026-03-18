@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Factory, Utensils, Truck, ShoppingBag, SprayCan, HeartPulse, Warehouse, Plane } from "lucide-react";
+import { Factory, Utensils, Truck, ShoppingBag, SprayCan, Warehouse, Plane } from "lucide-react";
 import DeferredBackgroundVideo from "@/components/media/DeferredBackgroundVideo";
 import industriesBg from "@/assets/industries-bg.mp4";
 import aviationImage from "@/assets/aviation.jpg";
@@ -11,7 +11,6 @@ const industries = [
   { icon: Truck, name: "Logistics", image: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=400&q=80" },
   { icon: ShoppingBag, name: "Retail", image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=400&q=80" },
   { icon: SprayCan, name: "Maintenance\n&\nFacility Solutions", image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=400&q=80" },
-  { icon: HeartPulse, name: "Healthcare", image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=400&q=80" },
   { icon: Warehouse, name: "Warehousing", image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=400&q=80" },
   { icon: Plane, name: "Aviation", image: aviationImage },
 ];

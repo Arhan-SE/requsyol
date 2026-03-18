@@ -65,7 +65,7 @@ const HeroSection = () => {
         )}
       </AnimatePresence>
 
-      <div className="container mx-auto px-6 relative z-10 text-center pt-32 pb-24">
+      <div className="container mx-auto px-6 relative z-10 text-center pt-32 lg:pt-40 xl:pt-52 pb-24">
         {/* Massive stacked headline */}
         <div className="overflow-hidden mb-10">
           {words.map((word, i) => (

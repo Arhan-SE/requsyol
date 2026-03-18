@@ -60,7 +60,7 @@ const ValueProposition = () => {
           <div className="container mx-auto px-6 py-16 sm:py-20 lg:py-24 space-y-12 flex-1 flex flex-col justify-center">
             <div className="space-y-3 text-center max-w-3xl mx-auto">
               <h2 className="font-display font-black uppercase text-foreground leading-tight" style={{ fontSize: "clamp(2.8rem, 7vw, 4.6rem)" }}>
-                Trusted hiring. Premium delivery.
+                Trusted hiring.<br />Premium delivery.
               </h2>
             </div>
           </div>

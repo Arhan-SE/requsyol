@@ -35,6 +35,7 @@ const Footer = () => {
                 <Link
                   key={link.path}
                   to={link.path}
+                  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                   className="text-xs font-sans uppercase tracking-wide text-muted-foreground transition-colors hover:text-foreground"
                 >
                   {link.label}
@@ -86,9 +87,9 @@ const Footer = () => {
               <div className="flex items-start gap-3 text-xs font-sans text-muted-foreground">
                 <Phone size={12} className="mt-0.5 flex-shrink-0" />
                 <div className="flex flex-col gap-1">
-                  <p><span className="text-muted-foreground/60">Business:</span> +44-7432402246</p>
-                  <p><span className="text-muted-foreground/60">Registration:</span> +44-7487583669</p>
-                  <p><span className="text-muted-foreground/60">Finance:</span> +44-7466989804</p>
+                  <p className="whitespace-nowrap"><span className="text-muted-foreground/60">Business:</span> +44-7432402246</p>
+                  <p className="whitespace-nowrap"><span className="text-muted-foreground/60">Registration:</span> +44-7487583669</p>
+                  <p className="whitespace-nowrap"><span className="text-muted-foreground/60">Finance:</span> +44-7466989804</p>
                 </div>
               </div>
             </div>

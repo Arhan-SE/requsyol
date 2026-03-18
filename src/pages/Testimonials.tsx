@@ -1,7 +1,21 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Layout from "@/components/layout/Layout";
 import ScrollReveal from "@/components/animations/ScrollReveal";
+
+import clubCultured from "@/assets/clients/club-cultured.png";
+import cbkFreight from "@/assets/clients/cbk-freight.png";
+import urbanLegend from "@/assets/clients/urban-legend.png";
+import bakeryClient from "@/assets/clients/bakery-client.png";
+import dingDong from "@/assets/clients/ding-dong.png";
+
+const clientLogos = [
+  { src: clubCultured, alt: "Club Cultured" },
+  { src: cbkFreight, alt: "CBK Freight" },
+  { src: urbanLegend, alt: "Urban Legend" },
+  { src: bakeryClient, alt: "Bakery Client" },
+  { src: dingDong, alt: "Ding Dong" },
+];
 
 const testimonials = [
   {
@@ -156,6 +170,33 @@ const Testimonials = () => {
                   →
                 </button>
               </div>
+            </div>
+          </section>
+
+          {/* Our Clients */}
+          <div className="flex items-center justify-center gap-4 py-6">
+            <div className="h-px flex-1 divider-line" />
+            <span className="text-[10px] uppercase tracking-[0.35em] text-muted-foreground">
+              + &nbsp;&nbsp; OUR CLIENTS &nbsp;&nbsp; +
+            </span>
+            <div className="h-px flex-1 divider-line" />
+          </div>
+
+          <section className="py-10 md:py-14 overflow-hidden">
+            <div className="marquee-shell marquee-shell--clients">
+              <div className="marquee-track marquee-track-logos">
+                {[...clientLogos, ...clientLogos, ...clientLogos].map((logo, i) => (
+                  <Fragment key={`${logo.alt}-${i}`}>
+                    <div className="marquee-bracket" aria-hidden>[</div>
+                    <div className="marquee-item">
+                      <img src={logo.src} alt={logo.alt} className="marquee-logo" loading="lazy" />
+                    </div>
+                    <div className="marquee-bracket" aria-hidden>]</div>
+                  </Fragment>
+                ))}
+              </div>
+              <div className="marquee-fade marquee-fade-left" aria-hidden />
+              <div className="marquee-fade marquee-fade-right" aria-hidden />
             </div>
           </section>
         </div>

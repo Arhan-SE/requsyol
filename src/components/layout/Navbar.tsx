@@ -51,7 +51,7 @@ const Navbar = () => {
 
           <motion.div style={{ opacity: logoOpacity }} className="flex items-center justify-center self-center">
             <Link to="/">
-              <img src={logo} alt="Requsyol" className="h-40 w-auto" />
+              <img src={logo} alt="Requsyol" className="h-28 lg:h-32 xl:h-40 w-auto" />
             </Link>
           </motion.div>
 
@@ -69,7 +69,7 @@ const Navbar = () => {
         <div className="lg:hidden flex items-center justify-between px-4 sm:px-6 py-3">
           <motion.div style={{ opacity: logoOpacity }}>
             <Link to="/" onClick={closeMenu}>
-              <img src={logo} alt="Requsyol" className="h-32 sm:h-40 w-auto" />
+              <img src={logo} alt="Requsyol" className="h-20 sm:h-24 w-auto" />
             </Link>
           </motion.div>
 
