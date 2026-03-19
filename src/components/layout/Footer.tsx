@@ -51,6 +51,9 @@ const Footer = () => {
                 { label: "Privacy Policy", path: "/policies#privacy" },
                 { label: "Terms & Conditions", path: "/policies#terms" },
                 { label: "GDPR", path: "/policies#gdpr" },
+                { label: "Untitled", path: "/legal/untitled-1" },
+                { label: "Untitled", path: "/legal/untitled-2" },
+                { label: "Untitled", path: "/legal/untitled-3" },
               ].map((link) => (
                 <Link
                   key={link.path}

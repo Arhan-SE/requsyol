@@ -23,6 +23,9 @@ import Policies from "./pages/Policies";
 import Careers from "./pages/Careers";
 import Testimonials from "./pages/Testimonials";
 import NotFound from "./pages/NotFound";
+import Untitled1 from "./pages/Untitled1";
+import Untitled2 from "./pages/Untitled2";
+import Untitled3 from "./pages/Untitled3";
 
 const queryClient = new QueryClient();
 
@@ -44,6 +47,9 @@ const App = () => (
           <Route path="/policies" element={<Policies />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/testimonials" element={<Testimonials />} />
+          <Route path="/legal/untitled-1" element={<Untitled1 />} />
+          <Route path="/legal/untitled-2" element={<Untitled2 />} />
+          <Route path="/legal/untitled-3" element={<Untitled3 />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

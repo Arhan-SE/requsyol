@@ -69,6 +69,21 @@ const legalSections = [
       { label: "Changes", text: "We reserve the right to modify these terms at any time. Continued use of our services constitutes acceptance of updated terms." },
     ],
   },
+  {
+    id: "legal-4",
+    title: "—",
+    paragraphs: ["Content coming soon."],
+  },
+  {
+    id: "legal-5",
+    title: "—",
+    paragraphs: ["Content coming soon."],
+  },
+  {
+    id: "legal-6",
+    title: "—",
+    paragraphs: ["Content coming soon."],
+  },
 ];
 
 const SectionDivider = ({ label }: { label: string }) => (
@@ -88,7 +103,10 @@ const Policies = () => {
       <div className="pt-28 sm:pt-36 pb-12 md:pt-44 md:pb-24 px-6">
         <div className="container mx-auto max-w-5xl">
           <ScrollReveal>
-            <h1 className="font-barlow font-black uppercase text-[clamp(3rem,10vw,7rem)] leading-[0.88] tracking-tight text-foreground">
+            <h1
+              className="font-barlow font-black uppercase text-[clamp(3rem,10vw,7rem)] leading-[0.88] tracking-tight text-transparent bg-clip-text"
+              style={{ backgroundImage: "linear-gradient(135deg, #56A8D6 0%, hsl(var(--logo-orange)) 50%, #2F7FB2 100%)" }}
+            >
               Policies.
             </h1>
           </ScrollReveal>

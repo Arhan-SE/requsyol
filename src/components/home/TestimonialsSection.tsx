@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import DeferredBackgroundVideo from "@/components/media/DeferredBackgroundVideo";
-import testimonialsBg from "@/assets/testimonials-bg.mp4";
+import testimonialsBg from "@/assets/why-choose-bg.jpg"; // swap for final image when ready
 
 const SectionDivider = ({ label }: { label: string }) => (
   <motion.div
@@ -45,8 +44,13 @@ const TestimonialsSection = () => {
   return (
     <section className="min-h-screen flex flex-col">
       <div className="relative overflow-hidden flex-1 flex flex-col">
-        <DeferredBackgroundVideo src={testimonialsBg} className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-background/20" />
+        <img
+          src={testimonialsBg}
+          alt=""
+          aria-hidden
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black/65" />
         <div className="relative z-10 flex flex-col flex-1">
           <SectionDivider label="Client Stories" />
 

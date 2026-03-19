@@ -70,7 +70,12 @@ const Contact = () => {
       <div className="pt-28 md:pt-40 pb-16">
         <div className="container mx-auto px-4">
           <ScrollReveal>
-            <h1 className="text-3xl md:text-4xl font-bold text-foreground text-center mb-12">Contact Us</h1>
+            <h1
+              className="font-barlow font-black uppercase text-[clamp(3rem,10vw,7rem)] leading-[0.88] tracking-tight text-transparent bg-clip-text mb-12"
+              style={{ backgroundImage: "linear-gradient(135deg, #56A8D6 0%, hsl(var(--logo-orange)) 50%, #2F7FB2 100%)" }}
+            >
+              Contact Us.
+            </h1>
           </ScrollReveal>
 
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
