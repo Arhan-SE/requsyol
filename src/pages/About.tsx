@@ -1,6 +1,5 @@
 import { Fragment, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageSquare, Compass, ClipboardList, Search, Award } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import aboutBg from "@/assets/about-bg.mp4";
@@ -29,15 +28,13 @@ const processSteps = [
   {
     color: "#3BBFB6",
     title: "Meet & Discuss",
-    icon: MessageSquare,
     description:
-      "We sit down to understand your business, your team's culture, and the exact skill sets you need to thrive, making sure every placement is the right fit from the very start.",
+      "We sit down to understand your business, your team's culture, and the exact skill sets you need to thrive. Every placement starts with listening.",
     stat: { value: "5,000+", label: "Candidates Placed" },
   },
   {
     color: "#5B9FE0",
     title: "Strategize",
-    icon: Compass,
     description:
       "Together we build a tailored recruitment strategy that aligns with your timelines, budget, and growth targets. No guesswork, just a clear path forward.",
     stat: { value: "4 hrs", label: "Average Time to Place" },
@@ -45,7 +42,6 @@ const processSteps = [
   {
     color: "#9B59B6",
     title: "Agree on Staff & Timeline",
-    icon: ClipboardList,
     description:
       "We define the exact roles, headcount, and delivery schedule, setting clear expectations from day one so there are no surprises on either side.",
     stat: { value: "15+", label: "Industries Served" },
@@ -53,17 +49,15 @@ const processSteps = [
   {
     color: "#E91E8C",
     title: "Source Candidates",
-    icon: Search,
     description:
-      "Our extensive network and rigorous vetting covers face-to-face interviews, RTW checks, DBS, and sector-specific credentials, ensuring only the most qualified candidates are shortlisted.",
+      "Our extensive network and rigorous vetting covers face-to-face interviews, RTW checks, DBS, and sector-specific credentials. Only the most qualified candidates are shortlisted.",
     stat: { value: "98%", label: "Client Satisfaction" },
   },
   {
     color: "#F4863A",
     title: "Interview & Hire",
-    icon: Award,
     description:
-      "We deliver a curated shortlist of top-matched candidates, fully vetted and ready for your team to interview and hire with complete confidence.",
+      "We deliver a curated shortlist of fully vetted, top-matched candidates ready for your team to interview and hire with complete confidence.",
     stat: { value: "100%", label: "Dedicated Support" },
   },
 ];

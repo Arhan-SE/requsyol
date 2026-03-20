@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import testimonialsBg from "@/assets/why-choose-bg.jpg"; // swap for final image when ready
+import testimonialsBg from "@/assets/testimonials-bg.mp4";
 
 const SectionDivider = ({ label }: { label: string }) => (
   <motion.div
@@ -44,9 +44,12 @@ const TestimonialsSection = () => {
   return (
     <section className="min-h-screen flex flex-col">
       <div className="relative overflow-hidden flex-1 flex flex-col">
-        <img
+        <video
           src={testimonialsBg}
-          alt=""
+          autoPlay
+          muted
+          loop
+          playsInline
           aria-hidden
           className="absolute inset-0 w-full h-full object-cover"
         />
