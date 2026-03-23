@@ -96,7 +96,6 @@ const OurProcessSection = () => {
             <div className="absolute left-[23px] top-10 bottom-10 w-px bg-border hidden md:block" />
 
             {processSteps.map((step, i) => {
-              const StepIcon = step.icon;
               const isActive = i === activeIdx;
               return (
                 <button
@@ -104,7 +103,7 @@ const OurProcessSection = () => {
                   onClick={() => setActiveIdx(i)}
                   className="relative w-full flex items-start gap-4 py-5 text-left group"
                 >
-                  {/* Circle */}
+                  {/* Circle with step number */}
                   <div
                     className="relative z-10 flex-shrink-0 w-12 h-12 rounded-full border-2 flex items-center justify-center transition-all duration-300"
                     style={{
@@ -112,7 +111,12 @@ const OurProcessSection = () => {
                       borderColor: isActive ? step.color : "rgba(255,255,255,0.12)",
                     }}
                   >
-                    <StepIcon size={16} style={{ color: isActive ? "#fff" : "rgba(255,255,255,0.3)" }} />
+                    <span
+                      className="font-barlow font-black text-sm leading-none"
+                      style={{ color: isActive ? "#fff" : "rgba(255,255,255,0.3)" }}
+                    >
+                      {i + 1}
+                    </span>
                   </div>
 
                   {/* Label + title */}
