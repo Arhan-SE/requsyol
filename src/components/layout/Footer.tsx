@@ -18,6 +18,7 @@ const Footer = () => {
       <div className="container mx-auto px-6 py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-10 border-b border-border pb-12 md:grid-cols-[2fr_1fr_1fr_1fr] md:gap-12">
           <div className="md:col-span-1">
+            <h4 className="mb-5 font-sans text-[10px] uppercase tracking-[0.3em] text-logo-cyan">Follow Us On</h4>
             <SocialLinks />
           </div>
 
@@ -98,13 +99,18 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-between gap-4 pt-8 sm:flex-row">
-           <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--logo-orange))]">
-             © {new Date().getFullYear()} Requsyol. All Rights Reserved.
-           </p>
-           <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-transparent bg-clip-text bg-gradient-to-r from-[#56A8D6] to-[#2F7FB2]">
-             UK Staffing & Recruitment
-           </p>
+        <div className="pt-8 pb-8 border-t border-border flex flex-col gap-3">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--logo-orange))]">
+              © {new Date().getFullYear()} Requsyol. All Rights Reserved.
+            </p>
+            <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-transparent bg-clip-text bg-gradient-to-r from-[#56A8D6] to-[#2F7FB2]">
+              UK Staffing & Recruitment
+            </p>
+          </div>
+          <p className="font-sans text-[10px] uppercase tracking-[0.15em] text-muted-foreground">
+            Response Recruitment Ltd are licensed members of the Gangmasters and Labour Abuse Authority. License No REQU0004
+          </p>
         </div>
       </div>
 

@@ -8,14 +8,11 @@ import gdpr from "@/assets/certificates/GDPR logo.jpeg";
 import sedex from "@/assets/certificates/sedex logo.png";
 import alp from "@/assets/certificates/ALP Logo.png";
 import croner from "@/assets/certificates/croner-logo.png";
-import gla from "@/assets/certificates/gla logo.png";
-
 const certLogos = [
   { src: gdpr, alt: "GDPR", whiteBg: true, large: false },
   { src: sedex, alt: "Sedex", whiteBg: true, large: false },
   { src: alp, alt: "ALP Member", whiteBg: true, large: false },
   { src: croner, alt: "Croner", whiteBg: true, large: false },
-  { src: gla, alt: "GLA", whiteBg: true, large: true },
 ];
 
 const mission = {
@@ -35,7 +32,7 @@ const processSteps = [
   },
   {
     color: "#5B9FE0",
-    title: "Strategize",
+    title: "Strategise",
     description:
       "Together we build a tailored recruitment strategy that aligns with your timelines, budget, and growth targets. No guesswork, just a clear path forward.",
     stat: { value: "4 hrs", label: "Average Time to Place" },

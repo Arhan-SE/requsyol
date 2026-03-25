@@ -38,51 +38,102 @@ const conductSections = [
 
 const legalSections = [
   {
-    id: "privacy",
+    id: "terms-general",
+    title: "General Terms",
+    paragraphs: [
+      { label: "1.1", text: "This website is the property of Requsyol Ltd. The company registration number is 12121221 (Registered in England and Wales) and the registered office is Suite 23, 2nd Floor, Unimix House, Abbey Road, Park Royal, London, NW10 7TR. Business Enquiries: +44 7432 402246." },
+      { label: "1.2", text: "Requsyol Ltd does not make any representation whatsoever about any job vacancy advertisement that is accessed on this website, because it involves collating the information provided by third parties. Accordingly, it is up to the user to satisfy themselves as to the suitability of any agency, employer or job found directly, or indirectly, through this website." },
+      { label: "1.3", text: "The user agrees that the Internet or Requsyol Ltd's systems, services and equipment can from time to time be inoperative in full or in part. This can be caused by, but not limited to, mechanical breakdown, hardware or software problems or upgrades, repairs and maintenance, connectivity problems and any other events that are beyond the control of Requsyol Ltd. You agree that Requsyol Ltd is not held liable for any failure or inability to provide any of its services via the website at such times." },
+    ],
+  },
+  {
+    id: "terms-cv",
+    title: "CV Service",
+    paragraphs: [
+      "By sending your CV to Requsyol Ltd you are entering into an agreement that:",
+      { label: "2.1", text: "Requsyol Ltd can change, adapt, modify or reword any CV in such a way and to such extent that Requsyol Ltd considers the information on your CV in order to produce a CV in the style and format that Requsyol Ltd uses to distribute these CVs." },
+      { label: "2.2", text: "Requsyol Ltd will not be liable to you in any situation in consequence of or arising out of any change, adaptation, modification or rewording referred to in clause 2.1." },
+    ],
+  },
+  {
+    id: "terms-amendments",
+    title: "Amendments to the Terms and Conditions of Use",
+    paragraphs: [
+      { label: "3.1", text: "Requsyol Ltd reserves the right to make changes to, or withdraw any of the services contained or described on this website at any time without notice or consent." },
+      { label: "3.2", text: "The services that Requsyol Ltd offers to candidates and employers are entirely gratuitous and as such Requsyol Ltd shall not be obliged to continue or maintain any such services offered. Without prejudice to your statutory rights, Requsyol Ltd does reserve the right to suspend or indeed cancel the provision of any of its services to any particular candidate or any employer for any reason." },
+      { label: "3.3", text: "Requsyol Ltd reserves the right to change these Terms and Conditions of Use at any time by changing them on the website. It is the users' responsibility to make sure that they are aware of any changes in said conditions." },
+    ],
+  },
+  {
+    id: "terms-submitted",
+    title: "Submitted Information",
+    paragraphs: [
+      { label: "4.1", text: "It is the responsibility of the applicant who is submitting any information, including but not limited to CVs, work resumes, written enquiries and emails, to make sure that any such information is legally acceptable. This includes compliance with laws regarding copyright, libel, obscenity, fraud, misrepresentation, and discrimination." },
+      { label: "4.2", text: "Requsyol Ltd is committed to ensuring that any information sent by you is kept confidential. However, Requsyol Ltd does not accept any responsibility or expressed liability for the use of any CV that has been forwarded to any related party or company that the applicant has contacted using information obtained on this website." },
+    ],
+  },
+  {
+    id: "terms-associated",
+    title: "Associated Companies",
+    paragraphs: [
+      { label: "5.1", text: "By submitting information to Requsyol Ltd, you agree to allow this information to be shared with any associated company for the purpose of providing the applicant with the same recruitment services detailed in these terms." },
+      { label: "5.2", text: "All information used by any associate company will be bound by these terms and used in accordance with Requsyol Ltd's Privacy Policy." },
+    ],
+  },
+  {
+    id: "terms-copyright",
+    title: "Copyright and Intellectual Property Rights",
+    paragraphs: [
+      { label: "6.1", text: "Copyright law protects the entire contents of this website. Requsyol Ltd and its branding are protected; you are not allowed to modify, publish, exploit or sell any of the content of this site without express permission." },
+    ],
+  },
+  {
+    id: "terms-privacy",
     title: "Privacy Policy",
     paragraphs: [
-      "Requsyol is committed to protecting your privacy. This policy explains how we collect, use, and safeguard your personal information.",
-      { label: "Information We Collect", text: "We collect personal details provided through our registration and inquiry forms, including name, contact information, address, and uploaded documents." },
-      { label: "How We Use It", text: "Your information is used solely for recruitment and staffing purposes — matching candidates with employers and facilitating placements." },
-      { label: "Data Security", text: "All data is stored securely and access is restricted to authorized personnel. We employ industry-standard encryption and security measures." },
-      { label: "Your Rights", text: "You have the right to access, correct, or delete your personal data at any time. Contact us at info@requsyol.co.uk to exercise these rights." },
+      "Requsyol Ltd is committed to ensuring the privacy and security of personal information. All information submitted is used in accordance with our Privacy Policy. By submitting information, you agree to both these Terms and Conditions and the Privacy Policy.",
     ],
   },
   {
-    id: "gdpr",
-    title: "GDPR Compliance",
+    id: "terms-internet",
+    title: "The Internet and Liability",
     paragraphs: [
-      "Requsyol complies with the General Data Protection Regulation (GDPR) and the UK Data Protection Act 2018.",
-      { label: "Lawful Basis", text: "We process your data based on legitimate interest (recruitment services) and your explicit consent when provided." },
-      { label: "Data Retention", text: "We retain candidate and employer data for the duration necessary to provide our services, typically up to 2 years after last activity unless you request earlier deletion." },
-      { label: "Data Portability", text: "You may request a copy of your personal data in a machine-readable format at any time." },
+      { label: "8.1", text: "The Internet is not a fully secure environment. Requsyol Ltd will not be liable for any loss resulting from the transmission of computer viruses or unauthorized interception of data before it reaches our site." },
+      { label: "8.2", text: "Requsyol Ltd does not accept liability for any loss (including loss of business or profits) arising from the use of this website, whether in contract, tort, or otherwise." },
     ],
   },
   {
-    id: "terms",
-    title: "Terms & Conditions",
+    id: "terms-general-liability",
+    title: "General Liability",
     paragraphs: [
-      "By using the Requsyol website and services, you agree to these terms and conditions.",
-      { label: "Services", text: "Requsyol provides staffing and recruitment services connecting candidates with employers. We act as an intermediary and do not guarantee placement or employment." },
-      { label: "Accuracy", text: "You are responsible for providing accurate and up-to-date information. Providing false information may result in removal from our services." },
-      { label: "Liability", text: "Requsyol is not liable for any employment outcomes, workplace conditions, or disputes between candidates and employers beyond our direct control." },
-      { label: "Changes", text: "We reserve the right to modify these terms at any time. Continued use of our services constitutes acceptance of updated terms." },
+      { label: "9.1", text: "By accessing this site, you are governed by English Law, and any dispute will be subject to this jurisdiction." },
+      { label: "9.2", text: "Requsyol Ltd does not accept any liability for any loss arising from accepting a vacancy or applicant introduced through this website." },
     ],
   },
   {
-    id: "legal-4",
-    title: "—",
-    paragraphs: ["Content coming soon."],
+    id: "equal-opportunities",
+    title: "Equal Opportunities & Diversity Policy",
+    paragraphs: [
+      "Requsyol Ltd is dedicated to fostering a culture of equality and fairness, both in our recruitment services and as an employer. We believe that providing equal opportunities to all members of the community and our workforce is a fundamental value that drives our success.",
+      "Our employees are the core of our commitment to quality. We strive to ensure that those who manage and deliver our services reflect the diverse backgrounds, needs, and perspectives of the individuals and businesses we serve.",
+      "To maintain a high standard of service, Requsyol Ltd is committed to:",
+      { label: "Empowering our People", text: "Developing a motivated and inclusive workforce through transparent communication and continuous professional development for staff at all levels." },
+      { label: "Shared Responsibility", text: "Ensuring every individual within Requsyol Ltd takes ownership of promoting and applying our equal opportunities standards in their specific service areas." },
+      { label: "Merit-Based Selection", text: "Implementing fair recruitment processes that identify and hire individuals based solely on their skills, experience, and ability to perform." },
+      { label: "Community Representation", text: "Building a team that reflects the rich diversity of the local communities in which we operate." },
+      "We maintain a zero-tolerance approach toward discrimination, harassment, or victimisation. All our quality standards and operational policies are designed to uphold this commitment to a fair and inclusive workplace.",
+    ],
   },
   {
-    id: "legal-5",
-    title: "—",
-    paragraphs: ["Content coming soon."],
-  },
-  {
-    id: "legal-6",
-    title: "—",
-    paragraphs: ["Content coming soon."],
+    id: "ethical-trading",
+    title: "Ethical Trading Policy Statement",
+    paragraphs: [
+      { label: "Commitment to Ethical Standards", text: "Requsyol Ltd is committed to a policy of ethical trading in both the provision of our services and as an employer. We uphold the principle of freedom of opportunity in employment and recognise the right of all sections of our workforce to collective bargaining and the right to join or form a trade union." },
+      { label: "Health, Safety, and the Working Environment", text: "In an organisation where our clients manage the daily environment of our workforce, we are dedicated to ensuring a safe and healthy working environment for all our Temporary Workers. We collaborate closely with our clients to prevent accidents and dangerous occurrences, ensuring all workers are fully aware of potential hazards through comprehensive risk assessments and relevant training." },
+      "All workers are provided with written terms and conditions of employment. Requsyol Ltd ensures that workers are paid at or above the National Minimum Wage, working hours consistently comply with the Working Time Regulations, detailed payslips are provided for every pay period outlining hourly rates, hours worked, and statutory deductions, and no unauthorised deductions are made from pay without the express written consent of the worker.",
+      { label: "Equality and Professional Conduct", text: "We enforce a strict policy against discrimination in recruitment, wages, compensation, access to training, promotion, or termination. Decisions are never based on race, colour, ethnic or national origin, religion, age, gender, disability, marital status, sexual orientation, union membership, or political affiliation. Requsyol Ltd maintains a zero-tolerance policy toward physical abuse, the threat of physical abuse, sexual or other harassment, verbal abuse, or any other form of intimidatory action." },
+      { label: "Grievance Procedure", text: "Should a worker have a grievance or cause for complaint, the correct procedure is to contact our Head Office on 07432 402246 and ask to speak with a Senior Manager, providing them with full details of the matter. The standards detailed above represent our minimum operating criteria, and we aim to exceed these standards whenever and wherever possible." },
+    ],
   },
 ];
 
