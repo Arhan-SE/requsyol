@@ -86,7 +86,7 @@ const OurProcessSection = () => {
         className="absolute inset-0 h-full w-full object-cover"
         src={processBg}
       />
-      <div className="absolute inset-0 bg-background/80" />
+      <div className="absolute inset-0 bg-black/50" />
       <div className="relative z-10 container mx-auto max-w-6xl">
 
         {/* Section header */}
@@ -239,6 +239,17 @@ const About = () => {
               </span>
             ))}
           </p>
+        </div>
+      </section>
+
+      {/* Placeholder section */}
+      <section className="bg-background border-t border-border min-h-screen flex items-center px-6 py-24">
+        <div className="container mx-auto max-w-4xl">
+          <ScrollReveal>
+            <p className="text-muted-foreground leading-[1.85] text-sm sm:text-base">
+              {/* Add paragraphs here */}
+            </p>
+          </ScrollReveal>
         </div>
       </section>
 

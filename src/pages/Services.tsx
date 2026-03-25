@@ -17,61 +17,39 @@ const services = [
     description:
       'We don\'t believe in "one size fits all." We provide experts tailored to your specific industry requirements.',
     image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1600&q=80",
-    bullets: [
-      { label: "Hospitality & Hotels", text: "Front desk receptionists, housekeepers, servers, chefs, porters, and baristas." },
-      { label: "Airports & Airlines", text: "Customer service, security, baggage handling, and maintenance (fully compliant with CAA regulations)." },
-      { label: "Logistics & Industrial", text: "Warehouse operatives, forklift drivers, delivery drivers, and general production staff." },
-      { label: "Events & Ad-hoc", text: "Temporary waiting staff and security personnel for events of any scale." },
-    ],
+    bullets: [],
   },
   {
     number: "02",
     title: 'The Requsyol\n"Rigorous Vetting"\nProcess',
     description:
-      "We mitigate your risk by ensuring every candidate is 100% compliant before they ever step foot on your site.",
+      "We actively mitigate your operational risk by ensuring every candidate is 100% compliant before they ever step foot on your site. This begins with mandatory face-to-face interviews to assess soft skills and professional history, followed by exhaustive Right-to-Work (RTW) checks including Passport and Visa verification. To guarantee total peace of mind, we conduct comprehensive referencing and DBS checks as standard. For our aviation partners, this process extends to specialised security protocols, including GSAT completion, IDC verification, and Blue ID onboarding.",
     image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=80",
-    bullets: [
-      { label: "Face-to-Face Interviews", text: "Every candidate is interviewed in person to assess soft skills and work history." },
-      { label: "Full Compliance & RTW", text: "We handle all Right-to-Work (RTW) checks, including Passport and Visa verification." },
-      { label: "Background Verification", text: "Comprehensive referencing, DBS, and Criminal Record Checks (CRC)." },
-      { label: "Aviation Security", text: "For our airport partners, we manage GSAT completion, IDC verification, and Blue ID onboarding." },
-    ],
+    bullets: [],
   },
   {
     number: "03",
     title: "Custom Induction\n& Training",
     description:
-      'We ensure our staff "blends in" from day one. We don\'t just send people; we prepare them.',
+      "Our goal is for our staff to blend seamlessly into your existing team from their very first hour. We do not simply deploy personnel; we prepare them to represent your specific brand. This involves a tailored onboarding programme where we educate staff on your unique policies, workplace culture, and operational procedures. Furthermore, every hire receives a comprehensive briefing on health and safety regulations, workplace conduct, and site-specific dress codes, ensuring they arrive fully integrated into your way of working.",
     image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1600&q=80",
-    bullets: [
-      { label: "Tailored Onboarding", text: "We educate staff on your specific policies, procedures, and workplace culture." },
-      { label: "Health & Safety", text: "Full briefing on safety regulations, workplace conduct, and dress codes." },
-      { label: "Process Integration", text: "Training that ensures new hires understand your unique way of working." },
-    ],
+    bullets: [],
   },
   {
     number: "04",
     title: "End-to-End\nWorkforce\nManagement",
     description:
-      "We act as your external HR and Payroll department, streamlining your back-office operations.",
+      "We function as an extension of your own business, acting as an external HR and Payroll department to streamline back-office operations. Our team handles the entire lifecycle of employment administration, from the management of contracts and compliance data to the full administration of payroll, taxes, and pensions. By taking daily responsibility for checking timesheets, managing rotas, and monitoring staffing levels, we remove the administrative burden from your management team so they can focus on core growth.",
     image: "https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?auto=format&fit=crop&w=1600&q=80",
-    bullets: [
-      { label: "Payroll & Finance", text: "Full administration of payroll, taxes, and pensions." },
-      { label: "HR Administration", text: "Management of employee records, contracts, and compliance data." },
-      { label: "Daily Administration", text: "We check timesheets, manage rotas, and monitor daily staffing levels." },
-    ],
+    bullets: [],
   },
   {
     number: "05",
     title: "Technology-Driven\nTransparency",
     description:
-      "Our digital tools give you real-time oversight of your workforce.",
+      "Our service is underpinned by a digital ecosystem that provides you with 24/7 oversight of your workforce. Through our secure Client Portal, you have instant access to holiday data, time-off requests, and stored compliance documents. We utilise live \"performance signals\" to highlight utilisation and shift gaps in real-time, while our predictive capacity tools allow us to forecast your future demand. This data-driven approach ensures you can pre-emptively adjust rosters and avoid the costly shortages that disrupt business continuity.",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80",
-    bullets: [
-      { label: "Client Portal", text: "Secure access to holiday data, time-off information, and stored RTW/passport documents." },
-      { label: "Performance Signals", text: "Live staffing pulse reports highlight utilisation, shift gaps, and compliance flags." },
-      { label: "Predictive Capacity", text: "We forecast demand so you can pre-emptively adjust rosters and avoid shortages." },
-    ],
+    bullets: [],
   },
 ];
 
@@ -113,7 +91,7 @@ const Services = () => {
           {services.map((service, index) => (
             <ScrollReveal key={service.number} delay={index * 0.05}>
               <article
-                className="relative overflow-hidden py-16 md:py-20 text-center"
+                className="relative overflow-hidden py-24 md:py-36 text-center"
                 style={{
                   backgroundImage: `url(${service.image})`,
                   backgroundSize: "cover",
@@ -130,23 +108,10 @@ const Services = () => {
                       <h2 className="font-barlow font-black uppercase text-2xl leading-[1.1] tracking-tight text-foreground sm:text-3xl md:text-4xl">
                         {service.title}
                       </h2>
-                      <p className="mt-4 max-w-3xl text-xs leading-relaxed text-muted-foreground md:text-sm mx-auto">
+                      <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted-foreground md:text-lg mx-auto">
                         {service.description}
                       </p>
                     </div>
-                  </div>
-
-                  <div className="grid gap-4 md:grid-cols-2">
-                    {service.bullets.map((bullet) => (
-                      <div key={bullet.label} className="text-left">
-                        <p className="text-[9px] uppercase tracking-[0.35em] text-muted-foreground">
-                          {bullet.label}
-                        </p>
-                        <p className="mt-2 text-[13px] leading-relaxed text-foreground/90">
-                          {bullet.text}
-                        </p>
-                      </div>
-                    ))}
                   </div>
                 </div>
               </article>
