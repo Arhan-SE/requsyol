@@ -242,6 +242,9 @@ const About = () => {
         </div>
       </section>
 
+      {/* Our Process */}
+      <OurProcessSection />
+
       <section className="py-16 border-t border-border">
         <div className="container mx-auto px-6">
           <ScrollReveal>
@@ -272,9 +275,6 @@ const About = () => {
           </div>
         </div>
       </section>
-
-      {/* Our Process */}
-      <OurProcessSection />
     </Layout>
   );
 };
