@@ -86,16 +86,24 @@ const Contact = () => {
                   <p className="text-muted-foreground">Have a question or need staffing support? Reach out and we'll respond within 24 hours.</p>
                 </div>
                 <div className="space-y-4">
-                  {[
-                    { icon: Mail, text: "info@requsyol.co.uk" },
-                    { icon: Phone, text: "+44 (0) 123 456 7890" },
-                    { icon: MapPin, text: "London, United Kingdom" },
-                  ].map(({ icon: Icon, text }) => (
-                    <div key={text} className="flex items-center gap-3 text-muted-foreground">
-                      <Icon size={20} />
-                      <span>{text}</span>
+                  <div className="flex items-start gap-3 text-muted-foreground">
+                    <Mail size={20} className="mt-0.5 flex-shrink-0" />
+                    <div className="flex flex-col gap-1">
+                      <span>hr@requsyol.co.uk</span>
+                      <span>Loyster.pascoal@requsyol.co.uk</span>
                     </div>
-                  ))}
+                  </div>
+                  <div className="flex items-start gap-3 text-muted-foreground">
+                    <Phone size={20} className="mt-0.5 flex-shrink-0" />
+                    <div className="flex flex-col gap-1">
+                      <span>Queency: +44 7990 324644</span>
+                      <span>Loyster: +44 7466 989804</span>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3 text-muted-foreground">
+                    <MapPin size={20} className="mt-0.5 flex-shrink-0" />
+                    <span>Suite 23, 2nd Floor, Unimix House, Park Royal, London NW10 7TR</span>
+                  </div>
                 </div>
               </div>
             </ScrollReveal>

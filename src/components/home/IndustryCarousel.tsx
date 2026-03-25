@@ -95,7 +95,7 @@ const IndustryCarousel = () => {
         <motion.div
           className="flex gap-0"
           animate={{ x: ["0%", "-50%"] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
         >
           {doubled.map((industry, i) => {
             const isHovered = hoveredIndex === i;

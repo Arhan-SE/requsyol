@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Layout from "@/components/layout/Layout";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import aboutBg from "@/assets/about-bg.mp4";
+import processBg from "@/assets/process-bg.mp4";
 import gdpr from "@/assets/certificates/GDPR logo.jpeg";
 import sedex from "@/assets/certificates/sedex logo.png";
 import alp from "@/assets/certificates/ALP Logo.png";
@@ -76,8 +77,17 @@ const OurProcessSection = () => {
   }, [activeIdx]);
 
   return (
-    <section className="bg-background border-t border-border py-24 px-6">
-      <div className="container mx-auto max-w-6xl">
+    <section className="relative border-t border-border py-24 px-6 overflow-hidden">
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 h-full w-full object-cover"
+        src={processBg}
+      />
+      <div className="absolute inset-0 bg-background/80" />
+      <div className="relative z-10 container mx-auto max-w-6xl">
 
         {/* Section header */}
         <ScrollReveal>

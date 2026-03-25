@@ -72,8 +72,8 @@ const Footer = () => {
               <div className="flex items-start gap-3 text-xs font-sans text-muted-foreground">
                 <MapPin size={12} className="mt-0.5 flex-shrink-0" />
                 <div>
-                  <p>Suite 23/2nd Floor, Unimix House,</p>
-                  <p>Abbey Road, Park Royal. NW10 7TR.</p>
+                  <p>Suite 23, 2nd Floor, Unimix House,</p>
+                  <p>Park Royal, London NW10 7TR</p>
                 </div>
               </div>
               <div className="flex items-center gap-3 text-xs font-sans text-muted-foreground">
@@ -83,16 +83,15 @@ const Footer = () => {
               <div className="flex items-start gap-3 text-xs font-sans text-muted-foreground">
                 <Mail size={12} className="mt-0.5 flex-shrink-0" />
                 <div>
-                  <p>marketing@requsyol.co.uk</p>
                   <p>hr@requsyol.co.uk</p>
+                  <p>Loyster.pascoal@requsyol.co.uk</p>
                 </div>
               </div>
               <div className="flex items-start gap-3 text-xs font-sans text-muted-foreground">
                 <Phone size={12} className="mt-0.5 flex-shrink-0" />
                 <div className="flex flex-col gap-1">
-                  <p className="whitespace-nowrap"><span className="text-muted-foreground/60">Business:</span> +44-7432402246</p>
-                  <p className="whitespace-nowrap"><span className="text-muted-foreground/60">Registration:</span> +44-7487583669</p>
-                  <p className="whitespace-nowrap"><span className="text-muted-foreground/60">Finance:</span> +44-7466989804</p>
+                  <p className="whitespace-nowrap"><span className="text-muted-foreground/60">Queency:</span> +44 7990 324644</p>
+                  <p className="whitespace-nowrap"><span className="text-muted-foreground/60">Loyster:</span> +44 7466 989804</p>
                 </div>
               </div>
             </div>

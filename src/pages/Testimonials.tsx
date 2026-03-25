@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Layout from "@/components/layout/Layout";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 
+import testimonialsBg from "@/assets/testimonial-page-bg.mp4";
 import clubCultured from "@/assets/clients/club-cultured.png";
 import cbkFreight from "@/assets/clients/cbk-freight.png";
 import urbanLegend from "@/assets/clients/urban-legend.png";
@@ -83,7 +84,10 @@ const Testimonials = () => {
         <div className="container mx-auto px-4">
           <ScrollReveal>
             <section className="pt-20 pb-12 md:pb-16">
-              <h1 className="font-barlow font-light uppercase text-4xl leading-[1] tracking-wide text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
+              <h1
+                className="font-barlow font-black uppercase text-5xl leading-[0.9] tracking-tight text-transparent bg-clip-text sm:text-7xl md:text-9xl lg:text-[10rem]"
+                style={{ backgroundImage: "linear-gradient(135deg, #56A8D6 0%, hsl(var(--logo-orange)) 50%, #2F7FB2 100%)" }}
+              >
                 Client
                 <br />
                 Stories.
@@ -94,85 +98,96 @@ const Testimonials = () => {
               </p>
             </section>
           </ScrollReveal>
+        </div>
 
-          <section className="py-12 md:py-20">
-            <div className="max-w-4xl mx-auto text-center">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={current}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.6 }}
+        <section className="relative py-12 md:py-20 overflow-hidden w-screen left-1/2 -translate-x-1/2">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 h-full w-full object-cover"
+            src={testimonialsBg}
+          />
+          <div className="absolute inset-0 bg-background/75" />
+          <div className="relative z-10 max-w-4xl mx-auto text-center px-4">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={current}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.6 }}
+              >
+                <div
+                  className="font-serif text-foreground/[0.08] leading-none select-none mb-4"
+                  style={{ fontSize: "clamp(6rem, 15vw, 12rem)" }}
+                  aria-hidden="true"
                 >
-                  <div
-                    className="font-serif text-foreground/[0.08] leading-none select-none mb-4"
-                    style={{ fontSize: "clamp(6rem, 15vw, 12rem)" }}
-                    aria-hidden="true"
-                  >
-                    "
-                  </div>
-
-                  <blockquote
-                    className="font-serif italic text-foreground leading-snug mb-8 -mt-8"
-                    style={{ fontSize: "clamp(1.4rem, 3.5vw, 2.5rem)" }}
-                  >
-                    {testimonials[current].quote}
-                  </blockquote>
-
-                  <div className="flex flex-col items-center gap-1">
-                    <p className="text-xs tracking-[0.3em] uppercase text-foreground font-sans font-medium">
-                      {testimonials[current].name}
-                    </p>
-                    <p className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-sans">
-                      {[testimonials[current].role, testimonials[current].company].filter(Boolean).join(" — ")}
-                    </p>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-
-              <div className="flex gap-6 items-center justify-center mt-12">
-                <button
-                  onClick={prev}
-                  aria-label="Previous testimonial"
-                  className="text-muted-foreground hover:text-foreground transition-colors duration-200 text-lg tracking-widest"
-                >
-                  ←
-                </button>
-
-                <div className="flex gap-2 items-center">
-                  {testimonials.map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => { setCurrent(i); setTick(0); }}
-                      aria-label={`Go to testimonial ${i + 1}`}
-                      className="relative h-[2px] bg-border/30 overflow-hidden transition-all duration-300"
-                      style={{ width: i === current ? 80 : 28 }}
-                    >
-                      {i === current && (
-                        <motion.div
-                          className="absolute inset-y-0 left-0 bg-foreground"
-                          style={{ width: `${progressPercent}%` }}
-                        />
-                      )}
-                      {i !== current && (
-                        <div className="absolute inset-0 bg-muted-foreground/20" />
-                      )}
-                    </button>
-                  ))}
+                  "
                 </div>
 
-                <button
-                  onClick={next}
-                  aria-label="Next testimonial"
-                  className="text-muted-foreground hover:text-foreground transition-colors duration-200 text-lg tracking-widest"
+                <blockquote
+                  className="font-serif italic text-foreground leading-snug mb-8 -mt-8"
+                  style={{ fontSize: "clamp(1.4rem, 3.5vw, 2.5rem)" }}
                 >
-                  →
-                </button>
-              </div>
-            </div>
-          </section>
+                  {testimonials[current].quote}
+                </blockquote>
 
+                <div className="flex flex-col items-center gap-1">
+                  <p className="text-xs tracking-[0.3em] uppercase text-foreground font-sans font-medium">
+                    {testimonials[current].name}
+                  </p>
+                  <p className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-sans">
+                    {[testimonials[current].role, testimonials[current].company].filter(Boolean).join(" — ")}
+                  </p>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+
+            <div className="flex gap-6 items-center justify-center mt-12">
+              <button
+                onClick={prev}
+                aria-label="Previous testimonial"
+                className="text-muted-foreground hover:text-foreground transition-colors duration-200 text-lg tracking-widest"
+              >
+                ←
+              </button>
+
+              <div className="flex gap-2 items-center">
+                {testimonials.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => { setCurrent(i); setTick(0); }}
+                    aria-label={`Go to testimonial ${i + 1}`}
+                    className="relative h-[2px] bg-border/30 overflow-hidden transition-all duration-300"
+                    style={{ width: i === current ? 80 : 28 }}
+                  >
+                    {i === current && (
+                      <motion.div
+                        className="absolute inset-y-0 left-0 bg-foreground"
+                        style={{ width: `${progressPercent}%` }}
+                      />
+                    )}
+                    {i !== current && (
+                      <div className="absolute inset-0 bg-muted-foreground/20" />
+                    )}
+                  </button>
+                ))}
+              </div>
+
+              <button
+                onClick={next}
+                aria-label="Next testimonial"
+                className="text-muted-foreground hover:text-foreground transition-colors duration-200 text-lg tracking-widest"
+              >
+                →
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <div className="container mx-auto px-4">
           {/* Our Clients */}
           <div className="flex items-center justify-center gap-4 py-6">
             <div className="h-px flex-1 divider-line" />
