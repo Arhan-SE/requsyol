@@ -9,6 +9,7 @@ import cbkFreight from "@/assets/clients/cbk-freight.png";
 import urbanLegend from "@/assets/clients/urban-legend.png";
 import bakeryClient from "@/assets/clients/bakery-client.png";
 import dingDong from "@/assets/clients/ding-dong.png";
+import flatIron from "@/assets/clients/flat-iron.png";
 
 const services = [
   {
@@ -59,6 +60,7 @@ const clientLogos = [
   { src: urbanLegend, alt: "Urban Legend" },
   { src: bakeryClient, alt: "Bakery Client" },
   { src: dingDong, alt: "Ding Dong" },
+  { src: flatIron, alt: "Flat Iron" },
 ];
 
 const Services = () => {
