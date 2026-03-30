@@ -109,7 +109,7 @@ const Footer = () => {
             </p>
           </div>
           <p className="font-sans text-[10px] uppercase tracking-[0.15em] text-muted-foreground">
-            Response Recruitment Ltd are licensed members of the Gangmasters and Labour Abuse Authority. License No REQU0004
+            Requsyol Recruitment Ltd are licensed members of the Gangmasters and Labour Abuse Authority. License No REQU0004
           </p>
         </div>
       </div>

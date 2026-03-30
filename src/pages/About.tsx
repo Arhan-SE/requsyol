@@ -239,14 +239,92 @@ const About = () => {
         </div>
       </section>
 
-      {/* Placeholder section */}
-      <section className="bg-background border-t border-border min-h-screen flex items-center px-6 py-24">
-        <div className="container mx-auto max-w-4xl">
+      {/* About content section */}
+      <section className="bg-background border-t border-border px-6 py-24">
+        <div className="container mx-auto max-w-6xl">
+
+          {/* Bridging the Gap — center */}
           <ScrollReveal>
-            <p className="text-muted-foreground leading-[1.85] text-sm sm:text-base">
-              {/* Add paragraphs here */}
-            </p>
+            <div className="max-w-2xl mx-auto text-center">
+              <h2 className="font-barlow font-black uppercase text-foreground text-[clamp(1.8rem,4vw,3rem)] leading-[0.95] tracking-tight mb-6">
+                Bridging the Gap Between Ambition and Excellence
+              </h2>
+              <p className="text-muted-foreground leading-[1.85] text-sm sm:text-base mb-4">
+                Established in 2019, Requsyol was founded on the belief that the struggle to find reliable talent and the quest for a workplace that truly values its people are two sides of the same coin. We do not just fill vacancies; we build professional partnerships that last.
+              </p>
+              <p className="text-muted-foreground leading-[1.85] text-sm sm:text-base">
+                As one of the UK's fastest growing and most prominent head hunting firms, we have spent the last several years reimagining recruitment. By combining cutting edge technology like our Geo Tracked time management app with a deeply human approach to screening, we ensure that every placement is a perfect fit.
+              </p>
+            </div>
           </ScrollReveal>
+
+          {/* Divider */}
+          <div className="flex items-center my-14">
+            <span className="text-[11px] font-black tracking-[0.12em] text-[hsl(var(--logo-orange))]">+</span>
+            <div className="flex-1 h-px mx-3 divider-line" />
+            <span className="text-[11px] font-black tracking-[0.12em] text-[hsl(var(--logo-orange))]">+</span>
+          </div>
+
+          {/* Mission and Vision — left */}
+          <ScrollReveal>
+            <div className="max-w-2xl">
+              <p className="text-sm uppercase tracking-[0.35em] text-logo-cyan mb-6">Our Mission and Vision</p>
+              <p className="text-muted-foreground leading-[1.85] text-sm sm:text-base mb-4">
+                Our mission is to provide top tier services to businesses of all sizes. We believe that companies should have the opportunity to spend less time managing employee relations or worrying about HR compliance and regulations and more time on initiatives that improve their bottom line.
+              </p>
+              <p className="text-muted-foreground leading-[1.85] text-sm sm:text-base">
+                Our ultimate goal is to deliver the best human resource services to every company we work with while adhering to our high standards of professionalism, quality, and ethics. In an ever evolving landscape, we pride ourselves on keeping up with changing norms, rules, and job markets to ensure your business stays ahead of the curve.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          {/* Divider */}
+          <div className="flex items-center my-14">
+            <span className="text-[11px] font-black tracking-[0.12em] text-[hsl(var(--logo-orange))]">+</span>
+            <div className="flex-1 h-px mx-3 divider-line" />
+            <span className="text-[11px] font-black tracking-[0.12em] text-[hsl(var(--logo-orange))]">+</span>
+          </div>
+
+          {/* Professional Standards — right */}
+          <ScrollReveal>
+            <div className="max-w-2xl ml-auto">
+              <p className="text-sm uppercase tracking-[0.35em] text-logo-cyan mb-4">Our Professional Standards</p>
+              <p className="text-muted-foreground leading-[1.85] text-sm sm:text-base mb-8">
+                We understand that an organisation's success depends on the careful balancing of internal HR standards and the retention of expert personnel. To achieve this, we go the extra mile:
+              </p>
+              <div className="grid sm:grid-cols-2 gap-6">
+                {[
+                  { title: "Verified Talent", body: "Every worker in our pool is screened by experts and ready for action." },
+                  { title: "Legal Peace of Mind", body: "We take full responsibility for documentation, GDPR, and legal compliance." },
+                  { title: "Performance Tracking", body: "Worker profiles are rated based on punctuality, skills, and professionalism to ensure consistent quality." },
+                  { title: "Comprehensive Management", body: "From sourcing and induction to end to end payroll and pension contributions, we handle the heavy lifting." },
+                ].map(({ title, body }) => (
+                  <div key={title} className="border border-border p-6">
+                    <p className="text-[10px] uppercase tracking-[0.25em] text-logo-cyan mb-2">{title}</p>
+                    <p className="text-muted-foreground text-sm leading-[1.8]">{body}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </ScrollReveal>
+
+          {/* Divider */}
+          <div className="flex items-center my-14">
+            <span className="text-[11px] font-black tracking-[0.12em] text-[hsl(var(--logo-orange))]">+</span>
+            <div className="flex-1 h-px mx-3 divider-line" />
+            <span className="text-[11px] font-black tracking-[0.12em] text-[hsl(var(--logo-orange))]">+</span>
+          </div>
+
+          {/* Why Choose Requsyol — left */}
+          <ScrollReveal>
+            <div className="max-w-2xl">
+              <p className="text-sm uppercase tracking-[0.35em] text-logo-cyan mb-4">Why Choose Requsyol</p>
+              <p className="text-muted-foreground leading-[1.85] text-sm sm:text-base">
+                Since our journey began in 2019, we have provided bespoke recruitment solutions that empower businesses to scale and individuals to thrive. Whether you need hourly, part time, or full time support, we provide the reliable foundation your business deserves. Our careful attention to basic education, qualifications, and background checks means you can hire with total confidence every time.
+              </p>
+            </div>
+          </ScrollReveal>
+
         </div>
       </section>
 
