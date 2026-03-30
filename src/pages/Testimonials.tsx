@@ -122,7 +122,7 @@ const Testimonials = () => {
           </ScrollReveal>
         </div>
 
-        <section className="relative overflow-hidden w-screen left-1/2 -translate-x-1/2" style={{ height: "clamp(600px, 80vh, 900px)" }}>
+        <section className="relative overflow-hidden w-screen left-1/2 -translate-x-1/2" style={{ height: "clamp(420px, 55vh, 600px)" }}>
           <video
             autoPlay
             loop
