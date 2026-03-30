@@ -122,7 +122,7 @@ const Testimonials = () => {
           </ScrollReveal>
         </div>
 
-        <section className="relative overflow-hidden w-screen left-1/2 -translate-x-1/2" style={{ height: "clamp(480px, 60vh, 680px)" }}>
+        <section className="relative overflow-hidden w-screen left-1/2 -translate-x-1/2" style={{ height: "clamp(600px, 80vh, 900px)" }}>
           <video
             autoPlay
             loop
@@ -151,7 +151,7 @@ const Testimonials = () => {
                 </div>
 
                 <blockquote
-                  className="font-serif italic text-foreground leading-snug mb-6 -mt-6 overflow-y-auto flex-1 min-h-0"
+                  className="font-serif italic text-foreground leading-snug mb-6 -mt-6"
                   style={{ fontSize: "clamp(1rem, 2.2vw, 1.6rem)" }}
                 >
                   {testimonials[current].quote}
