@@ -56,13 +56,13 @@ const testimonials = [
   {
     quote: "I'm working with Requsyol agency for a few years, with Miss Queency. I'm very happy with their support, their professional team. They're a very helpful team. Anytime you have any issues, they are very good for us. I appreciate and suggest that you can start a service and make your professional workplace with Requsyol agency.",
     name: "Shahab",
-    role: "Client",
+    role: "Operations Manager",
     company: "",
   },
   {
     quote: "We started working with them last year, around Christmas and all the help we needed from there was absolutely amazing. Every single time, all the stuff what I needed for us to be fulfilled — all the expectations were even above. They managed to give us all requirements we needed for the staff, for the people, and everything was amazing. I would really recommend contacting them. Absolutely amazing. I have just amazing feedback about them.",
-    name: "",
-    role: "Client",
+    name: "Djiana",
+    role: "Production Supervisor",
     company: "",
   },
   {
