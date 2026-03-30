@@ -9,6 +9,7 @@ import cbkFreight from "@/assets/clients/cbk-freight.png";
 import urbanLegend from "@/assets/clients/urban-legend.png";
 import bakeryClient from "@/assets/clients/bakery-client.png";
 import dingDong from "@/assets/clients/ding-dong.png";
+import chandra from "@/assets/clients/Chandra-Logo.png";
 
 const clientLogos = [
   { src: clubCultured, alt: "Club Cultured" },
@@ -16,6 +17,7 @@ const clientLogos = [
   { src: urbanLegend, alt: "Urban Legend" },
   { src: bakeryClient, alt: "Bakery Client" },
   { src: dingDong, alt: "Ding Dong" },
+  { src: chandra, alt: "Chandra", large: true },
 ];
 
 const testimonials = [
@@ -52,6 +54,12 @@ const testimonials = [
   {
     quote: "I'm working with Requsyol agency for a few years, with Miss Queency. I'm very happy with their support, their professional team. They're a very helpful team. Anytime you have any issues, they are very good for us. I appreciate and suggest that you can start a service and make your professional workplace with Requsyol agency.",
     name: "Shahab",
+    role: "Client",
+    company: "",
+  },
+  {
+    quote: "We started working with them last year, around Christmas and all the help we needed from there was absolutely amazing. Every single time, all the stuff what I needed for us to be fulfilled — all the expectations were even above. They managed to give us all requirements we needed for the staff, for the people, and everything was amazing. I would really recommend contacting them. Absolutely amazing. I have just amazing feedback about them.",
+    name: "",
     role: "Client",
     company: "",
   },
@@ -210,7 +218,7 @@ const Testimonials = () => {
                   <Fragment key={`${logo.alt}-${i}`}>
                     <div className="marquee-bracket" aria-hidden>[</div>
                     <div className="marquee-item">
-                      <img src={logo.src} alt={logo.alt} className="marquee-logo" loading="lazy" />
+                      <img src={logo.src} alt={logo.alt} className="marquee-logo" loading="lazy" style={logo.large ? { transform: "scale(2.4)", objectFit: "contain" } : {}} />
                     </div>
                     <div className="marquee-bracket" aria-hidden>]</div>
                   </Fragment>
