@@ -65,6 +65,12 @@ const testimonials = [
     role: "Client",
     company: "",
   },
+  {
+    quote: "Very professional, patient, and always demonstrates a great attitude when helping customers resolve their recruitment needs. I would highly recommend them to any company looking to source for new roles.",
+    name: "Hsuan Hsuan Chung",
+    role: "",
+    company: "",
+  },
 ];
 
 const DURATION = 7000;
