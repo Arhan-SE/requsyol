@@ -10,6 +10,7 @@ import urbanLegend from "@/assets/clients/urban-legend.png";
 import bakeryClient from "@/assets/clients/bakery-client.png";
 import dingDong from "@/assets/clients/ding-dong.png";
 import chandra from "@/assets/clients/Chandra-Logo.png";
+import flatIron from "@/assets/clients/flat-iron.png";
 
 const clientLogos = [
   { src: clubCultured, alt: "Club Cultured" },
@@ -18,6 +19,7 @@ const clientLogos = [
   { src: bakeryClient, alt: "Bakery Client" },
   { src: dingDong, alt: "Ding Dong" },
   { src: chandra, alt: "Chandra", large: true },
+  { src: flatIron, alt: "Flat Iron" },
 ];
 
 const testimonials = [
