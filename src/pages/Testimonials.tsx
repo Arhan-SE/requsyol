@@ -60,7 +60,7 @@ const testimonials = [
     company: "",
   },
   {
-    quote: "We started working with them last year, around Christmas and all the help we needed from there was absolutely amazing. Every single time, all the stuff what I needed for us to be fulfilled — all the expectations were even above. They managed to give us all requirements we needed for the staff, for the people, and everything was amazing. I would really recommend contacting them. Absolutely amazing. I have just amazing feedback about them.",
+    quote: "We started working with them last year, around Christmas and all the help we needed from there was absolutely amazing. Every single time, all the stuff what I needed for us to be fulfilled all the expectations were even above. They managed to give us all requirements we needed for the staff, for the people, and everything was amazing. I would really recommend contacting them. Absolutely amazing. I have just amazing feedback about them.",
     name: "Djiana",
     role: "Production Supervisor",
     company: "",
