@@ -10,6 +10,7 @@ import urbanLegend from "@/assets/clients/urban-legend.png";
 import bakeryClient from "@/assets/clients/bakery-client.png";
 import dingDong from "@/assets/clients/ding-dong.png";
 import flatIron from "@/assets/clients/flat-iron.png";
+import chandra from "@/assets/clients/Chandra-Logo.png";
 
 const services = [
   {
@@ -61,6 +62,7 @@ const clientLogos = [
   { src: bakeryClient, alt: "Bakery Client" },
   { src: dingDong, alt: "Ding Dong" },
   { src: flatIron, alt: "Flat Iron" },
+  { src: chandra, alt: "Chandra", large: true },
 ];
 
 const Services = () => {
@@ -158,6 +160,7 @@ const Services = () => {
                         alt={logo.alt}
                         className="marquee-logo"
                         loading="lazy"
+                        style={logo.large ? { transform: "scale(2.4)", width: "85%", height: "85%", objectFit: "contain" } : {}}
                       />
                     </div>
                     <div className="marquee-bracket" aria-hidden>

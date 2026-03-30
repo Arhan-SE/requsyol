@@ -3,7 +3,7 @@ import ScrollReveal from "@/components/animations/ScrollReveal";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const candidateFaqs = [
-  { q: "How do I register as a candidate?", a: "Click 'Find Work' and complete the multi-step registration form with your personal details, address, and resume upload. Our team will review your application and be in touch." },
+  { q: "How do I register as a candidate?", a: "Click on 'For Candidates' and complete the multi-step registration form with your personal details, address, and resume upload. Our team will review your application and be in touch." },
   { q: "Is there a fee for candidates?", a: "No, our services are completely free for candidates. Employers pay for our staffing solutions." },
   { q: "What industries do you recruit for?", a: "We recruit across manufacturing, logistics, hospitality, construction, retail, healthcare, warehousing, and trades." },
   { q: "How quickly can I be placed?", a: "Many candidates are placed within a week of registration. Urgent roles can be filled within 24-48 hours." },
