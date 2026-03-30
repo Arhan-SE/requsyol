@@ -116,7 +116,7 @@ const Testimonials = () => {
           </ScrollReveal>
         </div>
 
-        <section className="relative py-12 md:py-20 overflow-hidden w-screen left-1/2 -translate-x-1/2">
+        <section className="relative overflow-hidden w-screen left-1/2 -translate-x-1/2" style={{ height: "clamp(480px, 60vh, 680px)" }}>
           <video
             autoPlay
             loop
@@ -126,7 +126,7 @@ const Testimonials = () => {
             src={testimonialsBg}
           />
           <div className="absolute inset-0 bg-background/75" />
-          <div className="relative z-10 max-w-4xl mx-auto text-center px-4">
+          <div className="relative z-10 h-full max-w-4xl mx-auto px-4 flex flex-col justify-between py-12 md:py-16">
             <AnimatePresence mode="wait">
               <motion.div
                 key={current}
@@ -134,18 +134,19 @@ const Testimonials = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.6 }}
+                className="flex flex-col items-center text-center flex-1 min-h-0"
               >
                 <div
-                  className="font-serif text-foreground/[0.08] leading-none select-none mb-4"
-                  style={{ fontSize: "clamp(6rem, 15vw, 12rem)" }}
+                  className="font-serif text-foreground/[0.08] leading-none select-none mb-2 shrink-0"
+                  style={{ fontSize: "clamp(4rem, 10vw, 8rem)" }}
                   aria-hidden="true"
                 >
                   "
                 </div>
 
                 <blockquote
-                  className="font-serif italic text-foreground leading-snug mb-8 -mt-8"
-                  style={{ fontSize: "clamp(1.4rem, 3.5vw, 2.5rem)" }}
+                  className="font-serif italic text-foreground leading-snug mb-6 -mt-6 overflow-y-auto flex-1 min-h-0"
+                  style={{ fontSize: "clamp(1rem, 2.2vw, 1.6rem)" }}
                 >
                   {testimonials[current].quote}
                 </blockquote>
@@ -161,7 +162,7 @@ const Testimonials = () => {
               </motion.div>
             </AnimatePresence>
 
-            <div className="flex gap-6 items-center justify-center mt-12">
+            <div className="flex gap-6 items-center justify-center mt-6 shrink-0">
               <button
                 onClick={prev}
                 aria-label="Previous testimonial"
