@@ -22,7 +22,7 @@ const services = [
     number: "01",
     title: "Sector-Specific\nStaffing Solutions",
     description:
-      'We don\'t believe in "one size fits all." We provide experts tailored to your specific industry requirements.',
+      'We reject the "one size fits all" approach to recruitment, choosing instead to provide experts meticulously tailored to the specific demands of your industry. In the Hospitality and Hotel sector, we deliver high-calibre front-desk receptionists, housekeepers, and culinary staff who understand that service is an art form. For Airports and Airlines, we provide customer service and ground handling teams fully compliant with CAA regulations. Our Logistics and Industrial division supplies reliable warehouse operatives and forklift drivers to keep supply chains moving, while our Events team offers professional waiting staff and SIA-licensed security for functions of any scale.',
     image: serviceImg1,
     bullets: [],
   },

@@ -122,7 +122,7 @@ const Testimonials = () => {
           </ScrollReveal>
         </div>
 
-        <section className="relative overflow-hidden w-screen left-1/2 -translate-x-1/2" style={{ height: "clamp(420px, 55vh, 600px)" }}>
+        <section className="relative overflow-hidden w-screen left-1/2 -translate-x-1/2" style={{ minHeight: "clamp(420px, 55vh, 600px)" }}>
           <video
             autoPlay
             loop
@@ -142,6 +142,15 @@ const Testimonials = () => {
                 transition={{ duration: 0.6 }}
                 className="flex flex-col items-center text-center flex-1 min-h-0"
               >
+                <div className="flex flex-col items-center gap-1 mb-4 shrink-0">
+                  <p className="text-xs tracking-[0.3em] uppercase text-foreground font-sans font-medium">
+                    {testimonials[current].name}
+                  </p>
+                  <p className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-sans">
+                    {[testimonials[current].role, testimonials[current].company].filter(Boolean).join(" — ")}
+                  </p>
+                </div>
+
                 <div
                   className="font-serif text-foreground/[0.08] leading-none select-none mb-2 shrink-0"
                   style={{ fontSize: "clamp(4rem, 10vw, 8rem)" }}
@@ -151,20 +160,11 @@ const Testimonials = () => {
                 </div>
 
                 <blockquote
-                  className="font-serif italic text-foreground leading-snug mb-6 -mt-6"
+                  className="font-serif italic text-foreground leading-snug -mt-6"
                   style={{ fontSize: "clamp(1rem, 2.2vw, 1.6rem)" }}
                 >
                   {testimonials[current].quote}
                 </blockquote>
-
-                <div className="flex flex-col items-center gap-1">
-                  <p className="text-xs tracking-[0.3em] uppercase text-foreground font-sans font-medium">
-                    {testimonials[current].name}
-                  </p>
-                  <p className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-sans">
-                    {[testimonials[current].role, testimonials[current].company].filter(Boolean).join(" — ")}
-                  </p>
-                </div>
               </motion.div>
             </AnimatePresence>
 

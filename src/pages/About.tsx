@@ -25,35 +25,40 @@ Our ultimate goal is to deliver the best human resource services to all companie
 const processSteps = [
   {
     color: "#3BBFB6",
-    title: "Meet & Discuss",
+    mainTitle: "Operational Staffing Review",
+    subtitle: "(The Audit)",
     description:
       "We sit down to understand your business, your team's culture, and the exact skill sets you need to thrive. Every placement starts with listening.",
     stat: { value: "5,000+", label: "Candidates Placed" },
   },
   {
     color: "#5B9FE0",
-    title: "Strategise",
+    mainTitle: "Strategic Mapping",
+    subtitle: "(The Plan)",
     description:
       "Together we build a tailored recruitment strategy that aligns with your timelines, budget, and growth targets. No guesswork, just a clear path forward.",
     stat: { value: "4 hrs", label: "Average Time to Place" },
   },
   {
     color: "#9B59B6",
-    title: "Agree on Staff & Timeline",
+    mainTitle: "Proactive Talent Sourcing",
+    subtitle: "(The Search)",
     description:
       "We define the exact roles, headcount, and delivery schedule, setting clear expectations from day one so there are no surprises on either side.",
     stat: { value: "15+", label: "Industries Served" },
   },
   {
     color: "#E91E8C",
-    title: "Source Candidates",
+    mainTitle: "Candidate Delivery & Hiring",
+    subtitle: "(The Results)",
     description:
       "Our extensive network and rigorous vetting covers face-to-face interviews, RTW checks, DBS, and sector-specific credentials. Only the most qualified candidates are shortlisted.",
     stat: { value: "98%", label: "Client Satisfaction" },
   },
   {
     color: "#F4863A",
-    title: "Interview & Hire",
+    mainTitle: "Post-Placement Support",
+    subtitle: "(The Follow-up)",
     description:
       "We deliver a curated shortlist of fully vetted, top-matched candidates ready for your team to interview and hire with complete confidence.",
     stat: { value: "100%", label: "Dedicated Support" },
@@ -138,7 +143,13 @@ const OurProcessSection = () => {
                       className="text-sm font-semibold leading-snug transition-colors duration-300"
                       style={{ color: isActive ? "#fff" : "rgba(255,255,255,0.4)" }}
                     >
-                      {step.title}
+                      {step.mainTitle}
+                    </p>
+                    <p
+                      className="text-xs leading-snug transition-colors duration-300 mt-0.5"
+                      style={{ color: isActive ? step.color : "rgba(255,255,255,0.25)" }}
+                    >
+                      {step.subtitle}
                     </p>
                     {/* Progress bar */}
                     <div className="mt-2.5 h-px w-full overflow-hidden rounded-full" style={{ backgroundColor: "rgba(255,255,255,0.06)" }}>
@@ -169,9 +180,6 @@ const OurProcessSection = () => {
               transition={{ duration: 0.3, ease: "easeOut" }}
               className="rounded-2xl border border-border bg-card overflow-hidden"
             >
-              {/* Colored accent bar */}
-              <div className="h-1 w-full" style={{ backgroundColor: active.color }} />
-
               <div className="relative p-6 md:p-10">
                 {/* Watermark number */}
                 <span className="absolute top-2 right-6 font-barlow font-black leading-none select-none pointer-events-none text-[5rem] md:text-[9rem] text-white/[0.035]">
@@ -180,7 +188,7 @@ const OurProcessSection = () => {
 
                 {/* Title */}
                 <h3 className="font-barlow font-black uppercase text-foreground text-2xl md:text-3xl leading-[0.95] tracking-tight mb-7">
-                  {active.title}
+                  {active.mainTitle}
                 </h3>
 
                 {/* Description */}
