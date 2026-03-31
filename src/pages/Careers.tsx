@@ -6,52 +6,17 @@ import careersBg from "@/assets/videos/careers-bg.mp4";
 interface Job {
   title: string;
   location: string;
-  type: "Full-time" | "Part-time" | "Temporary" | "Contract";
+  type: "Full-time" | "Part-time";
   description: string;
 }
 
 const jobs: Job[] = [
   {
-    title: "Warehouse Operative",
+    title: "Recruitment Consultant",
     location: "Park Royal, London",
     type: "Full-time",
     description:
-      "Picking, packing, and dispatch duties in a fast-paced warehouse environment. Must be physically fit and reliable.",
-  },
-  {
-    title: "Production Line Worker",
-    location: "Wembley, London",
-    type: "Temporary",
-    description:
-      "Assemble and inspect products on a production line. Previous manufacturing experience is an advantage.",
-  },
-  {
-    title: "HGV Class 1 Driver",
-    location: "Nationwide",
-    type: "Full-time",
-    description:
-      "Long-distance deliveries across the UK. Valid Class 1 licence and CPC card required.",
-  },
-  {
-    title: "Kitchen Porter",
-    location: "Central London",
-    type: "Part-time",
-    description:
-      "Support kitchen teams with cleaning, dishwashing, and food preparation in a busy hospitality venue.",
-  },
-  {
-    title: "Construction Labourer",
-    location: "West London",
-    type: "Contract",
-    description:
-      "General site duties including material handling, site clearance, and assisting tradespeople. CSCS card preferred.",
-  },
-  {
-    title: "Retail Sales Assistant",
-    location: "Ealing, London",
-    type: "Part-time",
-    description:
-      "Customer-facing role assisting shoppers, restocking shelves, and maintaining store presentation.",
+      "Manage the end-to-end recruitment process for a portfolio of clients across multiple sectors. You will source and screen candidates, conduct interviews, and build lasting relationships with both clients and candidates.",
   },
 ];
 
