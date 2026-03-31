@@ -2,7 +2,7 @@ import { useRef, useEffect, useState } from "react";
 import { motion, useReducedMotion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
-import heroBg from "@/assets/hero-bg.mp4";
+import heroBg from "@/assets/videos/hero-bg.mp4";
 
 const words = ["WE FIND.", "WE MATCH.", "WE DELIVER."];
 

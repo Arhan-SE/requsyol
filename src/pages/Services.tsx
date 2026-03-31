@@ -4,6 +4,11 @@ import ScrollReveal from "@/components/animations/ScrollReveal";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 
+import serviceImg1 from "@/assets/services-images/image_1.webp";
+import serviceImg2 from "@/assets/services-images/image_2.webp";
+import serviceImg3 from "@/assets/services-images/image_3.webp";
+import serviceImg4 from "@/assets/services-images/image_4.webp";
+import serviceImg5 from "@/assets/services-images/image_5.webp";
 import clubCultured from "@/assets/clients/club-cultured.png";
 import cbkFreight from "@/assets/clients/cbk-freight.png";
 import urbanLegend from "@/assets/clients/urban-legend.png";
@@ -18,7 +23,7 @@ const services = [
     title: "Sector-Specific\nStaffing Solutions",
     description:
       'We don\'t believe in "one size fits all." We provide experts tailored to your specific industry requirements.',
-    image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1600&q=80",
+    image: serviceImg1,
     bullets: [],
   },
   {
@@ -26,7 +31,7 @@ const services = [
     title: 'The Requsyol\n"Rigorous Vetting"\nProcess',
     description:
       "We actively mitigate your operational risk by ensuring every candidate is 100% compliant before they ever step foot on your site. This begins with mandatory face-to-face interviews to assess soft skills and professional history, followed by exhaustive Right-to-Work (RTW) checks including Passport and Visa verification. To guarantee total peace of mind, we conduct comprehensive referencing and DBS checks as standard. For our aviation partners, this process extends to specialised security protocols, including GSAT completion, IDC verification, and Blue ID onboarding.",
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=80",
+    image: serviceImg2,
     bullets: [],
   },
   {
@@ -34,7 +39,7 @@ const services = [
     title: "Custom Induction\n& Training",
     description:
       "Our goal is for our staff to blend seamlessly into your existing team from their very first hour. We do not simply deploy personnel; we prepare them to represent your specific brand. This involves a tailored onboarding programme where we educate staff on your unique policies, workplace culture, and operational procedures. Furthermore, every hire receives a comprehensive briefing on health and safety regulations, workplace conduct, and site-specific dress codes, ensuring they arrive fully integrated into your way of working.",
-    image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1600&q=80",
+    image: serviceImg3,
     bullets: [],
   },
   {
@@ -42,7 +47,7 @@ const services = [
     title: "End-to-End\nWorkforce\nManagement",
     description:
       "We function as an extension of your own business, acting as an external HR and Payroll department to streamline back-office operations. Our team handles the entire lifecycle of employment administration, from the management of contracts and compliance data to the full administration of payroll, taxes, and pensions. By taking daily responsibility for checking timesheets, managing rotas, and monitoring staffing levels, we remove the administrative burden from your management team so they can focus on core growth.",
-    image: "https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?auto=format&fit=crop&w=1600&q=80",
+    image: serviceImg4,
     bullets: [],
   },
   {
@@ -50,19 +55,19 @@ const services = [
     title: "Technology-Driven\nTransparency",
     description:
       "Our service is underpinned by a digital ecosystem that provides you with 24/7 oversight of your workforce. Through our secure Client Portal, you have instant access to holiday data, time-off requests, and stored compliance documents. We utilise live \"performance signals\" to highlight utilisation and shift gaps in real-time, while our predictive capacity tools allow us to forecast your future demand. This data-driven approach ensures you can pre-emptively adjust rosters and avoid the costly shortages that disrupt business continuity.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80",
+    image: serviceImg5,
     bullets: [],
   },
 ];
 
 const clientLogos = [
   { src: clubCultured, alt: "Club Cultured" },
-  { src: cbkFreight, alt: "CBK Freight" },
+  { src: cbkFreight, alt: "CBK Freight", filter: "brightness(1.5)" },
   { src: urbanLegend, alt: "Urban Legend" },
   { src: bakeryClient, alt: "Bakery Client" },
   { src: dingDong, alt: "Ding Dong" },
   { src: flatIron, alt: "Flat Iron" },
-  { src: chandra, alt: "Chandra", large: true },
+  { src: chandra, alt: "Chandra", large: true, filter: "brightness(2.5)" },
 ];
 
 const Services = () => {
@@ -160,7 +165,7 @@ const Services = () => {
                         alt={logo.alt}
                         className="marquee-logo"
                         loading="lazy"
-                        style={logo.large ? { transform: "scale(2.4)", width: "85%", height: "85%", objectFit: "contain" } : {}}
+                        style={{ ...(logo.large ? { transform: "scale(2.4)", width: "85%", height: "85%", objectFit: "contain" } : {}), ...(logo.filter ? { filter: logo.filter } : {}) }}
                       />
                     </div>
                     <div className="marquee-bracket" aria-hidden>

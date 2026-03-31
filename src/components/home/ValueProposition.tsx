@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import CountUp from "@/components/animations/CountUp";
 import DeferredBackgroundVideo from "@/components/media/DeferredBackgroundVideo";
-import valuePropBg from "@/assets/value-prop-bg.mp4";
+import valuePropBg from "@/assets/videos/value-prop-bg.mp4";
 
 const SectionDivider = ({ label }: { label: string }) => (
   <motion.div

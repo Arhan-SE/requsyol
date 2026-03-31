@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import testimonialsBg from "@/assets/testimonials-bg.mp4";
+import testimonialsBg from "@/assets/videos/testimonials-bg.mp4";
 
 const SectionDivider = ({ label }: { label: string }) => (
   <motion.div

@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Layout from "@/components/layout/Layout";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 
-import testimonialsBg from "@/assets/testimonial-page-bg.mp4";
+import testimonialsBg from "@/assets/videos/testimonial-page-bg.mp4";
 import clubCultured from "@/assets/clients/club-cultured.png";
 import cbkFreight from "@/assets/clients/cbk-freight.png";
 import urbanLegend from "@/assets/clients/urban-legend.png";
@@ -14,11 +14,11 @@ import flatIron from "@/assets/clients/flat-iron.png";
 
 const clientLogos = [
   { src: clubCultured, alt: "Club Cultured" },
-  { src: cbkFreight, alt: "CBK Freight" },
+  { src: cbkFreight, alt: "CBK Freight", filter: "brightness(1.5)" },
   { src: urbanLegend, alt: "Urban Legend" },
   { src: bakeryClient, alt: "Bakery Client" },
   { src: dingDong, alt: "Ding Dong" },
-  { src: chandra, alt: "Chandra", large: true },
+  { src: chandra, alt: "Chandra", large: true, filter: "brightness(2.5)" },
   { src: flatIron, alt: "Flat Iron" },
 ];
 
@@ -227,7 +227,7 @@ const Testimonials = () => {
                   <Fragment key={`${logo.alt}-${i}`}>
                     <div className="marquee-bracket" aria-hidden>[</div>
                     <div className="marquee-item">
-                      <img src={logo.src} alt={logo.alt} className="marquee-logo" loading="lazy" style={logo.large ? { transform: "scale(2.4)", objectFit: "contain" } : {}} />
+                      <img src={logo.src} alt={logo.alt} className="marquee-logo" loading="lazy" style={{ ...(logo.large ? { transform: "scale(2.4)", objectFit: "contain" } : {}), ...(logo.filter ? { filter: logo.filter } : {}) }} />
                     </div>
                     <div className="marquee-bracket" aria-hidden>]</div>
                   </Fragment>

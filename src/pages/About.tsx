@@ -2,8 +2,8 @@ import { Fragment, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Layout from "@/components/layout/Layout";
 import ScrollReveal from "@/components/animations/ScrollReveal";
-import aboutBg from "@/assets/about-bg.mp4";
-import processBg from "@/assets/process-bg.mp4";
+import aboutBg from "@/assets/videos/about-bg.mp4";
+import processBg from "@/assets/videos/process-bg.mp4";
 import gdpr from "@/assets/certificates/GDPR logo.jpeg";
 import sedex from "@/assets/certificates/sedex logo.png";
 import alp from "@/assets/certificates/ALP Logo.png";
@@ -91,7 +91,7 @@ const OurProcessSection = () => {
           <p className="text-[10px] uppercase tracking-[0.35em] text-muted-foreground mb-4">
             Our Process
           </p>
-          <h2 className="font-barlow font-black uppercase text-foreground text-[clamp(2.2rem,5vw,4rem)] leading-[0.9] tracking-tight mb-16">
+          <h2 className="font-barlow font-black uppercase text-foreground text-[clamp(2.2rem,5vw,4rem)] leading-[0.9] tracking-tight mb-8 md:mb-16">
             We help companies<br />to sustain success.
           </h2>
         </ScrollReveal>
@@ -108,7 +108,7 @@ const OurProcessSection = () => {
                 <button
                   key={i}
                   onClick={() => setActiveIdx(i)}
-                  className="relative w-full flex items-start gap-4 py-5 text-left group"
+                  className="relative w-full flex items-start gap-4 py-3 md:py-5 text-left group"
                 >
                   {/* Circle with step number */}
                   <div
@@ -172,9 +172,9 @@ const OurProcessSection = () => {
               {/* Colored accent bar */}
               <div className="h-1 w-full" style={{ backgroundColor: active.color }} />
 
-              <div className="relative p-8 md:p-10">
+              <div className="relative p-6 md:p-10">
                 {/* Watermark number */}
-                <span className="absolute top-2 right-6 font-barlow font-black leading-none select-none pointer-events-none text-[7rem] md:text-[9rem] text-white/[0.035]">
+                <span className="absolute top-2 right-6 font-barlow font-black leading-none select-none pointer-events-none text-[5rem] md:text-[9rem] text-white/[0.035]">
                   {String(activeIdx + 1).padStart(2, "0")}
                 </span>
 
@@ -184,7 +184,7 @@ const OurProcessSection = () => {
                 </h3>
 
                 {/* Description */}
-                <p className="text-muted-foreground text-[0.9375rem] leading-[1.85] mb-10 max-w-md">
+                <p className="text-muted-foreground text-[0.9375rem] leading-[1.85] mb-6 md:mb-10 max-w-md">
                   {active.description}
                 </p>
 
@@ -265,9 +265,9 @@ const About = () => {
             <span className="text-[11px] font-black tracking-[0.12em] text-[hsl(var(--logo-orange))]">+</span>
           </div>
 
-          {/* Mission and Vision — left */}
+          {/* Mission and Vision — center */}
           <ScrollReveal>
-            <div className="max-w-2xl">
+            <div className="max-w-2xl mx-auto text-center">
               <p className="text-sm uppercase tracking-[0.35em] text-logo-cyan mb-6">Our Mission and Vision</p>
               <p className="text-muted-foreground leading-[1.85] text-sm sm:text-base mb-4">
                 Our mission is to provide top tier services to businesses of all sizes. We believe that companies should have the opportunity to spend less time managing employee relations or worrying about HR compliance and regulations and more time on initiatives that improve their bottom line.
@@ -285,14 +285,14 @@ const About = () => {
             <span className="text-[11px] font-black tracking-[0.12em] text-[hsl(var(--logo-orange))]">+</span>
           </div>
 
-          {/* Professional Standards — right */}
+          {/* Professional Standards — center */}
           <ScrollReveal>
-            <div className="max-w-2xl ml-auto">
+            <div className="max-w-2xl mx-auto text-center">
               <p className="text-sm uppercase tracking-[0.35em] text-logo-cyan mb-4">Our Professional Standards</p>
               <p className="text-muted-foreground leading-[1.85] text-sm sm:text-base mb-8">
                 We understand that an organisation's success depends on the careful balancing of internal HR standards and the retention of expert personnel. To achieve this, we go the extra mile:
               </p>
-              <div className="grid sm:grid-cols-2 gap-6">
+              <div className="grid sm:grid-cols-2 gap-6 text-left">
                 {[
                   { title: "Verified Talent", body: "Every worker in our pool is screened by experts and ready for action." },
                   { title: "Legal Peace of Mind", body: "We take full responsibility for documentation, GDPR, and legal compliance." },
@@ -315,9 +315,9 @@ const About = () => {
             <span className="text-[11px] font-black tracking-[0.12em] text-[hsl(var(--logo-orange))]">+</span>
           </div>
 
-          {/* Why Choose Requsyol — left */}
+          {/* Why Choose Requsyol — center */}
           <ScrollReveal>
-            <div className="max-w-2xl">
+            <div className="max-w-2xl mx-auto text-center">
               <p className="text-sm uppercase tracking-[0.35em] text-logo-cyan mb-4">Why Choose Requsyol</p>
               <p className="text-muted-foreground leading-[1.85] text-sm sm:text-base">
                 Since our journey began in 2019, we have provided bespoke recruitment solutions that empower businesses to scale and individuals to thrive. Whether you need hourly, part time, or full time support, we provide the reliable foundation your business deserves. Our careful attention to basic education, qualifications, and background checks means you can hire with total confidence every time.

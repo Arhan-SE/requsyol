@@ -1,7 +1,7 @@
 import Layout from "@/components/layout/Layout";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import { MapPin, Clock, Mail, Briefcase } from "lucide-react";
-import careersBg from "@/assets/careers-bg.mp4";
+import careersBg from "@/assets/videos/careers-bg.mp4";
 
 interface Job {
   title: string;

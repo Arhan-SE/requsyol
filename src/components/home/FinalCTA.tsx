@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import DeferredBackgroundVideo from "@/components/media/DeferredBackgroundVideo";
-import finalCtaBg from "@/assets/final-cta-bg.mp4";
+import finalCtaBg from "@/assets/videos/final-cta-bg.mp4";
 
 const SectionDivider = ({ label }: { label: string }) => (
   <motion.div

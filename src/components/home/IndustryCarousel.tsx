@@ -2,16 +2,22 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Factory, Utensils, Truck, ShoppingBag, SprayCan, Warehouse, Plane } from "lucide-react";
 import DeferredBackgroundVideo from "@/components/media/DeferredBackgroundVideo";
-import industriesBg from "@/assets/industries-bg.mp4";
-import aviationImage from "@/assets/aviation.jpg";
+import industriesBg from "@/assets/videos/industries-bg.mp4";
+import aviationImage from "@/assets/images/aviation.jpg";
+import manufacturingImage from "@/assets/images/manufacturing.jpg";
+import hospitalityImage from "@/assets/images/hospitality.jpg";
+import logisticsImage from "@/assets/images/logistics.jpg";
+import retailImage from "@/assets/images/retail.jpg";
+import maintenanceImage from "@/assets/images/maintenance.jpg";
+import warehousingImage from "@/assets/images/warehousing.jpg";
 
 const industries = [
-  { icon: Factory, name: "Manufacturing", image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80" },
-  { icon: Utensils, name: "Hospitality", image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=400&q=80" },
-  { icon: Truck, name: "Logistics", image: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=400&q=80" },
-  { icon: ShoppingBag, name: "Retail", image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=400&q=80" },
-  { icon: SprayCan, name: "Maintenance\n&\nFacility Solutions", image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=400&q=80" },
-  { icon: Warehouse, name: "Warehousing", image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=400&q=80" },
+  { icon: Factory, name: "Manufacturing", image: manufacturingImage },
+  { icon: Utensils, name: "Hospitality", image: hospitalityImage },
+  { icon: Truck, name: "Logistics", image: logisticsImage },
+  { icon: ShoppingBag, name: "Retail", image: retailImage },
+  { icon: SprayCan, name: "Maintenance\n&\nFacility Solutions", image: maintenanceImage },
+  { icon: Warehouse, name: "Warehousing", image: warehousingImage },
   { icon: Plane, name: "Aviation", image: aviationImage },
 ];
 
