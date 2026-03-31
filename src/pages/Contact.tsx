@@ -96,8 +96,8 @@ const Contact = () => {
                   <div className="flex items-start gap-3 text-muted-foreground">
                     <Phone size={20} className="mt-0.5 flex-shrink-0" />
                     <div className="flex flex-col gap-1">
-                      <span>Queency: +44 7990 324644</span>
-                      <span>Loyster: +44 7466 989804</span>
+                      <span>For Registrations (Queency Rodrigues): +44 7990 324644</span>
+                      <span>For Business Enquiries (Loyster Pascoal): +44 7466 989804</span>
                     </div>
                   </div>
                   <div className="flex items-start gap-3 text-muted-foreground">

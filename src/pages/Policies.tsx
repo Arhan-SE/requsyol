@@ -1,6 +1,7 @@
+import { useEffect } from "react";
 import Layout from "@/components/layout/Layout";
 import ScrollReveal from "@/components/animations/ScrollReveal";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Shield, Scale, Heart, HardHat, Ban, Link2, Users } from "lucide-react";
 
 const conductSections = [
@@ -110,35 +111,30 @@ const legalSections = [
       { label: "9.2", text: "Requsyol Ltd does not accept any liability for any loss arising from accepting a vacancy or applicant introduced through this website." },
     ],
   },
-  {
-    id: "equal-opportunities",
-    title: "Equal Opportunities & Diversity Policy",
-    paragraphs: [
-      "Requsyol Ltd is dedicated to fostering a culture of equality and fairness, both in our recruitment services and as an employer. We believe that providing equal opportunities to all members of the community and our workforce is a fundamental value that drives our success.",
-      "Our employees are the core of our commitment to quality. We strive to ensure that those who manage and deliver our services reflect the diverse backgrounds, needs, and perspectives of the individuals and businesses we serve.",
-      "To maintain a high standard of service, Requsyol Ltd is committed to:",
-      { label: "Empowering our People", text: "Developing a motivated and inclusive workforce through transparent communication and continuous professional development for staff at all levels." },
-      { label: "Shared Responsibility", text: "Ensuring every individual within Requsyol Ltd takes ownership of promoting and applying our equal opportunities standards in their specific service areas." },
-      { label: "Merit-Based Selection", text: "Implementing fair recruitment processes that identify and hire individuals based solely on their skills, experience, and ability to perform." },
-      { label: "Community Representation", text: "Building a team that reflects the rich diversity of the local communities in which we operate." },
-      "We maintain a zero-tolerance approach toward discrimination, harassment, or victimisation. All our quality standards and operational policies are designed to uphold this commitment to a fair and inclusive workplace.",
-    ],
-  },
-  {
-    id: "ethical-trading",
-    title: "Ethical Trading Policy Statement",
-    paragraphs: [
-      { label: "Commitment to Ethical Standards", text: "Requsyol Ltd is committed to a policy of ethical trading in both the provision of our services and as an employer. We uphold the principle of freedom of opportunity in employment and recognise the right of all sections of our workforce to collective bargaining and the right to join or form a trade union." },
-      { label: "Health, Safety, and the Working Environment", text: "In an organisation where our clients manage the daily environment of our workforce, we are dedicated to ensuring a safe and healthy working environment for all our Temporary Workers. We collaborate closely with our clients to prevent accidents and dangerous occurrences, ensuring all workers are fully aware of potential hazards through comprehensive risk assessments and relevant training." },
-      "All workers are provided with written terms and conditions of employment. Requsyol Ltd ensures that workers are paid at or above the National Minimum Wage, working hours consistently comply with the Working Time Regulations, detailed payslips are provided for every pay period outlining hourly rates, hours worked, and statutory deductions, and no unauthorised deductions are made from pay without the express written consent of the worker.",
-      { label: "Equality and Professional Conduct", text: "We enforce a strict policy against discrimination in recruitment, wages, compensation, access to training, promotion, or termination. Decisions are never based on race, colour, ethnic or national origin, religion, age, gender, disability, marital status, sexual orientation, union membership, or political affiliation. Requsyol Ltd maintains a zero-tolerance policy toward physical abuse, the threat of physical abuse, sexual or other harassment, verbal abuse, or any other form of intimidatory action." },
-      { label: "Grievance Procedure", text: "Should a worker have a grievance or cause for complaint, the correct procedure is to contact our Head Office on 07432 402246 and ask to speak with a Senior Manager, providing them with full details of the matter. The standards detailed above represent our minimum operating criteria, and we aim to exceed these standards whenever and wherever possible." },
-    ],
-  },
 ];
 
-const SectionDivider = ({ label }: { label: string }) => (
-  <div className="relative -mx-6 flex items-center justify-center gap-4 py-10 px-6">
+
+const equalOpportunityParagraphs = [
+  "Requsyol Ltd is dedicated to fostering a culture of equality and fairness, both in our recruitment services and as an employer. We believe that providing equal opportunities to all members of the community and our workforce is a fundamental value that drives our success.",
+  "Our employees are the core of our commitment to quality. We strive to ensure that those who manage and deliver our services reflect the diverse backgrounds, needs, and perspectives of the individuals and businesses we serve.",
+  "To maintain a high standard of service, Requsyol Ltd is committed to:",
+  { label: "Empowering our People", text: "Developing a motivated and inclusive workforce through transparent communication and continuous professional development for staff at all levels." },
+  { label: "Shared Responsibility", text: "Ensuring every individual within Requsyol Ltd takes ownership of promoting and applying our equal opportunities standards in their specific service areas." },
+  { label: "Merit-Based Selection", text: "Implementing fair recruitment processes that identify and hire individuals based solely on their skills, experience, and ability to perform." },
+  { label: "Community Representation", text: "Building a team that reflects the rich diversity of the local communities in which we operate." },
+  "We maintain a zero-tolerance approach toward discrimination, harassment, or victimisation. All our quality standards and operational policies are designed to uphold this commitment to a fair and inclusive workplace.",
+];
+
+const ethicalTradingParagraphs = [
+  { label: "Commitment to Ethical Standards", text: "Requsyol Ltd is committed to a policy of ethical trading in both the provision of our services and as an employer. We uphold the principle of freedom of opportunity in employment and recognise the right of all sections of our workforce to collective bargaining and the right to join or form a trade union." },
+  { label: "Health, Safety, and the Working Environment", text: "In an organisation where our clients manage the daily environment of our workforce, we are dedicated to ensuring a safe and healthy working environment for all our Temporary Workers. We collaborate closely with our clients to prevent accidents and dangerous occurrences, ensuring all workers are fully aware of potential hazards through comprehensive risk assessments and relevant training." },
+  "All workers are provided with written terms and conditions of employment. Requsyol Ltd ensures that workers are paid at or above the National Minimum Wage, working hours consistently comply with the Working Time Regulations, detailed payslips are provided for every pay period outlining hourly rates, hours worked, and statutory deductions, and no unauthorised deductions are made from pay without the express written consent of the worker.",
+  { label: "Equality and Professional Conduct", text: "We enforce a strict policy against discrimination in recruitment, wages, compensation, access to training, promotion, or termination. Decisions are never based on race, colour, ethnic or national origin, religion, age, gender, disability, marital status, sexual orientation, union membership, or political affiliation. Requsyol Ltd maintains a zero-tolerance policy toward physical abuse, the threat of physical abuse, sexual or other harassment, verbal abuse, or any other form of intimidatory action." },
+  { label: "Grievance Procedure", text: "Should a worker have a grievance or cause for complaint, the correct procedure is to contact our Head Office on 07432 402246 and ask to speak with a Senior Manager, providing them with full details of the matter. The standards detailed above represent our minimum operating criteria, and we aim to exceed these standards whenever and wherever possible." },
+];
+
+const SectionDivider = ({ label, id }: { label: string; id?: string }) => (
+  <div id={id} className="relative -mx-6 flex items-center justify-center gap-4 py-10 px-6">
     <div className="h-px flex-1 divider-line" />
     <span className="text-[10px] uppercase tracking-[0.35em] text-muted-foreground font-sans whitespace-nowrap">
       + {label} +
@@ -148,6 +144,19 @@ const SectionDivider = ({ label }: { label: string }) => (
 );
 
 const Policies = () => {
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (hash) {
+      const el = document.querySelector(hash);
+      if (el) {
+        setTimeout(() => el.scrollIntoView({ behavior: "smooth", block: "start" }), 100);
+      }
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [hash]);
+
   return (
     <Layout>
       {/* Hero */}
@@ -171,7 +180,7 @@ const Policies = () => {
 
       <div className="container mx-auto max-w-5xl px-6">
         {/* ── Business Code of Conduct ── */}
-        <SectionDivider label="BUSINESS CODE OF CONDUCT & ETHICS" />
+        <SectionDivider label="BUSINESS CODE OF CONDUCT & ETHICS" id="code-of-conduct" />
 
 
           <div className="space-y-0">
@@ -213,7 +222,7 @@ const Policies = () => {
           </div>
 
         {/* ── Legal Policies ── */}
-        <SectionDivider label="LEGAL" />
+        <SectionDivider label="LEGAL" id="legal" />
 
         <div className="space-y-0">
           {legalSections.map((section, index) => (
@@ -246,6 +255,38 @@ const Policies = () => {
             </ScrollReveal>
           ))}
         </div>
+
+        {/* ── Equal Opportunity & Diversity ── */}
+        <SectionDivider label="EQUAL OPPORTUNITY & EQUAL DIVERSITY" id="equal-opportunity" />
+        <ScrollReveal>
+          <div className="py-10 md:py-14 space-y-4">
+            {equalOpportunityParagraphs.map((p, i) =>
+              typeof p === "string" ? (
+                <p key={i} className="text-sm leading-[1.8] text-muted-foreground md:text-[0.9375rem]">{p}</p>
+              ) : (
+                <p key={i} className="text-sm leading-[1.8] text-muted-foreground md:text-[0.9375rem]">
+                  <span className="font-semibold text-foreground">{p.label}:</span> {p.text}
+                </p>
+              )
+            )}
+          </div>
+        </ScrollReveal>
+
+        {/* ── Ethical Trading Policy Statement ── */}
+        <SectionDivider label="ETHICAL TRADING POLICY STATEMENT" id="ethical-trading" />
+        <ScrollReveal>
+          <div className="py-10 md:py-14 space-y-4">
+            {ethicalTradingParagraphs.map((p, i) =>
+              typeof p === "string" ? (
+                <p key={i} className="text-sm leading-[1.8] text-muted-foreground md:text-[0.9375rem]">{p}</p>
+              ) : (
+                <p key={i} className="text-sm leading-[1.8] text-muted-foreground md:text-[0.9375rem]">
+                  <span className="font-semibold text-foreground">{p.label}:</span> {p.text}
+                </p>
+              )
+            )}
+          </div>
+        </ScrollReveal>
 
         {/* CTA */}
         <div className="py-20 text-center">

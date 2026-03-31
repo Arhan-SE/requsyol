@@ -48,6 +48,7 @@ const services = [
     description:
       "We function as an extension of your own business, acting as an external HR and Payroll department to streamline back-office operations. Our team handles the entire lifecycle of employment administration, from the management of contracts and compliance data to the full administration of payroll, taxes, and pensions. By taking daily responsibility for checking timesheets, managing rotas, and monitoring staffing levels, we remove the administrative burden from your management team so they can focus on core growth.",
     image: serviceImg4,
+    bgPosition: "center 20%",
     bullets: [],
   },
   {
@@ -77,19 +78,17 @@ const Services = () => {
         {/* Hero */}
         <div className="container mx-auto px-4">
           <ScrollReveal>
-            <section className="pt-20 pb-12 md:pb-16">
+            <section className="pt-20 pb-12 md:pb-16 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
               <h1
-                className="font-barlow font-black uppercase text-5xl leading-[0.9] tracking-tight sm:text-7xl md:text-9xl lg:text-[10rem] text-transparent bg-clip-text"
+                className="font-barlow font-black uppercase text-5xl leading-[0.9] tracking-tight sm:text-7xl md:text-9xl lg:text-[10rem] text-transparent bg-clip-text shrink-0"
                 style={{ backgroundImage: "linear-gradient(135deg, #56A8D6 0%, hsl(var(--logo-orange)) 50%, #2F7FB2 100%)" }}
               >
                 OUR
                 <br />
                 SERVICES.
               </h1>
-              <p className="mt-8 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
-                At Requsyol, we provide more than just staff; we provide a full-scale operational
-                solution. From rigorous vetting to end-to-end administration, we take the heavy
-                lifting out of recruitment so you can focus on running your business.
+              <p className="flex-1 text-sm leading-relaxed text-muted-foreground md:text-base text-center max-w-lg mx-auto">
+                At Requsyol, we provide more than just staff; we provide a full-scale operational solution. From rigorous vetting to end-to-end administration, we take the heavy lifting out of recruitment so you can focus on running your business.
               </p>
             </section>
           </ScrollReveal>
@@ -104,7 +103,7 @@ const Services = () => {
                 style={{
                   backgroundImage: `url(${service.image})`,
                   backgroundSize: "cover",
-                  backgroundPosition: "center",
+                  backgroundPosition: service.bgPosition ?? "center",
                 }}
               >
                 <div className="absolute inset-0 bg-black/70" />

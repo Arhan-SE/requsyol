@@ -49,15 +49,15 @@ const Footer = () => {
               <h4 className="mb-5 font-sans text-[10px] uppercase tracking-[0.3em] text-logo-cyan">Legal</h4>
             <div className="flex flex-col gap-3">
               {[
-                { label: "Privacy Policy", path: "/policies#privacy" },
-                { label: "Terms & Conditions", path: "/policies#terms" },
-                { label: "GDPR", path: "/policies#gdpr" },
-                { label: "Untitled", path: "/legal/untitled-1" },
-                { label: "Untitled", path: "/legal/untitled-2" },
-                { label: "Untitled", path: "/legal/untitled-3" },
+                { label: "Business Code And Ethics", path: "/policies#code-of-conduct" },
+                { label: "Legal", path: "/policies#legal" },
+                { label: "Privacy Policy", path: "/policies" },
+                { label: "⁠Equal Opportunity And Equal Diversity", path: "/policies#equal-opportunity" },
+                { label: "⁠Ethical Trading Policy Statement.", path: "/policies#ethical-trading" },
+                { label: "something", path: "/policies" },
               ].map((link) => (
                 <Link
-                  key={link.path}
+                  key={link.label}
                   to={link.path}
                   className="text-xs font-sans uppercase tracking-wide text-muted-foreground transition-colors hover:text-foreground"
                 >
@@ -91,8 +91,8 @@ const Footer = () => {
               <div className="flex items-start gap-3 text-xs font-sans text-muted-foreground">
                 <Phone size={12} className="mt-0.5 flex-shrink-0" />
                 <div className="flex flex-col gap-1">
-                  <p className="whitespace-nowrap"><span className="text-muted-foreground/60">Queency:</span> +44 7990 324644</p>
-                  <p className="whitespace-nowrap"><span className="text-muted-foreground/60">Loyster:</span> +44 7466 989804</p>
+                  <p><span className="text-muted-foreground/60">Registrations:</span> +44 7990 324644</p>
+                  <p><span className="text-muted-foreground/60">Business Enquiries:</span> +44 7466 989804</p>
                 </div>
               </div>
             </div>
