@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import Layout from "@/components/layout/Layout";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import { Link, useLocation } from "react-router-dom";
-import { Shield, Scale, Heart, HardHat, Ban, Link2, Users } from "lucide-react";
+import { Shield, Heart, HardHat, Ban, Link2, Users } from "lucide-react";
 
 const conductSections = [
   {
@@ -42,7 +42,7 @@ const legalSections = [
     id: "terms-general",
     title: "General Terms",
     paragraphs: [
-      { label: "1.1", text: "This website is the property of Requsyol Ltd. The company registration number is 12121221 (Registered in England and Wales) and the registered office is Suite 23, 2nd Floor, Unimix House, Abbey Road, Park Royal, London, NW10 7TR. Business Enquiries: +44 7432 402246." },
+      { label: "1.1", text: "This website is the property of Requsyol Ltd. The company registration number is 12121221 (Registered in England and Wales) and the registered office is Suite 23, 2nd Floor, Unimix House, Abbey Road, Park Royal, London, NW10 7TR." },
       { label: "1.2", text: "Requsyol Ltd does not make any representation whatsoever about any job vacancy advertisement that is accessed on this website, because it involves collating the information provided by third parties. Accordingly, it is up to the user to satisfy themselves as to the suitability of any agency, employer or job found directly, or indirectly, through this website." },
       { label: "1.3", text: "The user agrees that the Internet or Requsyol Ltd's systems, services and equipment can from time to time be inoperative in full or in part. This can be caused by, but not limited to, mechanical breakdown, hardware or software problems or upgrades, repairs and maintenance, connectivity problems and any other events that are beyond the control of Requsyol Ltd. You agree that Requsyol Ltd is not held liable for any failure or inability to provide any of its services via the website at such times." },
     ],
@@ -172,7 +172,7 @@ const Policies = () => {
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
             <p className="mt-6 max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base">
-              Our commitment to transparency, ethics, and the highest professional standards — documented for your peace of mind.
+              Our commitment to transparency, ethics, and the highest professional standards, documented for your peace of mind.
             </p>
           </ScrollReveal>
         </div>
@@ -184,21 +184,14 @@ const Policies = () => {
 
 
           <div className="space-y-0">
-            {conductSections.map((section, index) => {
-              const Icon = section.icon;
-              return (
+            {conductSections.map((section, index) => (
                 <ScrollReveal key={section.title} delay={index * 0.04}>
                   <article className="group py-10 md:py-14">
                     <div className="grid gap-6 md:grid-cols-[auto_1fr] md:gap-10">
-                      {/* Number + Icon */}
-                      <div className="flex items-start gap-4">
-                        <span className="font-barlow font-black text-4xl text-muted-foreground/20 md:text-6xl">
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
-                        <div className="mt-1 flex h-10 w-10 items-center justify-center rounded-full border border-border bg-muted/30 md:mt-2 md:h-12 md:w-12">
-                          <Icon size={18} className="text-foreground" />
-                        </div>
-                      </div>
+                      {/* Number */}
+                      <span className="font-barlow font-black text-4xl text-muted-foreground/20 md:text-6xl">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
 
                       {/* Content */}
                       <div>
@@ -217,8 +210,7 @@ const Policies = () => {
                     </div>
                   </article>
                 </ScrollReveal>
-              );
-            })}
+            ))}
           </div>
 
         {/* ── Legal Policies ── */}

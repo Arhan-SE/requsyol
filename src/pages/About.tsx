@@ -44,7 +44,7 @@ const processSteps = [
     mainTitle: "Proactive Talent Sourcing",
     subtitle: "(The Search)",
     description:
-      "We define the exact roles, headcount, and delivery schedule, setting clear expectations from day one so there are no surprises on either side.",
+      "We actively headhunt top-tier talent using our deep industry networks to meet your specific needs for part-time, full-time, or flexible staffing. By engaging both active and passive candidates not found on standard job boards, we ensure you have access to the best professionals in the market.",
     stat: { value: "15+", label: "Industries Served" },
   },
   {
