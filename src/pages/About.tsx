@@ -49,8 +49,8 @@ const processSteps = [
   },
   {
     color: "#E91E8C",
-    mainTitle: "Candidate Delivery & Hiring",
-    subtitle: "(The Results)",
+    mainTitle: "Candidate Vetting & Delivery",
+    subtitle: "(Compliance & Quality)",
     description:
       "Our extensive network and rigorous vetting covers face-to-face interviews, RTW checks, DBS, and sector-specific credentials. Only the most qualified candidates are shortlisted.",
     stat: { value: "98%", label: "Client Satisfaction" },
@@ -60,7 +60,7 @@ const processSteps = [
     mainTitle: "Post-Placement Support",
     subtitle: "(The Follow-up)",
     description:
-      "We deliver a curated shortlist of fully vetted, top-matched candidates ready for your team to interview and hire with complete confidence.",
+      "We provide end-to-end support to ensure seamless integration. This includes performance feedback, compliance monitoring, and full administrative management covering rotas, timesheets, and payroll. We act as an extension of your team to ensure your staffing remains efficient and fully optimised.",
     stat: { value: "100%", label: "Dedicated Support" },
   },
 ];
