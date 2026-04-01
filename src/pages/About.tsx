@@ -8,11 +8,13 @@ import gdpr from "@/assets/certificates/GDPR logo.jpeg";
 import sedex from "@/assets/certificates/sedex logo.png";
 import alp from "@/assets/certificates/ALP Logo.png";
 import croner from "@/assets/certificates/croner-logo.png";
+import glaa from "@/assets/certificates/GLAA logo.png";
 const certLogos = [
   { src: gdpr, alt: "GDPR", whiteBg: true, large: false },
   { src: sedex, alt: "Sedex", whiteBg: true, large: false },
   { src: alp, alt: "ALP Member", whiteBg: true, large: false },
   { src: croner, alt: "Croner", whiteBg: true, large: false },
+  { src: glaa, alt: "GLAA", whiteBg: true, large: false, rounded: true },
 ];
 
 const mission = {
@@ -357,7 +359,7 @@ const About = () => {
                       alt={logo.alt}
                       className="marquee-logo"
                       loading="lazy"
-                      style={logo.large ? { width: "85%", height: "85%", objectFit: "contain", transform: "scale(2.4)" } : {}}
+                      style={logo.large ? { width: "85%", height: "85%", objectFit: "contain", transform: "scale(2.4)" } : logo.rounded ? { borderRadius: "50%", backgroundColor: "hsl(210, 50%, 11%)", width: "140%", height: "140%" } : {}}
                     />
                   </div>
                   <div className="marquee-bracket" aria-hidden>]</div>
