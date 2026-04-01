@@ -359,7 +359,7 @@ const About = () => {
                       alt={logo.alt}
                       className="marquee-logo"
                       loading="lazy"
-                      style={logo.large ? { width: "85%", height: "85%", objectFit: "contain", transform: "scale(2.4)" } : logo.rounded ? { borderRadius: "50%", backgroundColor: "hsl(210, 50%, 11%)", width: "140%", height: "140%" } : {}}
+                      style={logo.large ? { width: "85%", height: "85%", objectFit: "contain", transform: "scale(2.4)" } : logo.rounded ? { borderRadius: "50%", width: "100px", height: "100px", objectFit: "contain", border: "2px solid hsl(189, 78%, 54%)" } : {}}
                     />
                   </div>
                   <div className="marquee-bracket" aria-hidden>]</div>
