@@ -208,11 +208,11 @@ All colors MUST be HSL.
 }
 
 .marquee-item {
-  margin-left: 24px;
-  margin-right: 24px;
+  margin-left: 12px;
+  margin-right: 12px;
   display: flex;
-  height: 80px;
-  width: 144px;
+  height: 70px;
+  width: 110px;
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
@@ -235,8 +235,8 @@ All colors MUST be HSL.
 }
 
 .marquee-shell--certs .marquee-item {
-  height: 120px;
-  width: 200px;
+  height: 90px;
+  width: 140px;
 }
 
 @media (min-width: 768px) {
@@ -252,8 +252,8 @@ All colors MUST be HSL.
 }
 
 .marquee-shell--clients .marquee-item {
-  height: 110px;
-  width: 180px;
+  height: 80px;
+  width: 130px;
 }
 
 @media (min-width: 768px) {
@@ -309,4 +309,27 @@ All colors MUST be HSL.
 
 .divider-line-soft {
   background-image: linear-gradient(90deg, rgba(86, 168, 214, 0.3) 0%, rgba(255, 255, 255, 0) 40%, rgba(47, 127, 178, 0.3) 100%);
+}
+
+/* Footer text gradient hover animation */
+@keyframes gradientShimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.footer-text-gradient {
+  background-image: linear-gradient(90deg, #56A8D6 0%, hsl(var(--logo-orange)) 50%, #2F7FB2 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: all 0.3s ease;
+}
+
+.footer-text-gradient:hover {
+  animation: gradientShimmer 1.5s ease-in-out forwards;
 }

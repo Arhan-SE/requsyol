@@ -93,13 +93,13 @@ const HeroSection = () => {
             to="/candidates"
             className="group inline-flex items-center gap-3 text-xs tracking-[0.28em] uppercase font-medium text-white border-2 border-white px-6 sm:px-8 py-3 sm:py-4 hover:bg-white hover:text-black transition-all duration-300"
           >
-            For candidates.
+            Looking for your next role?
           </Link>
           <Link
             to="/employers"
             className="group inline-flex items-center gap-3 text-xs tracking-[0.28em] uppercase font-medium text-white border-2 border-white px-6 sm:px-8 py-3 sm:py-4 hover:bg-white hover:text-black transition-all duration-300"
           >
-            For clients.
+            Looking to grow your team?
           </Link>
         </motion.div>
 

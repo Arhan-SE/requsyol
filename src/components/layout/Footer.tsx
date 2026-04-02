@@ -1,8 +1,26 @@
+import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Building2 } from "lucide-react";
 import SocialLinks from "@/components/layout/SocialLinks";
 
 const Footer = () => {
+  const reqRef = useRef<HTMLDivElement>(null);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [isHovering, setIsHovering] = useState(false);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = reqRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    setMousePos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  };
+
+  const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = reqRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    setMousePos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+    setIsHovering(true);
+  };
+
   return (
     <footer className="bg-background">
        <div className="flex items-center px-6 py-6">
@@ -101,28 +119,41 @@ const Footer = () => {
 
         <div className="pt-8 pb-8 border-t border-border flex flex-col gap-3">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--logo-orange))]">
+            <p className="font-sans text-[10px] uppercase tracking-[0.2em] footer-text-gradient cursor-pointer">
               © {new Date().getFullYear()} Requsyol. All Rights Reserved.
             </p>
-            <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-transparent bg-clip-text bg-gradient-to-r from-[#56A8D6] to-[#2F7FB2]">
+            <p className="font-sans text-[10px] uppercase tracking-[0.2em] footer-text-gradient cursor-pointer">
               UK Staffing & Recruitment
             </p>
           </div>
-          <p className="font-sans text-[10px] uppercase tracking-[0.15em] text-muted-foreground">
+          <p className="font-sans text-[10px] uppercase tracking-[0.15em] footer-text-gradient cursor-pointer">
             Requsyol Recruitment Ltd are licensed members of the Gangmasters and Labour Abuse Authority. License No REQU0004
           </p>
         </div>
       </div>
 
-      <div className="relative overflow-hidden pb-4">
-         <div
-           className="pointer-events-none select-none text-center font-barlow leading-none uppercase font-black text-transparent bg-clip-text bg-gradient-to-b from-[#8CC8E8] via-[#5BAAD6] to-[#2F7FB2]"
-           style={{
-             fontSize: "clamp(6rem, 20vw, 18rem)",
-           }}
-         >
-           REQUSYOL
-         </div>
+      <div
+        ref={reqRef}
+        className="relative overflow-hidden pb-4"
+        onMouseMove={handleMouseMove}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={() => setIsHovering(false)}
+      >
+        <div
+          className="text-center font-barlow leading-none uppercase font-black select-none"
+          style={{
+            fontSize: "clamp(6rem, 20vw, 18rem)",
+            backgroundImage: `radial-gradient(circle 380px at ${mousePos.x}px ${mousePos.y}px, #56A8D6 0%, #F28230 35%, #2F7FB2 65%, transparent 100%)`,
+            WebkitBackgroundClip: "text",
+            backgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            color: "transparent",
+            opacity: isHovering ? 1 : 0.22,
+            transition: "opacity 0.45s ease",
+          }}
+        >
+          REQUSYOL
+        </div>
       </div>
     </footer>
   );
