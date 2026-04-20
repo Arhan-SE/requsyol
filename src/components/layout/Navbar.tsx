@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -15,10 +15,24 @@ const navLinks = [
 const Navbar = () => {
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isNavbarVisible, setIsNavbarVisible] = useState(true);
+  const lastScrollY = useRef(0);
   const headerStateClassName = "bg-transparent border-transparent shadow-none";
 
   const { scrollY } = useScroll();
   const logoOpacity = useTransform(scrollY, [0, 150], [1, 0]);
+
+  useEffect(() => {
+    const unsubscribe = scrollY.onChange((current) => {
+      if (current > 100 && current > lastScrollY.current) {
+        setIsNavbarVisible(false);
+      } else {
+        setIsNavbarVisible(true);
+      }
+      lastScrollY.current = current;
+    });
+    return () => unsubscribe();
+  }, [scrollY]);
 
   const closeMenu = () => setMenuOpen(false);
 
@@ -26,9 +40,10 @@ const Navbar = () => {
     <>
       <motion.header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${headerStateClassName}`}
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+        initial={{ opacity: 1 }}
+        animate={{ opacity: isNavbarVisible ? 1 : 0 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        pointerEvents={isNavbarVisible ? "auto" : "none"}
       >
         {/* Desktop nav */}
         <div className="hidden lg:grid grid-cols-[1fr_auto_1fr] items-start gap-6 px-8 py-5">

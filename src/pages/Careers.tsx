@@ -18,6 +18,48 @@ const jobs: Job[] = [
     description:
       "Manage the end-to-end recruitment process for a portfolio of clients across multiple sectors. You will source and screen candidates, conduct interviews, and build lasting relationships with both clients and candidates.",
   },
+  {
+    title: "Aviation Staffing Specialist",
+    location: "London (Various Airports)",
+    type: "Full-time",
+    description:
+      "Specialize in recruitment for the aviation industry with expertise in CAA compliance, GSAT, IDC, and Blue ID vetting. Place pre-vetted staff at airports and airlines while ensuring all regulatory requirements are met.",
+  },
+  {
+    title: "Staffing Coordinator",
+    location: "Park Royal, London",
+    type: "Full-time",
+    description:
+      "Coordinate daily staffing operations across multiple clients. Manage rotas, confirm placements, handle timesheet management, and communicate between candidates and client teams to ensure seamless service delivery.",
+  },
+  {
+    title: "Compliance & Vetting Officer",
+    location: "Park Royal, London",
+    type: "Full-time",
+    description:
+      "Conduct DBS checks, CRC verifications, and Right-to-Work assessments for all candidates. Ensure strict compliance with immigration and employment law while maintaining accurate records and audit trails.",
+  },
+  {
+    title: "Account Manager",
+    location: "Park Royal, London",
+    type: "Full-time",
+    description:
+      "Build and maintain long-term relationships with key clients. Understand their staffing needs, provide workforce solutions, manage SLAs, and drive client satisfaction and retention across multiple sectors.",
+  },
+  {
+    title: "HR & Operations Administrator",
+    location: "Park Royal, London",
+    type: "Full-time",
+    description:
+      "Support HR and operations teams with payroll processing, candidate onboarding, induction management, and administrative tasks. Maintain databases and ensure smooth internal processes.",
+  },
+  {
+    title: "Hospitality & Events Recruitment Lead",
+    location: "London",
+    type: "Part-time",
+    description:
+      "Manage recruitment for hospitality and events sectors. Source skilled candidates, coordinate placements for ad-hoc events, and build a reliable network of hospitality professionals.",
+  },
 ];
 
 const mailtoLink = (jobTitle: string) =>

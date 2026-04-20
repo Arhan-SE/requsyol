@@ -69,10 +69,9 @@ const Footer = () => {
               {[
                 { label: "Business Code And Ethics", path: "/policies#code-of-conduct" },
                 { label: "Legal", path: "/policies#legal" },
-                { label: "Privacy Policy", path: "/policies" },
+                { label: "Privacy Policy", path: "/policies#terms-privacy" },
                 { label: "⁠Equal Opportunity And Equal Diversity", path: "/policies#equal-opportunity" },
                 { label: "⁠Ethical Trading Policy Statement.", path: "/policies#ethical-trading" },
-                { label: "something", path: "/policies" },
               ].map((link) => (
                 <Link
                   key={link.label}
