@@ -71,3 +71,5 @@ All forms must use the utilities here instead of rolling their own validation:
 
 ### Testing
 Tests live in `src/**/*.{test,spec}.{ts,tsx}` and run in jsdom. Setup file: `src/test/setup.ts`.
+
+Codex will review your output once you are done.
