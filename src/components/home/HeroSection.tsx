@@ -44,7 +44,7 @@ const HeroSection = () => {
             onCanPlayThrough={() => setVideoReady(true)}
           />
         </motion.div>
-        <div className="absolute inset-0 bg-black/50" />
+        <div className="absolute inset-0 bg-black/40" />
         <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background/0 to-transparent" />
       </div>
 

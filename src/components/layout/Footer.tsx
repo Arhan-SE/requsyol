@@ -73,6 +73,8 @@ const Footer = () => {
                 { label: "⁠Equal Opportunity And Equal Diversity", path: "/policies#equal-opportunity" },
                 { label: "⁠Ethical Trading Policy Statement.", path: "/policies#ethical-trading" },
                 { label: "Environmental Policy Statement", path: "/policies#environmental-policy" },
+                { label: "Candidate Registration and Documentation", path: "/policies#terms-candidate-registration" },
+                { label: "Payroll and Holiday Entitlements", path: "/policies#terms-payroll" },
               ].map((link) => (
                 <Link
                   key={link.label}

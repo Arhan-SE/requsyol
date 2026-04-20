@@ -111,6 +111,26 @@ const legalSections = [
       { label: "9.2", text: "Requsyol Ltd does not accept any liability for any loss arising from accepting a vacancy or applicant introduced through this website." },
     ],
   },
+  {
+    id: "terms-candidate-registration",
+    title: "Candidate Registration and Documentation",
+    paragraphs: [
+      { label: "10.1", text: "Submission of Documents: By registering with Requsyol Ltd, candidates agree to provide necessary right-to-work and identification documents. These may be provided in person for scanning or sent via email. You agree that all information provided is accurate and authentic." },
+      { label: "10.2", text: "Storage and Security: Requsyol Ltd is committed to the safe and secure storage of your personal records. All digital and physical copies of your documents are stored on secure systems and are used solely for recruitment, compliance, and payroll purposes." },
+      { label: "10.3", text: "Disclosure of Information: Your documents will remain confidential and will not be shared with third parties, except in the following circumstances: (1) Where a Client has specifically requested documentation as part of the hiring or vetting process. (2) In the event of a Formal Audit conducted by or on behalf of Requsyol Ltd or the Client's company to ensure legal and regulatory compliance." },
+      { label: "10.4", text: "Data Retention: To comply with UK employment and audit regulations, Requsyol Ltd will retain your registered documents for a maximum period of 5 years from the date of your registration. After this period, your data will be securely deleted." },
+      { label: "10.5", text: "Withdrawal of Consent and Deletion: Candidates have the right to withdraw their consent and request the removal of their data at any time. To ensure this request is legally documented: Requests must be sent via email to hr@requsyol.co.uk. Note: For security and compliance reasons, requests made via telephone or in-person visits will not be considered valid or processed as these requests must be documented for our records." },
+    ],
+  },
+  {
+    id: "terms-payroll",
+    title: "Payroll and Holiday Entitlements",
+    paragraphs: [
+      { label: "11.1", text: "General Enquiries: Requsyol Ltd is responsible for the accurate processing of payroll and holiday pay for its registered candidates." },
+      { label: "11.2", text: "Contact for Discrepancies: For any queries specifically regarding your pay, tax, or holiday entitlement, please contact our payroll department directly via email at loyster.pascoal@requsyol.co.uk." },
+      { label: "11.3", text: "Processing Times: All payroll queries should be submitted in writing to ensure a tracked resolution. Please allow a reasonable timeframe for these queries to be investigated with our finance department." },
+    ],
+  },
 ];
 
 
@@ -130,7 +150,7 @@ const ethicalTradingParagraphs = [
   { label: "Health, Safety, and the Working Environment", text: "In an organisation where our clients manage the daily environment of our workforce, we are dedicated to ensuring a safe and healthy working environment for all our Temporary Workers. We collaborate closely with our clients to prevent accidents and dangerous occurrences, ensuring all workers are fully aware of potential hazards through comprehensive risk assessments and relevant training." },
   "All workers are provided with written terms and conditions of employment. Requsyol Ltd ensures that workers are paid at or above the National Minimum Wage, working hours consistently comply with the Working Time Regulations, detailed payslips are provided for every pay period outlining hourly rates, hours worked, and statutory deductions, and no unauthorised deductions are made from pay without the express written consent of the worker.",
   { label: "Equality and Professional Conduct", text: "We enforce a strict policy against discrimination in recruitment, wages, compensation, access to training, promotion, or termination. Decisions are never based on race, colour, ethnic or national origin, religion, age, gender, disability, marital status, sexual orientation, union membership, or political affiliation. Requsyol Ltd maintains a zero-tolerance policy toward physical abuse, the threat of physical abuse, sexual or other harassment, verbal abuse, or any other form of intimidatory action." },
-  { label: "Grievance Procedure", text: "Should a worker have a grievance or cause for complaint, the correct procedure is to contact our Head Office on 07432 402246 and ask to speak with a Senior Manager, providing them with full details of the matter. The standards detailed above represent our minimum operating criteria, and we aim to exceed these standards whenever and wherever possible." },
+  { label: "Grievance Procedure", text: "Should a worker have a grievance or cause for complaint, the correct procedure is to contact our Head Office on +44 7990 324644 and ask to speak with a Senior Manager, providing them with full details of the matter. The standards detailed above represent our minimum operating criteria, and we aim to exceed these standards whenever and wherever possible." },
 ];
 
 const environmentalPolicyParagraphs = [
