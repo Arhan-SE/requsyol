@@ -21,7 +21,7 @@ const mission = {
   quote: "MAKE CREATIVE SIMPLE",
   title: "Our mission",
   body: `Requsyol's mission is to provide top-tier services to businesses of all sizes. We believe that companies should have the opportunity to spend less time managing employee relations and worrying about HR compliance and regulations and spend more time on initiatives that improve their bottom line.
-Our ultimate goal is to deliver the best human resource services to all companies we work with while adhering to our high professionalism, quality, and standards. This entails keeping up with changing norms, rules, and job markets. Our careful balancing of internal HR standards and the retention of expert personnel contribute to the organization's success.`,
+Our ultimate goal is to deliver the best human resource services to all companies we work with while adhering to our high professionalism, quality, and standards. This entails keeping up with changing norms, rules, and job markets. Our careful balancing of internal HR standards and the retention of expert personnel contribute to the organisation's success.`,
 };
 
 const processSteps = [
@@ -345,7 +345,7 @@ const About = () => {
                 Established in 2019, Requsyol was founded on the belief that the struggle to find reliable talent and the quest for a workplace that truly values its people are two sides of the same coin. We do not just fill vacancies; we build professional partnerships that last.
               </p>
               <p className="text-muted-foreground leading-[2] text-sm sm:text-base">
-                As one of the UK's fastest growing and most prominent head hunting firms, we have spent the last several years reimagining recruitment. By combining cutting edge technology like our Geo Tracked time management app with a deeply human approach to screening, we ensure that every placement is a perfect fit.
+                As one of the UK's fastest growing and most prominent head hunting firms, we have spent the last several years reimagining recruitment. By backing up our Geo Tracked time management app with a truly human approach to screening, we make sure we aren't just filling roles, but finding the right fit for everyone involved.  
               </p>
             </div>
           </ScrollReveal>
@@ -382,7 +382,10 @@ const About = () => {
             <div className="max-w-2xl mx-auto text-center">
               <p className="text-sm uppercase tracking-[0.35em] text-logo-cyan mb-6 md:mb-8">Our Professional Standards</p>
               <p className="text-muted-foreground leading-[2] text-sm sm:text-base mb-10 md:mb-12">
-                We understand that an organisation's success depends on the careful balancing of internal HR standards and the retention of expert personnel. To achieve this, we go the extra mile:
+                We understand that an organisation's success depends on balancing internal HR standards and the retention of expert personnel. To achieve this, we go the extra mile:
+                <br /><br />
+We pair the logistics of our Geo Tracked app with a real, human conversation. We don't just check boxes; we get to know the people behind the resumes to make sure they’ll actually stay.
+
               </p>
               <div className="grid sm:grid-cols-2 gap-5 md:gap-6 text-left">
                 {[

@@ -133,6 +133,16 @@ const ethicalTradingParagraphs = [
   { label: "Grievance Procedure", text: "Should a worker have a grievance or cause for complaint, the correct procedure is to contact our Head Office on 07432 402246 and ask to speak with a Senior Manager, providing them with full details of the matter. The standards detailed above represent our minimum operating criteria, and we aim to exceed these standards whenever and wherever possible." },
 ];
 
+const environmentalPolicyParagraphs = [
+  "Requsyol Ltd is committed to operating in an environmentally responsible and sustainable manner, minimising our environmental impact across all business activities.",
+  "We recognise our responsibility to our clients, workers, suppliers, and the wider community to operate in a way that supports environmental sustainability.",
+  "As a recruitment agency serving the food production, warehousing, logistics, and hospitality sectors, our direct environmental footprint is limited. Our leased office premises in Park Royal, London, are managed by the landlord, with waste collections handled by Spectrum Recycling Ltd. Our primary impacts arise indirectly through business travel (Scope 3 emissions), supplier relationships, and the clients we support.",
+  { label: "Our Commitments", text: "We will comply with all applicable UK environmental legislation, including the Environmental Protection Act 1990, the Waste (England and Wales) Regulations 2011, and the Climate Change Act 2008. We minimise travel-related emissions by conducting at least 50% of meetings virtually and planning journeys efficiently. We train all staff on environmental responsibilities with 100% induction completion tracked and recorded. We assess key suppliers on environmental criteria before engagement, with documented evaluations. We promote responsible waste management through proper segregation and verification of landlord arrangements. We monitor performance through quarterly internal audits, monthly KPI tracking, and annual management review. We drive continuous improvement by reviewing targets, expanding supplier assessments, and enhancing data tracking." },
+  "Environmental responsibility sits at Director level, with day-to-day oversight by the Operations Manager. A legal register is maintained and reviewed at least annually. No environmental fines, notices, or prosecutions have been received.",
+  "The Directors of Requsyol Ltd are fully committed to the implementation of this policy and to providing the necessary resources to ensure its effectiveness.",
+  "This policy applies to all Requsyol Ltd operations and is supported by documented procedures, training records, and performance data. It is reviewed annually as part of our Environmental Management System.",
+];
+
 const SectionDivider = ({ label, id }: { label: string; id?: string }) => (
   <div id={id} className="relative -mx-6 flex items-center justify-center gap-4 py-10 px-6">
     <div className="h-px flex-1 divider-line" />
@@ -269,6 +279,22 @@ const Policies = () => {
         <ScrollReveal>
           <div className="py-10 md:py-14 space-y-4">
             {ethicalTradingParagraphs.map((p, i) =>
+              typeof p === "string" ? (
+                <p key={i} className="text-sm leading-[1.8] text-muted-foreground md:text-[0.9375rem]">{p}</p>
+              ) : (
+                <p key={i} className="text-sm leading-[1.8] text-muted-foreground md:text-[0.9375rem]">
+                  <span className="font-semibold text-foreground">{p.label}:</span> {p.text}
+                </p>
+              )
+            )}
+          </div>
+        </ScrollReveal>
+
+        {/* ── Environmental Policy Statement ── */}
+        <SectionDivider label="ENVIRONMENTAL POLICY STATEMENT" id="environmental-policy" />
+        <ScrollReveal>
+          <div className="py-10 md:py-14 space-y-4">
+            {environmentalPolicyParagraphs.map((p, i) =>
               typeof p === "string" ? (
                 <p key={i} className="text-sm leading-[1.8] text-muted-foreground md:text-[0.9375rem]">{p}</p>
               ) : (
