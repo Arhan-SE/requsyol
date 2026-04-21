@@ -1,6 +1,8 @@
+import { useState } from "react";
 import Layout from "@/components/layout/Layout";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import { MapPin, Clock, Mail, Briefcase } from "lucide-react";
+import { CVSubmissionModal } from "@/components/CVSubmissionModal";
 import careersBg from "@/assets/videos/careers-bg.mp4";
 
 interface Job {
@@ -62,10 +64,15 @@ const jobs: Job[] = [
   },
 ];
 
-const mailtoLink = (jobTitle: string) =>
-  `mailto:hr@requsyol.co.uk?subject=${encodeURIComponent(`CV Submission - ${jobTitle}`)}`;
-
 const Careers = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedJobTitle, setSelectedJobTitle] = useState<string | undefined>();
+
+  const openCVModal = (jobTitle: string) => {
+    setSelectedJobTitle(jobTitle);
+    setIsModalOpen(true);
+  };
+
   return (
     <Layout>
       {/* Hero */}
@@ -132,13 +139,13 @@ const Careers = () => {
                     {job.description}
                   </p>
 
-                  <a
-                    href={mailtoLink(job.title)}
+                  <button
+                    onClick={() => openCVModal(job.title)}
                     className="border border-border px-6 py-3 text-xs tracking-[0.2em] uppercase font-medium text-foreground hover:bg-foreground hover:text-background transition-all duration-200 text-center font-sans inline-flex items-center justify-center gap-2"
                   >
                     <Mail size={13} />
                     Submit CV
-                  </a>
+                  </button>
                 </div>
               </ScrollReveal>
             ))}
@@ -165,16 +172,17 @@ const Careers = () => {
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.3}>
-            <a
-              href="mailto:hr@requsyol.co.uk?subject=Speculative%20CV%20Submission"
+            <button
+              onClick={() => openCVModal("Speculative Application")}
               className="border border-border px-8 py-3.5 text-xs tracking-[0.2em] uppercase font-medium text-foreground hover:bg-foreground hover:text-background transition-all duration-200 inline-flex items-center gap-2 font-sans"
             >
               <Mail size={13} />
               Submit Your CV
-            </a>
+            </button>
           </ScrollReveal>
         </div>
       </section>
+      <CVSubmissionModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} jobTitle={selectedJobTitle} />
     </Layout>
   );
 };

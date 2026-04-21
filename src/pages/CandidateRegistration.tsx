@@ -19,6 +19,7 @@ import {
   isDuplicateSubmission,
   validateUploadedFile,
 } from "@/lib/formSecurity";
+import { sendEmail } from "@/lib/emailService";
 
 const formSchema = z.object({
   firstName: safeNameSchema,
@@ -78,14 +79,19 @@ const CandidateRegistration = () => {
       return;
     }
 
-    const subject = encodeURIComponent(`Candidate Registration: ${data.firstName} ${data.lastName}`);
-    const body = encodeURIComponent(
-      `Name: ${data.firstName} ${data.lastName}\nEmail: ${data.email}\nPhone: ${data.phone}\n\nResume: ${sanitizedFileName ? `${sanitizedFileName} (attached separately)` : "Not uploaded"}`
-    );
-    window.location.href = `mailto:hr@requsyol.co.uk?subject=${subject}&body=${body}`;
-
-    toast({ title: "Registration Submitted!", description: "Your email client should open shortly. Please attach your resume to the email." });
-    setSubmitted(true);
+    try {
+      const message = `First Name: ${data.firstName}\nLast Name: ${data.lastName}\nPhone: ${data.phone}\n\nResume: ${sanitizedFileName || "Not uploaded"}`;
+      await sendEmail({
+        email: data.email,
+        name: `${data.firstName} ${data.lastName}`,
+        message,
+        type: 'candidate',
+      });
+      toast({ title: "Registration Submitted!", description: "We've received your application and will be in touch shortly." });
+      setSubmitted(true);
+    } catch (error) {
+      toast({ title: "Error", description: "Failed to submit registration. Please try again.", variant: "destructive" });
+    }
   };
 
   if (submitted) {

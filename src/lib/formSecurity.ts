@@ -91,18 +91,18 @@ export function isSubmissionTooFast(minMs = 3000): boolean {
 // ── 4. Duplicate submission hash guard ───────────────────────────────────────
 const LAST_HASH_KEY = "__last_submit_hash__";
 
-async function sha256(data: string): Promise<string> {
-  const buf = await crypto.subtle.digest(
-    "SHA-256",
-    new TextEncoder().encode(data)
-  );
-  return Array.from(new Uint8Array(buf))
-    .map((b) => b.toString(16).padStart(2, "0"))
-    .join("");
+function simpleHash(data: string): string {
+  let hash = 0;
+  for (let i = 0; i < data.length; i++) {
+    const char = data.charCodeAt(i);
+    hash = ((hash << 5) - hash) + char;
+    hash = hash & hash;
+  }
+  return hash.toString(16);
 }
 
 export async function isDuplicateSubmission(formData: Record<string, unknown>): Promise<boolean> {
-  const hash = await sha256(JSON.stringify(formData));
+  const hash = simpleHash(JSON.stringify(formData));
   const last = sessionStorage.getItem(LAST_HASH_KEY);
   if (last === hash) return true;
   sessionStorage.setItem(LAST_HASH_KEY, hash);

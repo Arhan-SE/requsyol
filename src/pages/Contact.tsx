@@ -18,6 +18,7 @@ import {
   isSubmissionTooFast,
   isDuplicateSubmission,
 } from "@/lib/formSecurity";
+import { sendEmail } from "@/lib/emailService";
 
 const formSchema = z.object({
   name: safeNameSchema,
@@ -56,13 +57,18 @@ const Contact = () => {
       return;
     }
 
-    // Build mailto link and open it
-    const subject = encodeURIComponent(`Contact Form: ${data.name}`);
-    const body = encodeURIComponent(`Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`);
-    window.location.href = `mailto:hr@requsyol.co.uk?subject=${subject}&body=${body}`;
-
-    toast({ title: "Message Sent!", description: "Your email client should open shortly." });
-    setSubmitted(true);
+    try {
+      await sendEmail({
+        email: data.email,
+        name: data.name,
+        message: data.message,
+        type: 'contact',
+      });
+      toast({ title: "Message Sent!", description: "We've received your inquiry and will respond within 24 hours." });
+      setSubmitted(true);
+    } catch (error) {
+      toast({ title: "Error", description: "Failed to send message. Please try again.", variant: "destructive" });
+    }
   };
 
   return (
