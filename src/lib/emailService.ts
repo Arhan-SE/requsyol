@@ -5,24 +5,12 @@ interface SendEmailData {
   type: 'contact' | 'careers' | 'inquiry' | 'candidate';
 }
 
-export async function sendEmail(data: SendEmailData) {
-  try {
-    const response = await fetch('/api/send-email', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
+export function sendEmail(data: SendEmailData) {
+  const subject = `New ${data.type || 'inquiry'} from ${data.name}`;
+  const body = `Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`;
+  const mailtoLink = `mailto:hr@requsyol.co.uk?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
-    if (!response.ok) {
-      const error = await response.json();
-      throw new Error(error.error || 'Failed to send email');
-    }
+  window.location.href = mailtoLink;
 
-    return await response.json();
-  } catch (error) {
-    console.error('Email service error:', error);
-    throw error;
-  }
+  return Promise.resolve({ success: true });
 }
