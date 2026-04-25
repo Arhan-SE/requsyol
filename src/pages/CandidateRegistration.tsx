@@ -16,7 +16,6 @@ import {
   safePhoneSchema,
   recordPageLoadTime,
   isSubmissionTooFast,
-  isDuplicateSubmission,
   validateUploadedFile,
 } from "@/lib/formSecurity";
 import { sendEmail } from "@/lib/emailService";
@@ -70,12 +69,6 @@ const CandidateRegistration = () => {
 
     if (isSubmissionTooFast()) {
       toast({ title: "Something went wrong", description: "Please wait a moment and try again.", variant: "destructive" });
-      return;
-    }
-
-    const { honeypot: _hp, ...payload } = data;
-    if (await isDuplicateSubmission(payload)) {
-      toast({ title: "Duplicate submission", description: "This registration has already been submitted.", variant: "destructive" });
       return;
     }
 

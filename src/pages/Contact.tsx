@@ -16,7 +16,6 @@ import {
   safeTextSchema,
   recordPageLoadTime,
   isSubmissionTooFast,
-  isDuplicateSubmission,
 } from "@/lib/formSecurity";
 import { sendEmail } from "@/lib/emailService";
 
@@ -47,13 +46,6 @@ const Contact = () => {
     // Timing guard
     if (isSubmissionTooFast()) {
       toast({ title: "Something went wrong", description: "Please wait a moment and try again.", variant: "destructive" });
-      return;
-    }
-
-    // Duplicate guard
-    const { honeypot: _hp, ...payload } = data;
-    if (await isDuplicateSubmission(payload)) {
-      toast({ title: "Duplicate submission", description: "This message has already been sent.", variant: "destructive" });
       return;
     }
 

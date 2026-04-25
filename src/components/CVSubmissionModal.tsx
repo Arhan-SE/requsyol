@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
 import { Send } from "lucide-react";
-import { safeNameSchema, safeEmailSchema, safePhoneSchema, isSubmissionTooFast, isDuplicateSubmission } from "@/lib/formSecurity";
+import { safeNameSchema, safeEmailSchema, safePhoneSchema, isSubmissionTooFast } from "@/lib/formSecurity";
 import { sendEmail } from "@/lib/emailService";
 
 const formSchema = z.object({
@@ -38,12 +38,6 @@ export const CVSubmissionModal = ({ isOpen, onClose, jobTitle }: CVSubmissionMod
 
     if (isSubmissionTooFast()) {
       toast({ title: "Something went wrong", description: "Please wait a moment and try again.", variant: "destructive" });
-      return;
-    }
-
-    const { honeypot: _hp, ...payload } = data;
-    if (await isDuplicateSubmission(payload)) {
-      toast({ title: "Duplicate submission", description: "This CV has already been submitted.", variant: "destructive" });
       return;
     }
 

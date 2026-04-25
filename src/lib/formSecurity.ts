@@ -101,14 +101,6 @@ function simpleHash(data: string): string {
   return hash.toString(16);
 }
 
-export async function isDuplicateSubmission(formData: Record<string, unknown>): Promise<boolean> {
-  const hash = simpleHash(JSON.stringify(formData));
-  const last = sessionStorage.getItem(LAST_HASH_KEY);
-  if (last === hash) return true;
-  sessionStorage.setItem(LAST_HASH_KEY, hash);
-  return false;
-}
-
 // ── 5. File upload hardening ──────────────────────────────────────────────────
 
 const MAX_FILE_SIZE_BYTES = 5 * 1024 * 1024; // 5 MB
