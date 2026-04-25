@@ -1,4 +1,5 @@
 import express from 'express';
+import fileUpload from 'express-fileupload';
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
 
@@ -8,6 +9,7 @@ const app = express();
 const port = 3001;
 
 app.use(express.json());
+app.use(fileUpload());
 
 // Configure nodemailer with Gmail SMTP
 const transporter = nodemailer.createTransport({
@@ -26,6 +28,16 @@ app.post('/api/send-email', async (req, res) => {
       return res.status(400).json({ error: 'Missing required fields' });
     }
 
+    // Prepare attachments
+    const attachments = [];
+    if (req.files && req.files.file) {
+      const file = req.files.file;
+      attachments.push({
+        filename: file.name,
+        content: file.data,
+      });
+    }
+
     // Send confirmation email to user
     const userMailOptions = {
       from: process.env.GMAIL_USER,
@@ -40,7 +52,7 @@ app.post('/api/send-email', async (req, res) => {
       `,
     };
 
-    // Send notification email to client
+    // Send notification email to client (with attachments)
     const clientMailOptions = {
       from: process.env.GMAIL_USER,
       to: process.env.EMAIL_RECEIVER,
@@ -54,6 +66,7 @@ app.post('/api/send-email', async (req, res) => {
         <p><strong>Message:</strong></p>
         <p>${message.replace(/\n/g, '<br>')}</p>
       `,
+      attachments,
     };
 
     // Send both emails

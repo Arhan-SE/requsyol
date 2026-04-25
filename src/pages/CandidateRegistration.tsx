@@ -80,12 +80,13 @@ const CandidateRegistration = () => {
     }
 
     try {
-      const message = `First Name: ${data.firstName}\nLast Name: ${data.lastName}\nPhone: ${data.phone}\n\nResume: ${sanitizedFileName || "Not uploaded"}`;
+      const message = `First Name: ${data.firstName}\nLast Name: ${data.lastName}\nPhone: ${data.phone}`;
       await sendEmail({
         email: data.email,
         name: `${data.firstName} ${data.lastName}`,
         message,
         type: 'candidate',
+        file: resumeFile || undefined,
       });
       toast({ title: "Registration Submitted!", description: "We've received your application and will be in touch shortly." });
       setSubmitted(true);
@@ -101,7 +102,7 @@ const CandidateRegistration = () => {
           <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-center max-w-md mx-auto px-4">
             <CheckCircle size={64} className="text-primary mx-auto mb-6" />
             <h1 className="text-3xl font-bold text-foreground mb-4">Thank You!</h1>
-            <p className="text-muted-foreground">Your email client should have opened. Please attach your resume and send the email. Our team will review your details and be in touch shortly.</p>
+            <p className="text-muted-foreground">We've received your application. Our team will review your details and be in touch shortly.</p>
           </motion.div>
         </div>
       </Layout>
