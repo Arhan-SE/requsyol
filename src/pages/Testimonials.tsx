@@ -188,8 +188,11 @@ const Testimonials = () => {
                   >
                     {i === current && (
                       <motion.div
-                        className="absolute inset-y-0 left-0 bg-foreground"
-                        style={{ width: `${progressPercent}%` }}
+                        className="absolute inset-y-0 left-0"
+                        style={{
+                          width: `${progressPercent}%`,
+                          backgroundImage: "linear-gradient(90deg, #56A8D6 0%, hsl(var(--logo-orange)) 50%, #2F7FB2 100%)"
+                        }}
                       />
                     )}
                     {i !== current && (
@@ -213,11 +216,11 @@ const Testimonials = () => {
         <div className="container mx-auto px-4">
           {/* Our Clients */}
           <div className="flex items-center justify-center gap-4 py-6">
-            <div className="h-px flex-1 divider-line" />
+            <div className="h-px flex-1 bg-gradient-to-r from-[#56A8D6] via-[hsl(var(--logo-orange))] to-[#2F7FB2]" />
             <span className="text-[10px] uppercase tracking-[0.35em] text-muted-foreground">
               + &nbsp;&nbsp; OUR CLIENTS &nbsp;&nbsp; +
             </span>
-            <div className="h-px flex-1 divider-line" />
+            <div className="h-px flex-1 bg-gradient-to-r from-[#2F7FB2] via-[hsl(var(--logo-orange))] to-[#56A8D6]" />
           </div>
 
           <section className="py-10 md:py-14 overflow-hidden">

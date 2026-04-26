@@ -11,7 +11,6 @@ export default defineConfig(({ mode }) => ({
     hmr: {
       overlay: false,
     },
-    allowedHosts: ["111c-2401-4900-1c07-7c34-d800-30bd-a1b3-b30e.ngrok-free.app"],
     proxy: {
       '/api': {
         target: 'http://localhost:3001',

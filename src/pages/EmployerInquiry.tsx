@@ -12,6 +12,7 @@ import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from "
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { CheckCircle, Upload, Send, AlertCircle } from "lucide-react";
+import { sendEmail } from "@/lib/emailService";
 import {
   safeNameSchema,
   safeEmailSchema,
@@ -77,8 +78,21 @@ const EmployerInquiry = () => {
       return;
     }
 
-    toast({ title: "Inquiry Submitted!", description: "We'll get back to you within 24 hours." });
-    setSubmitted(true);
+    try {
+      const message = `Company: ${data.companyName}\nContact Person: ${data.contactPerson}\n\nRole(s) Required:\n${data.roleRequired}\n\nUrgency/Timeline: ${data.urgency}`;
+      await sendEmail({
+        email: data.email,
+        name: data.contactPerson,
+        message,
+        type: 'inquiry',
+        file: jobFile || undefined,
+      });
+      toast({ title: "Inquiry Submitted!", description: "We'll get back to you within 24 hours." });
+      form.reset();
+      setSubmitted(true);
+    } catch (error) {
+      toast({ title: "Error", description: "Failed to submit inquiry. Please try again.", variant: "destructive" });
+    }
   };
 
   if (submitted) {
