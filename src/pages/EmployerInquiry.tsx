@@ -36,6 +36,7 @@ const formSchema = z.object({
 
 const EmployerInquiry = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [jobFile, setJobFile] = useState<File | null>(null);
   const [fileError, setFileError] = useState<string | null>(null);
   const [sanitizedFileName, setSanitizedFileName] = useState<string | null>(null);
@@ -78,6 +79,7 @@ const EmployerInquiry = () => {
       return;
     }
 
+    setIsSubmitting(true);
     try {
       const message = `Company: ${data.companyName}\nContact Person: ${data.contactPerson}\n\nRole(s) Required:\n${data.roleRequired}\n\nUrgency/Timeline: ${data.urgency}`;
       await sendEmail({
@@ -92,6 +94,8 @@ const EmployerInquiry = () => {
       setSubmitted(true);
     } catch (error) {
       toast({ title: "Error", description: "Failed to submit inquiry. Please try again.", variant: "destructive" });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -127,22 +131,22 @@ const EmployerInquiry = () => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <FormField control={form.control} name="companyName" render={({ field }) => (
-                  <FormItem><FormLabel>Company Name</FormLabel><FormControl><Input placeholder="Acme Ltd" {...field} /></FormControl><FormMessage /></FormItem>
+                  <FormItem><FormLabel>Company Name</FormLabel><FormControl><Input placeholder="Acme Ltd" {...field} disabled={isSubmitting} /></FormControl><FormMessage /></FormItem>
                 )} />
                 <FormField control={form.control} name="contactPerson" render={({ field }) => (
-                  <FormItem><FormLabel>Contact Person</FormLabel><FormControl><Input placeholder="Jane Smith" {...field} /></FormControl><FormMessage /></FormItem>
+                  <FormItem><FormLabel>Contact Person</FormLabel><FormControl><Input placeholder="Jane Smith" {...field} disabled={isSubmitting} /></FormControl><FormMessage /></FormItem>
                 )} />
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <FormField control={form.control} name="email" render={({ field }) => (
-                  <FormItem><FormLabel>Email</FormLabel><FormControl><Input type="email" placeholder="hire@company.com" {...field} /></FormControl><FormMessage /></FormItem>
+                  <FormItem><FormLabel>Email</FormLabel><FormControl><Input type="email" placeholder="hire@company.com" {...field} disabled={isSubmitting} /></FormControl><FormMessage /></FormItem>
                 )} />
                 <FormField control={form.control} name="phone" render={({ field }) => (
-                  <FormItem><FormLabel>Phone</FormLabel><FormControl><Input placeholder="+44 20 1234 5678" {...field} /></FormControl><FormMessage /></FormItem>
+                  <FormItem><FormLabel>Phone</FormLabel><FormControl><Input placeholder="+44 20 1234 5678" {...field} disabled={isSubmitting} /></FormControl><FormMessage /></FormItem>
                 )} />
               </div>
               <FormField control={form.control} name="roleRequired" render={({ field }) => (
-                <FormItem><FormLabel>Role Required</FormLabel><FormControl><Textarea placeholder="Describe the role(s) you need to fill..." rows={3} {...field} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>Role Required</FormLabel><FormControl><Textarea placeholder="Describe the role(s) you need to fill..." rows={3} {...field} disabled={isSubmitting} /></FormControl><FormMessage /></FormItem>
               )} />
               <FormField control={form.control} name="urgency" render={({ field }) => (
                 <FormItem><FormLabel>Urgency / Timeline</FormLabel>
@@ -184,8 +188,8 @@ const EmployerInquiry = () => {
                 )}
               </div>
 
-              <Button type="submit" size="lg" className="w-full gap-2">
-                <Send size={18} /> Submit Inquiry
+              <Button type="submit" size="lg" className="w-full gap-2" disabled={isSubmitting}>
+                <Send size={18} /> {isSubmitting ? "Submitting..." : "Submit Inquiry"}
               </Button>
             </form>
           </Form>

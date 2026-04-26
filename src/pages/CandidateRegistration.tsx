@@ -30,6 +30,7 @@ const formSchema = z.object({
 
 const CandidateRegistration = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [resumeFile, setResumeFile] = useState<File | null>(null);
   const [fileError, setFileError] = useState<string | null>(null);
   const [sanitizedFileName, setSanitizedFileName] = useState<string | null>(null);
@@ -72,6 +73,7 @@ const CandidateRegistration = () => {
       return;
     }
 
+    setIsSubmitting(true);
     try {
       const message = `First Name: ${data.firstName}\nLast Name: ${data.lastName}\nPhone: ${data.phone}`;
       await sendEmail({
@@ -82,9 +84,12 @@ const CandidateRegistration = () => {
         file: resumeFile || undefined,
       });
       toast({ title: "Registration Submitted!", description: "We've received your application and will be in touch shortly." });
+      form.reset();
       setSubmitted(true);
     } catch (error) {
       toast({ title: "Error", description: "Failed to submit registration. Please try again.", variant: "destructive" });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -120,17 +125,17 @@ const CandidateRegistration = () => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <FormField control={form.control} name="firstName" render={({ field }) => (
-                  <FormItem><FormLabel>First Name</FormLabel><FormControl><Input placeholder="John" {...field} /></FormControl><FormMessage /></FormItem>
+                  <FormItem><FormLabel>First Name</FormLabel><FormControl><Input placeholder="John" {...field} disabled={isSubmitting} /></FormControl><FormMessage /></FormItem>
                 )} />
                 <FormField control={form.control} name="lastName" render={({ field }) => (
-                  <FormItem><FormLabel>Last Name</FormLabel><FormControl><Input placeholder="Doe" {...field} /></FormControl><FormMessage /></FormItem>
+                  <FormItem><FormLabel>Last Name</FormLabel><FormControl><Input placeholder="Doe" {...field} disabled={isSubmitting} /></FormControl><FormMessage /></FormItem>
                 )} />
               </div>
               <FormField control={form.control} name="phone" render={({ field }) => (
-                <FormItem><FormLabel>Phone</FormLabel><FormControl><Input placeholder="+44 7000 000000" {...field} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>Phone</FormLabel><FormControl><Input placeholder="+44 7000 000000" {...field} disabled={isSubmitting} /></FormControl><FormMessage /></FormItem>
               )} />
               <FormField control={form.control} name="email" render={({ field }) => (
-                <FormItem><FormLabel>Email</FormLabel><FormControl><Input type="email" placeholder="john@example.com" {...field} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>Email</FormLabel><FormControl><Input type="email" placeholder="john@example.com" {...field} disabled={isSubmitting} /></FormControl><FormMessage /></FormItem>
               )} />
 
               {/* Resume Upload */}
@@ -165,8 +170,8 @@ const CandidateRegistration = () => {
                 )}
               </div>
 
-              <Button type="submit" size="lg" className="w-full gap-2" disabled={!!fileError}>
-                <Send size={18} /> Submit Registration
+              <Button type="submit" size="lg" className="w-full gap-2" disabled={!!fileError || isSubmitting}>
+                <Send size={18} /> {isSubmitting ? "Submitting..." : "Submit Registration"}
               </Button>
             </form>
           </Form>

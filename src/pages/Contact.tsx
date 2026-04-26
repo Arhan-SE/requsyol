@@ -28,6 +28,7 @@ const formSchema = z.object({
 
 const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -49,6 +50,7 @@ const Contact = () => {
       return;
     }
 
+    setIsSubmitting(true);
     try {
       await sendEmail({
         email: data.email,
@@ -57,9 +59,12 @@ const Contact = () => {
         type: 'contact',
       });
       toast({ title: "Message Sent!", description: "We've received your inquiry and will respond within 24 hours." });
+      form.reset();
       setSubmitted(true);
     } catch (error) {
       toast({ title: "Error", description: "Failed to send message. Please try again.", variant: "destructive" });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -126,9 +131,9 @@ const Contact = () => {
                       <FormItem><FormLabel>Email</FormLabel><FormControl><Input type="email" placeholder="you@example.com" {...field} /></FormControl><FormMessage /></FormItem>
                     )} />
                     <FormField control={form.control} name="message" render={({ field }) => (
-                      <FormItem><FormLabel>Message</FormLabel><FormControl><Textarea rows={5} placeholder="How can we help?" {...field} /></FormControl><FormMessage /></FormItem>
+                      <FormItem><FormLabel>Message</FormLabel><FormControl><Textarea rows={5} placeholder="How can we help?" {...field} disabled={isSubmitting} /></FormControl><FormMessage /></FormItem>
                     )} />
-                    <Button type="submit" className="w-full gap-2"><Send size={18} /> Send Message</Button>
+                    <Button type="submit" className="w-full gap-2" disabled={isSubmitting}><Send size={18} /> {isSubmitting ? "Sending..." : "Send Message"}</Button>
                   </form>
                 </Form>
               )}

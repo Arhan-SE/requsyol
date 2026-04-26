@@ -4,6 +4,7 @@ import ValueProposition from "@/components/home/ValueProposition";
 import IndustryCarousel from "@/components/home/IndustryCarousel";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 import FinalCTA from "@/components/home/FinalCTA";
+import { DisclaimerModal } from "@/components/DisclaimerModal";
 import useSmoothScroll from "@/hooks/useSmoothScroll";
 
 const Index = () => {
@@ -11,6 +12,7 @@ const Index = () => {
 
   return (
     <Layout>
+      <DisclaimerModal />
       <div className="sticky top-0 z-[1]">
         <HeroSection />
       </div>
