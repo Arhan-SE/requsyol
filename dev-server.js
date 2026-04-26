@@ -21,8 +21,10 @@ const transporter = nodemailer.createTransport({
 });
 
 app.post('/api/send-email', async (req, res) => {
+  const startTime = Date.now();
   try {
     const { email, name, message, type } = req.body;
+    console.log(`[${new Date().toISOString()}] Email request received`);
 
     if (!email || !name || !message) {
       return res.status(400).json({ error: 'Missing required fields' });
@@ -69,19 +71,43 @@ app.post('/api/send-email', async (req, res) => {
       attachments,
     };
 
-    // Send both emails
-    await transporter.sendMail(userMailOptions);
-    await transporter.sendMail(clientMailOptions);
+    // Send both emails in parallel
+    await Promise.all([
+      transporter.sendMail(userMailOptions),
+      transporter.sendMail(clientMailOptions)
+    ]);
+
+    const duration = Date.now() - startTime;
+    console.log(`[${new Date().toISOString()}] Emails sent successfully in ${duration}ms`);
 
     return res.status(200).json({
       success: true,
       message: 'Emails sent successfully'
     });
   } catch (error) {
-    console.error('Email sending error:', error);
+    const duration = Date.now() - startTime;
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    console.error(`[${new Date().toISOString()}] Email sending error after ${duration}ms:`, error);
+
+    // Check for rate limiting errors
+    const isRateLimited =
+      errorMessage.includes('Too many login attempts') ||
+      errorMessage.includes('Please try again later') ||
+      errorMessage.includes('421') ||
+      errorMessage.includes('429') ||
+      errorMessage.includes('throttled');
+
+    if (isRateLimited) {
+      return res.status(429).json({
+        error: 'Service temporarily unavailable',
+        message: 'Too many emails sent. Please try again in a few minutes.',
+        retryAfter: 300 // 5 minutes in seconds
+      });
+    }
+
     return res.status(500).json({
       error: 'Failed to send email',
-      details: error instanceof Error ? error.message : 'Unknown error'
+      details: errorMessage
     });
   }
 });

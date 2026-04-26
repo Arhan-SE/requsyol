@@ -23,8 +23,11 @@ export async function sendEmail(data: SendEmailData) {
     });
 
     if (!response.ok) {
-      const error = await response.json();
-      throw new Error(error.error || 'Failed to send email');
+      const errorData = await response.json();
+      const error = new Error(errorData.message || errorData.error || 'Failed to send email');
+      (error as any).status = response.status;
+      (error as any).retryAfter = errorData.retryAfter;
+      throw error;
     }
 
     return await response.json();

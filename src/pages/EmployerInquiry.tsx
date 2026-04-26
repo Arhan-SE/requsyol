@@ -93,7 +93,16 @@ const EmployerInquiry = () => {
       form.reset();
       setSubmitted(true);
     } catch (error) {
-      toast({ title: "Error", description: "Failed to submit inquiry. Please try again.", variant: "destructive" });
+      const err = error as any;
+      if (err.status === 429) {
+        toast({
+          title: "Please try again later",
+          description: "We're experiencing high volume. Please wait a few minutes and try again.",
+          variant: "destructive"
+        });
+      } else {
+        toast({ title: "Error", description: "Failed to submit inquiry. Please try again.", variant: "destructive" });
+      }
     } finally {
       setIsSubmitting(false);
     }
