@@ -8,6 +8,9 @@ interface SendEmailData {
 
 export async function sendEmail(data: SendEmailData) {
   try {
+    const apiUrl = import.meta.env.VITE_API_URL || '';
+    const endpoint = `${apiUrl}/api/send-email`;
+
     const formData = new FormData();
     formData.append('email', data.email);
     formData.append('name', data.name);
@@ -17,7 +20,7 @@ export async function sendEmail(data: SendEmailData) {
       formData.append('file', data.file);
     }
 
-    const response = await fetch('/api/send-email', {
+    const response = await fetch(endpoint, {
       method: 'POST',
       body: formData,
     });
