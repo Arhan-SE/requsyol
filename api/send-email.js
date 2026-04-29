@@ -1,17 +1,8 @@
-import express from 'express';
-import fileUpload from 'express-fileupload';
 import nodemailer from 'nodemailer';
-import dotenv from 'dotenv';
+import formidable from 'formidable';
+import fs from 'fs/promises';
 
-dotenv.config();
-
-const app = express();
-const port = 3001;
-
-app.use(express.json());
-app.use(fileUpload());
-
-// Configure nodemailer with Gmail SMTP
+// Initialize nodemailer transporter
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -20,10 +11,23 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-app.post('/api/send-email', async (req, res) => {
+export default async function handler(req, res) {
+  // Only allow POST requests
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
+
   const startTime = Date.now();
   try {
-    const { email, name, message, type } = req.body;
+    const form = formidable();
+    const [fields, files] = await form.parse(req);
+
+    // Extract fields (formidable returns arrays, so take the first element)
+    const email = fields.email?.[0] || '';
+    const name = fields.name?.[0] || '';
+    const message = fields.message?.[0] || '';
+    const type = fields.type?.[0] || '';
+
     console.log(`[${new Date().toISOString()}] Email request received`);
 
     if (!email || !name || !message) {
@@ -32,12 +36,15 @@ app.post('/api/send-email', async (req, res) => {
 
     // Prepare attachments
     const attachments = [];
-    if (req.files && req.files.file) {
-      const file = req.files.file;
-      attachments.push({
-        filename: file.name,
-        content: file.data,
-      });
+    if (files.file && files.file.length > 0) {
+      const fileArray = files.file;
+      for (const file of fileArray) {
+        const fileContent = await fs.readFile(file.filepath);
+        attachments.push({
+          filename: file.originalFilename,
+          content: fileContent,
+        });
+      }
     }
 
     // Build user confirmation email based on type
@@ -167,7 +174,6 @@ app.post('/api/send-email', async (req, res) => {
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     console.error(`[${new Date().toISOString()}] Email sending error after ${duration}ms:`, error);
 
-    // Check for rate limiting errors
     const isRateLimited =
       errorMessage.includes('Too many login attempts') ||
       errorMessage.includes('Please try again later') ||
@@ -179,7 +185,7 @@ app.post('/api/send-email', async (req, res) => {
       return res.status(429).json({
         error: 'Service temporarily unavailable',
         message: 'Too many emails sent. Please try again in a few minutes.',
-        retryAfter: 300 // 5 minutes in seconds
+        retryAfter: 300
       });
     }
 
@@ -188,8 +194,4 @@ app.post('/api/send-email', async (req, res) => {
       details: errorMessage
     });
   }
-});
-
-app.listen(port, () => {
-  console.log(`Dev API server running on http://localhost:${port}`);
-});
+}
